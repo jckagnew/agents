@@ -4,8 +4,15 @@ from market import is_paid_polygon, is_realtime_polygon
 
 load_dotenv(override=True)
 
+# Environment variables with fallbacks
 brave_env = {"BRAVE_API_KEY": os.getenv("BRAVE_API_KEY")}
 polygon_api_key = os.getenv("POLYGON_API_KEY")
+context7_api_key = os.getenv("CONTEXT7_API_KEY")
+perplexity_api_key = os.getenv("PERPLEXITY_API_KEY")
+
+# Feature flags for optional MCP servers
+ENABLE_CONTEXT7 = bool(context7_api_key)
+ENABLE_PERPLEXITY = bool(perplexity_api_key)
 
 # The MCP server for the Trader to read Market Data
 
@@ -31,7 +38,8 @@ trader_mcp_server_params = [
 
 
 def researcher_mcp_server_params(name: str):
-    return [
+    """Get MCP server parameters for researcher with optional enhanced servers"""
+    servers = [
         {"command": "uvx", "args": ["mcp-server-fetch"]},
         {
             "command": "npx",
@@ -44,3 +52,30 @@ def researcher_mcp_server_params(name: str):
             "env": {"LIBSQL_URL": f"file:./memory/{name}.db"},
         },
     ]
+    
+    # Add Context7 if API key is available
+    if ENABLE_CONTEXT7:
+        servers.append({
+            "command": "npx",
+            "args": ["-y", "@context7/mcp-server"],
+            "env": {"CONTEXT7_API_KEY": context7_api_key},
+        })
+    
+    # Add Perplexity if API key is available
+    if ENABLE_PERPLEXITY:
+        servers.append({
+            "command": "npx",
+            "args": ["-y", "@perplexity/mcp-server"],
+            "env": {"PERPLEXITY_API_KEY": perplexity_api_key},
+        })
+    
+    return servers
+
+def get_available_mcp_servers():
+    """Return list of available MCP servers for debugging"""
+    available = ["fetch", "brave-search", "memory"]
+    if ENABLE_CONTEXT7:
+        available.append("context7")
+    if ENABLE_PERPLEXITY:
+        available.append("perplexity")
+    return available

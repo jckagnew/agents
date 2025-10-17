@@ -1,0 +1,51 @@
+# CrewAI Tasks Configuration
+# Define the tasks that your agents will work on
+
+tasks:
+  - name: "{{TASK_1_NAME}}"
+    description: "{{TASK_1_DESCRIPTION}}"
+    expected_output: "{{TASK_1_EXPECTED_OUTPUT}}"
+    agent: "{{AGENT_1_NAME}}"
+    context:
+      - "{{TASK_1_CONTEXT_1}}"
+      - "{{TASK_1_CONTEXT_2}}"
+    async_execution: false
+    tools:
+      - "web_search"
+      - "file_operations"
+
+  - name: "{{TASK_2_NAME}}"
+    description: "{{TASK_2_DESCRIPTION}}"
+    expected_output: "{{TASK_2_EXPECTED_OUTPUT}}"
+    agent: "{{AGENT_2_NAME}}"
+    context:
+      - "{{TASK_2_CONTEXT_1}}"
+      - "{{TASK_2_CONTEXT_2}}"
+    async_execution: false
+    tools:
+      - "web_search"
+      - "code_analysis"
+    dependencies:
+      - "{{TASK_1_NAME}}"
+
+  - name: "{{TASK_3_NAME}}"
+    description: "{{TASK_3_DESCRIPTION}}"
+    expected_output: "{{TASK_3_EXPECTED_OUTPUT}}"
+    agent: "{{AGENT_3_NAME}}"
+    context:
+      - "{{TASK_3_CONTEXT_1}}"
+      - "{{TASK_3_CONTEXT_2}}"
+    async_execution: false
+    tools:
+      - "web_search"
+      - "file_operations"
+      - "code_analysis"
+    dependencies:
+      - "{{TASK_1_NAME}}"
+      - "{{TASK_2_NAME}}"
+
+# Global task configuration
+global_config:
+  max_iterations: 5
+  max_execution_time: 180
+  verbose: true

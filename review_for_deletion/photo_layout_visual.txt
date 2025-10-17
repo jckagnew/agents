@@ -1,0 +1,58 @@
+PHOTO LAYOUT FOR 8.5" x 11" PRINT
+=====================================
+
+PAGE 1 (8.5" x 11")
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  ┌─────────────┐  ┌─────────────┐                     │
+│  │   Photo 1   │  │   Photo 2   │                     │
+│  │  Siblings   │  │ Agnew Park  │                     │
+│  │ on blanket  │  │   Welcome   │                     │
+│  │             │  │    Sign     │                     │
+│  └─────────────┘  └─────────────┘                     │
+│                                                         │
+│  ┌─────────────┐  ┌─────────────┐                     │
+│  │   Photo 3   │  │   Photo 4   │                     │
+│  │ Man &       │  │ Mother &    │                     │
+│  │ Toddler     │  │ Baby with   │                     │
+│  │ (plaid)     │  │ matching    │                     │
+│  │             │  │ hats        │                     │
+│  └─────────────┘  └─────────────┘                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+PAGE 2 (8.5" x 11")
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  ┌─────────────┐  ┌─────────────┐                     │
+│  │   Photo 5   │  │   Photo 6   │                     │
+│  │ Boy in      │  │ Two Men &   │                     │
+│  │ Castle      │  │ Baby        │                     │
+│  │ Play        │  │ (leather    │                     │
+│  │ Structure   │  │ jackets)    │                     │
+│  └─────────────┘  └─────────────┘                     │
+│                                                         │
+│  ┌─────────────┐  ┌─────────────┐                     │
+│  │   Photo 7   │  │   Photo 8   │                     │
+│  │ Boy in      │  │ Family with │                     │
+│  │ Stroller    │  │ Eeyore      │                     │
+│  │ (pointing)  │  │ (Disney)    │                     │
+│  │             │  │             │                     │
+│  └─────────────┘  └─────────────┘                     │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
+
+DIMENSIONS:
+- Each photo: 4" x 3"
+- Margins: 0.5" on all sides
+- Spacing between photos: 0.25"
+- Total usable area: 7.5" x 10"
+
+CANVA SETUP INSTRUCTIONS:
+1. Create two separate 8.5" x 11" designs
+2. Upload all 8 photos
+3. Resize each to 4" x 3" (maintain aspect ratio)
+4. Position in 2x2 grid as shown above
+5. Set margins to 0.5" on all sides
+6. Add 0.25" spacing between photos
+

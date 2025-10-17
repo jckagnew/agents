@@ -1,0 +1,218 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "project-starter"
+version = "1.0.0"
+description = "A comprehensive project starter template with all essential configurations and best practices"
+authors = [
+    {name = "Jack Agnew", email = "jack@example.com"}
+]
+license = {text = "MIT"}
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+keywords = ["project-starter", "template", "boilerplate", "development", "best-practices"]
+dependencies = [
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
+    "click>=8.1.0",
+    "pydantic>=2.5.0",
+    "pydantic-settings>=2.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.1.0",
+    "pytest-mock>=3.12.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "flake8>=6.0.0",
+    "mypy>=1.7.0",
+    "pre-commit>=3.6.0",
+    "coverage>=7.3.0",
+    "bandit>=1.7.5",
+    "safety>=2.3.0",
+    "semgrep>=1.45.0",
+]
+web = [
+    "fastapi>=0.104.0",
+    "uvicorn[standard]>=0.24.0",
+    "flask>=3.0.0",
+    "django>=4.2.0",
+    "starlette>=0.27.0",
+]
+ai = [
+    "openai>=1.0.0",
+    "anthropic>=0.7.0",
+    "google-generativeai>=0.3.0",
+    "groq>=0.4.0",
+    "deepseek-ai>=0.0.1",
+    "langchain>=0.3.0",
+    "langchain-community>=0.3.0",
+    "langchain-openai>=0.3.0",
+    "langchain-anthropic>=0.3.0",
+    "langchain-experimental>=0.3.0",
+    "langgraph>=0.3.0",
+    "langgraph-checkpoint-sqlite>=2.0.0",
+    "langsmith>=0.3.0",
+    "autogen-agentchat>=0.4.0",
+    "autogen-core>=0.4.0",
+    "autogen-ext[grpc,mcp,ollama,openai]>=0.4.0",
+    "openai-agents>=0.0.15",
+    "semantic-kernel>=1.25.0",
+    "gradio>=5.22.0",
+    "mcp[cli]>=1.5.0",
+    "mcp-server-fetch>=2025.1.0",
+]
+db = [
+    "supabase>=2.0.0",
+    "sqlalchemy>=2.0.0",
+    "alembic>=1.13.0",
+    "psycopg2-binary>=2.9.0",
+    "redis>=5.0.0",
+    "pymongo>=4.6.0",
+]
+monitoring = [
+    "structlog>=23.2.0",
+    "sentry-sdk[fastapi]>=1.38.0",
+    "prometheus-client>=0.19.0",
+]
+data = [
+    "pandas>=2.1.0",
+    "numpy>=1.24.0",
+    "plotly>=6.0.0",
+    "beautifulsoup4>=4.13.0",
+    "lxml>=5.3.0",
+    "pypdf>=5.4.0",
+    "pypdf2>=3.0.0",
+    "python-docx>=1.2.0",
+    "reportlab>=4.4.0",
+    "wikipedia>=1.4.0",
+    "icalendar>=6.3.0",
+    "speedtest-cli>=2.1.0",
+]
+communication = [
+    "sendgrid>=6.11.0",
+    "rss-parser>=3.13.0",
+    "pushover>=0.0.1",
+]
+
+[project.urls]
+Homepage = "https://github.com/jckagnew/project-starter"
+Documentation = "https://github.com/jckagnew/project-starter#readme"
+Repository = "https://github.com/jckagnew/project-starter.git"
+"Bug Tracker" = "https://github.com/jckagnew/project-starter/issues"
+
+[project.scripts]
+project-starter = "src.main:main"
+
+# =============================================================================
+# TOOL CONFIGURATIONS
+# =============================================================================
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py", "*_test.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--cov=src",
+    "--cov-report=term-missing",
+    "--cov-report=html",
+    "--cov-report=xml",
+    "--cov-fail-under=80",
+]
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/test_*",
+    "*/__pycache__/*",
+    "*/venv/*",
+    "*/env/*",
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "if self.debug:",
+    "if settings.DEBUG",
+    "raise AssertionError",
+    "raise NotImplementedError",
+    "if 0:",
+    "if __name__ == .__main__.:",
+    "class .*\\bProtocol\\):",
+    "@(abc\\.)?abstractmethod",
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "venv", "env"]
+skips = ["B101", "B601"]
+
+[tool.safety]
+output = "json"

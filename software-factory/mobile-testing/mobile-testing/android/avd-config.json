@@ -1,0 +1,10 @@
+{
+  "avd_name": "SoftwareFactory_Android",
+  "device": "pixel_7",
+  "system_image": "system-images;android-33;google_apis;x86_64",
+  "api_level": 33,
+  "ram_size": "4096",
+  "vm_heap": "512",
+  "internal_storage": "8000",
+  "sd_card": "2000"
+}

@@ -1,0 +1,194 @@
+{
+  "brand": {
+    "name": "Your Company",
+    "tagline": "Innovation Through Design",
+    "description": "A modern company focused on AI-powered design solutions"
+  },
+  "colors": {
+    "primary": {
+      "hex": "#1a73e8",
+      "rgb": "rgb(26, 115, 232)",
+      "usage": "Primary brand color, buttons, links, highlights"
+    },
+    "secondary": {
+      "hex": "#34a853",
+      "rgb": "rgb(52, 168, 83)",
+      "usage": "Secondary actions, success states, positive indicators"
+    },
+    "accent": {
+      "hex": "#fbbc04",
+      "rgb": "rgb(251, 188, 4)",
+      "usage": "Accent elements, warnings, call-to-action highlights"
+    },
+    "neutral": {
+      "hex": "#5f6368",
+      "rgb": "rgb(95, 99, 104)",
+      "usage": "Text, borders, subtle elements"
+    },
+    "background": {
+      "light": "#ffffff",
+      "dark": "#1a1a1a",
+      "usage": "Background colors for light and dark themes"
+    }
+  },
+  "typography": {
+    "heading": {
+      "font_family": "Roboto",
+      "weights": ["300", "400", "500", "700"],
+      "sizes": {
+        "h1": "48px",
+        "h2": "36px",
+        "h3": "24px",
+        "h4": "20px",
+        "h5": "18px",
+        "h6": "16px"
+      },
+      "usage": "Headings, titles, important text"
+    },
+    "body": {
+      "font_family": "Open Sans",
+      "weights": ["300", "400", "500", "600"],
+      "sizes": {
+        "large": "18px",
+        "regular": "16px",
+        "small": "14px",
+        "tiny": "12px"
+      },
+      "usage": "Body text, descriptions, general content"
+    },
+    "accent": {
+      "font_family": "Montserrat",
+      "weights": ["400", "500", "600", "700"],
+      "sizes": {
+        "large": "24px",
+        "regular": "18px",
+        "small": "16px"
+      },
+      "usage": "Special text, quotes, emphasis"
+    }
+  },
+  "logo": {
+    "primary": {
+      "file": "logo_primary.png",
+      "usage": "Main logo for most applications",
+      "clear_space": "2x logo height on all sides"
+    },
+    "secondary": {
+      "file": "logo_secondary.png",
+      "usage": "Alternative logo for specific contexts",
+      "clear_space": "1.5x logo height on all sides"
+    },
+    "icon": {
+      "file": "logo_icon.png",
+      "usage": "Favicon, social media profiles, small spaces",
+      "clear_space": "1x icon height on all sides"
+    },
+    "monochrome": {
+      "file": "logo_monochrome.png",
+      "usage": "Single color applications, embossed effects",
+      "clear_space": "2x logo height on all sides"
+    }
+  },
+  "spacing": {
+    "xs": "4px",
+    "sm": "8px",
+    "md": "16px",
+    "lg": "24px",
+    "xl": "32px",
+    "xxl": "48px",
+    "xxxl": "64px"
+  },
+  "imagery": {
+    "style": "Modern, clean, professional",
+    "color_treatment": "Vibrant but not oversaturated",
+    "composition": "Rule of thirds, balanced layouts",
+    "subjects": "People, technology, abstract concepts",
+    "avoid": "Stock photo clichés, overly staged shots"
+  },
+  "tone": {
+    "voice": "Professional yet approachable",
+    "personality": "Innovative, trustworthy, confident",
+    "communication_style": "Clear, concise, engaging",
+    "avoid": "Jargon, overly technical language, clichés"
+  },
+  "design_principles": {
+    "simplicity": "Clean, uncluttered designs",
+    "consistency": "Uniform application of brand elements",
+    "accessibility": "WCAG 2.1 AA compliance",
+    "responsiveness": "Mobile-first design approach",
+    "performance": "Optimized for fast loading"
+  },
+  "platform_specific": {
+    "social_media": {
+      "instagram": {
+        "post": "1080x1080px",
+        "story": "1080x1920px",
+        "reel": "1080x1920px"
+      },
+      "facebook": {
+        "post": "1200x630px",
+        "cover": "1200x315px",
+        "story": "1080x1920px"
+      },
+      "linkedin": {
+        "post": "1200x627px",
+        "cover": "1584x396px",
+        "article": "1200x627px"
+      },
+      "twitter": {
+        "post": "1200x675px",
+        "header": "1500x500px"
+      }
+    },
+    "print": {
+      "business_card": "3.5x2 inches",
+      "letterhead": "8.5x11 inches",
+      "brochure": "8.5x11 inches",
+      "poster": "18x24 inches"
+    },
+    "web": {
+      "hero_banner": "1920x1080px",
+      "thumbnail": "300x200px",
+      "favicon": "32x32px",
+      "og_image": "1200x630px"
+    }
+  },
+  "templates": {
+    "presentation": {
+      "title_slide": "Title + subtitle + logo",
+      "content_slide": "Heading + bullet points + visual",
+      "image_slide": "Full-width image + caption",
+      "quote_slide": "Large quote + attribution + background"
+    },
+    "social_media": {
+      "announcement": "Bold headline + supporting text + visual",
+      "product_showcase": "Product image + key features + call-to-action",
+      "testimonial": "Quote + customer photo + company logo",
+      "lifestyle": "Lifestyle image + minimal text overlay"
+    },
+    "marketing": {
+      "banner": "Headline + subheading + visual + CTA button",
+      "flyer": "Event details + visual + contact information",
+      "poster": "Large headline + supporting text + visual",
+      "brochure": "Multi-panel layout with consistent branding"
+    }
+  },
+  "quality_standards": {
+    "resolution": {
+      "web": "72 DPI minimum",
+      "print": "300 DPI minimum",
+      "social_media": "72 DPI minimum"
+    },
+    "file_formats": {
+      "web": ["PNG", "JPG", "SVG"],
+      "print": ["PDF", "EPS", "AI"],
+      "social_media": ["PNG", "JPG"]
+    },
+    "accessibility": {
+      "color_contrast": "4.5:1 minimum for normal text",
+      "alt_text": "Required for all images",
+      "readable_fonts": "Minimum 12px for body text"
+    }
+  }
+}
+

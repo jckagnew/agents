@@ -1,0 +1,230 @@
+{
+  "timestamp": "2025-09-25T12:00:45.584676",
+  "total_scenarios": 28,
+  "successful_scenarios": 8,
+  "success_rate": 28.57142857142857,
+  "detailed_results": {
+    "Concurrent Queries": {
+      "Light Load": {
+        "total_queries": 5,
+        "successful_queries": 5,
+        "total_time": 0.4466240406036377,
+        "avg_response_time": 0.2383429527282715,
+        "min_response_time": 0.13405895233154297,
+        "max_response_time": 0.43370509147644043,
+        "success_rate": 100.0,
+        "queries_per_second": 11.19509821558691
+      },
+      "Medium Load": {
+        "total_queries": 15,
+        "successful_queries": 15,
+        "total_time": 1.0173041820526123,
+        "avg_response_time": 0.2802655855814616,
+        "min_response_time": 0.11719989776611328,
+        "max_response_time": 0.4791691303253174,
+        "success_rate": 100.0,
+        "queries_per_second": 14.744852389906168
+      },
+      "Heavy Load": {
+        "total_queries": 30,
+        "successful_queries": 30,
+        "total_time": 1.0563600063323975,
+        "avg_response_time": 0.3049231688181559,
+        "min_response_time": 0.11132407188415527,
+        "max_response_time": 0.49961400032043457,
+        "success_rate": 100.0,
+        "queries_per_second": 28.39940912204519
+      },
+      "Stress Load": {
+        "total_queries": 50,
+        "successful_queries": 50,
+        "total_time": 1.3117132186889648,
+        "avg_response_time": 0.3166586685180664,
+        "min_response_time": 0.12719106674194336,
+        "max_response_time": 0.4930758476257324,
+        "success_rate": 100.0,
+        "queries_per_second": 38.11808807566501
+      }
+    },
+    "Memory Usage": {
+      "Baseline": {
+        "initial_memory": 0,
+        "peak_memory": 0,
+        "final_memory": 0,
+        "memory_delta": 0,
+        "memory_retained": 0,
+        "iterations": 1,
+        "data_size": 1000
+      },
+      "Small Load": {
+        "initial_memory": 0,
+        "peak_memory": 0,
+        "final_memory": 0,
+        "memory_delta": 0,
+        "memory_retained": 0,
+        "iterations": 10,
+        "data_size": 1000
+      },
+      "Medium Load": {
+        "initial_memory": 0,
+        "peak_memory": 0,
+        "final_memory": 0,
+        "memory_delta": 0,
+        "memory_retained": 0,
+        "iterations": 50,
+        "data_size": 1000
+      },
+      "Large Load": {
+        "initial_memory": 0,
+        "peak_memory": 0,
+        "final_memory": 0,
+        "memory_delta": 0,
+        "memory_retained": 0,
+        "iterations": 100,
+        "data_size": 1000
+      },
+      "Memory Intensive": {
+        "initial_memory": 0,
+        "peak_memory": 0,
+        "final_memory": 0,
+        "memory_delta": 0,
+        "memory_retained": 0,
+        "iterations": 50,
+        "data_size": 10000
+      }
+    },
+    "Error Handling": {
+      "Invalid Input": {
+        "status": "handled_error",
+        "error_type": "ZeroDivisionError",
+        "error_message": "division by zero"
+      },
+      "Timeout Simulation": {
+        "status": "unexpected_success",
+        "response_time": 10.00514006614685,
+        "error": null
+      },
+      "Memory Error": {
+        "status": "unexpected_success",
+        "response_time": 0.48593878746032715,
+        "error": null
+      },
+      "File Not Found": {
+        "status": "handled_error",
+        "error_type": "FileNotFoundError",
+        "error_message": "[Errno 2] No such file or directory: 'nonexistent_file.txt'"
+      },
+      "Network Error": {
+        "status": "handled_error",
+        "error_type": "NameError",
+        "error_message": "name 'requests' is not defined"
+      }
+    },
+    "Data Processing Performance": {
+      "size_100": {
+        "data_size": 100,
+        "processing_time": 0.00016832351684570312,
+        "processed_items": 100,
+        "filtered_items": 81,
+        "categories": 10,
+        "items_per_second": 594094.0509915014
+      },
+      "size_500": {
+        "data_size": 500,
+        "processing_time": 0.0005118846893310547,
+        "processed_items": 500,
+        "filtered_items": 374,
+        "categories": 10,
+        "items_per_second": 976782.48719143
+      },
+      "size_1000": {
+        "data_size": 1000,
+        "processing_time": 0.0011227130889892578,
+        "processed_items": 1000,
+        "filtered_items": 748,
+        "categories": 10,
+        "items_per_second": 890699.5115735825
+      },
+      "size_5000": {
+        "data_size": 5000,
+        "processing_time": 0.005017757415771484,
+        "processed_items": 5000,
+        "filtered_items": 3738,
+        "categories": 10,
+        "items_per_second": 996461.0852418512
+      },
+      "size_10000": {
+        "data_size": 10000,
+        "processing_time": 0.010620832443237305,
+        "processed_items": 10000,
+        "filtered_items": 7445,
+        "categories": 10,
+        "items_per_second": 941545.7831054841
+      }
+    },
+    "Network Simulation": {
+      "Fast Network": {
+        "latency": 0.01,
+        "bandwidth": 1000,
+        "num_requests": 10,
+        "request_size": 1024,
+        "total_time": 0.13985800743103027,
+        "avg_time_per_request": 0.013985800743103027,
+        "effective_bandwidth": 0.06982528336688788
+      },
+      "Medium Network": {
+        "latency": 0.1,
+        "bandwidth": 100,
+        "num_requests": 10,
+        "request_size": 1024,
+        "total_time": 1.0510101318359375,
+        "avg_time_per_request": 0.10510101318359374,
+        "effective_bandwidth": 0.00929165638293239
+      },
+      "Slow Network": {
+        "latency": 0.5,
+        "bandwidth": 10,
+        "num_requests": 10,
+        "request_size": 1024,
+        "total_time": 5.081272125244141,
+        "avg_time_per_request": 0.5081272125244141,
+        "effective_bandwidth": 0.001921885850490794
+      },
+      "Very Slow Network": {
+        "latency": 2.0,
+        "bandwidth": 1,
+        "num_requests": 10,
+        "request_size": 1024,
+        "total_time": 20.076008081436157,
+        "avg_time_per_request": 2.0076008081436156,
+        "effective_bandwidth": 0.00048643260953008176
+      }
+    },
+    "System Limits": {
+      "Max String Length": {
+        "status": "success",
+        "response_time": 0.00028395652770996094,
+        "result_size": 1000000
+      },
+      "Max List Size": {
+        "status": "success",
+        "response_time": 0.00026106834411621094,
+        "result_size": 300000
+      },
+      "Max Dictionary Size": {
+        "status": "success",
+        "response_time": 0.0011639595031738281,
+        "result_size": 117780
+      },
+      "Max Recursion Depth": {
+        "status": "recursion_limit",
+        "error": "maximum recursion depth exceeded in comparison"
+      },
+      "Max File Handles": {
+        "status": "success",
+        "response_time": 0.01286768913269043,
+        "result_size": 7090
+      }
+    }
+  }
+}

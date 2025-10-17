@@ -1,0 +1,83 @@
+{
+  "timestamp": "2025-09-25T12:01:47.724730",
+  "total_test_suites": 6,
+  "passed_test_suites": 6,
+  "failed_test_suites": 0,
+  "success_rate": 100.0,
+  "overall_status": "PASSED",
+  "detailed_results": {
+    "basic_functionality": {
+      "status": "passed",
+      "exit_code": 0
+    },
+    "integration_functionality": {
+      "status": "passed",
+      "exit_code": 0
+    },
+    "file_structure": {
+      "passed": true,
+      "total_files": 11,
+      "missing_files": [],
+      "missing_count": 0
+    },
+    "code_quality": {
+      "passed": true,
+      "quality_score": 100,
+      "metrics": {
+        "total_files": 8,
+        "files_with_classes": 8,
+        "files_with_functions": 8,
+        "files_with_docstrings": 8,
+        "files_with_imports": 8,
+        "total_lines": 3667,
+        "total_functions": 102,
+        "total_classes": 11
+      },
+      "issues": [],
+      "issue_count": 0
+    },
+    "performance": {
+      "passed": true,
+      "total_duration": 0.0010709762573242188,
+      "successful_operations": 5,
+      "total_operations": 5,
+      "avg_duration": 0.000212860107421875,
+      "results": {
+        "File I/O": {
+          "duration": 0.0006282329559326172,
+          "status": "success"
+        },
+        "Data Processing": {
+          "duration": 0.0003540515899658203,
+          "status": "success"
+        },
+        "String Operations": {
+          "duration": 1.9073486328125e-06,
+          "status": "success"
+        },
+        "List Operations": {
+          "duration": 3.528594970703125e-05,
+          "status": "success"
+        },
+        "Dictionary Operations": {
+          "duration": 4.482269287109375e-05,
+          "status": "success"
+        }
+      }
+    },
+    "documentation": {
+      "passed": true,
+      "documentation_score": 80,
+      "metrics": {
+        "total_files": 2,
+        "files_with_headings": 2,
+        "files_with_code_blocks": 2,
+        "files_with_lists": 2,
+        "total_words": 2256,
+        "total_characters": 21650
+      },
+      "issues": [],
+      "issue_count": 0
+    }
+  }
+}

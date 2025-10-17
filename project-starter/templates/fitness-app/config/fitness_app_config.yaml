@@ -1,0 +1,396 @@
+# Fitness App Configuration
+# Comprehensive configuration for AI-powered fitness tracking app
+
+app:
+  name: "Fitness Tracker AI"
+  version: "1.0.0"
+  description: "AI-powered fitness tracking with voice recognition and health data integration"
+  author: "Your Name"
+  email: "your.email@example.com"
+
+# Voice Processing Configuration
+voice_processing:
+  enabled: true
+  provider: "openai_whisper"  # openai_whisper, google_speech, azure_speech
+  language: "en-US"
+  model_size: "base"  # tiny, base, small, medium, large
+  confidence_threshold: 0.7
+  max_audio_duration: 300  # seconds
+  supported_formats: ["wav", "mp3", "m4a", "flac"]
+  
+  # OpenAI Whisper specific
+  openai_whisper:
+    api_key: "${OPENAI_API_KEY}"
+    model: "whisper-1"
+    temperature: 0.0
+    
+  # Google Speech specific
+  google_speech:
+    api_key: "${GOOGLE_SPEECH_API_KEY}"
+    language_code: "en-US"
+    sample_rate: 44100
+    
+  # Azure Speech specific
+  azure_speech:
+    subscription_key: "${AZURE_SPEECH_KEY}"
+    region: "${AZURE_SPEECH_REGION}"
+    language: "en-US"
+
+# Health Data Integration
+health_data:
+  enabled: true
+  
+  # Apple HealthKit (iOS)
+  healthkit:
+    enabled: true
+    permissions:
+      - "HKQuantityTypeIdentifierStepCount"
+      - "HKQuantityTypeIdentifierActiveEnergyBurned"
+      - "HKQuantityTypeIdentifierDistanceWalkingRunning"
+      - "HKQuantityTypeIdentifierHeartRate"
+      - "HKCategoryTypeIdentifierSleepAnalysis"
+      - "HKQuantityTypeIdentifierBodyMass"
+      - "HKQuantityTypeIdentifierHeight"
+      - "HKQuantityTypeIdentifierBodyMassIndex"
+    
+  # Google Fit (Android)
+  google_fit:
+    enabled: true
+    client_id: "${GOOGLE_FIT_CLIENT_ID}"
+    scopes:
+      - "https://www.googleapis.com/auth/fitness.activity.read"
+      - "https://www.googleapis.com/auth/fitness.body.read"
+      - "https://www.googleapis.com/auth/fitness.location.read"
+    
+  # Health Connect (Android)
+  health_connect:
+    enabled: true
+    permissions:
+      - "steps"
+      - "active_calories_burned"
+      - "distance"
+      - "heart_rate"
+      - "sleep_session"
+      - "weight"
+      - "height"
+    
+  # Strava Integration
+  strava:
+    enabled: false
+    client_id: "${STRAVA_CLIENT_ID}"
+    client_secret: "${STRAVA_CLIENT_SECRET}"
+    scopes:
+      - "read"
+      - "activity:read"
+      - "activity:write"
+
+# AI Analytics Configuration
+ai_analytics:
+  enabled: true
+  provider: "openai"  # openai, anthropic, google
+  
+  # OpenAI Configuration
+  openai:
+    api_key: "${OPENAI_API_KEY}"
+    model: "gpt-4"
+    temperature: 0.1
+    max_tokens: 1000
+    
+  # Analytics Settings
+  consistency_threshold: 0.7
+  progress_window_days: 30
+  strength_progression_threshold: 0.05
+  volume_progression_threshold: 0.1
+  
+  # Insight Generation
+  insights:
+    enabled: true
+    frequency: "daily"  # daily, weekly, monthly
+    types:
+      - "consistency"
+      - "strength_progression"
+      - "volume_analysis"
+      - "workout_patterns"
+      - "recommendations"
+
+# Database Configuration
+database:
+  provider: "supabase"  # supabase, postgresql, mongodb
+  
+  # Supabase Configuration
+  supabase:
+    url: "${SUPABASE_URL}"
+    anon_key: "${SUPABASE_ANON_KEY}"
+    service_role_key: "${SUPABASE_SERVICE_ROLE_KEY}"
+    
+  # Tables
+  tables:
+    workouts:
+      name: "workouts"
+      schema: "public"
+      columns:
+        - "id"
+        - "user_id"
+        - "exercise"
+        - "sets"
+        - "reps"
+        - "weight"
+        - "unit"
+        - "duration"
+        - "distance"
+        - "rest_time"
+        - "notes"
+        - "timestamp"
+        - "confidence"
+        - "created_at"
+        - "updated_at"
+    
+    health_data:
+      name: "health_data"
+      schema: "public"
+      columns:
+        - "id"
+        - "user_id"
+        - "steps"
+        - "calories"
+        - "distance"
+        - "heart_rate"
+        - "sleep_hours"
+        - "weight"
+        - "height"
+        - "bmi"
+        - "active_minutes"
+        - "timestamp"
+        - "created_at"
+    
+    analytics:
+      name: "analytics"
+      schema: "public"
+      columns:
+        - "id"
+        - "user_id"
+        - "type"
+        - "data"
+        - "timestamp"
+        - "created_at"
+
+# Exercise Database
+exercises:
+  # Strength Exercises
+  strength:
+    bench_press:
+      name: "Bench Press"
+      category: "chest"
+      equipment: "barbell"
+      muscles: ["chest", "shoulders", "triceps"]
+      aliases: ["bench", "chest press", "barbell bench press"]
+      primary_muscle: "chest"
+      
+    squat:
+      name: "Squat"
+      category: "legs"
+      equipment: "barbell"
+      muscles: ["quadriceps", "glutes", "hamstrings"]
+      aliases: ["squats", "barbell squat", "back squat"]
+      primary_muscle: "quadriceps"
+      
+    deadlift:
+      name: "Deadlift"
+      category: "back"
+      equipment: "barbell"
+      muscles: ["back", "glutes", "hamstrings"]
+      aliases: ["deadlifts", "barbell deadlift"]
+      primary_muscle: "back"
+      
+    pull_up:
+      name: "Pull Up"
+      category: "back"
+      equipment: "bodyweight"
+      muscles: ["lats", "biceps", "rhomboids"]
+      aliases: ["pullups", "pull-ups", "chin ups"]
+      primary_muscle: "lats"
+      
+    push_up:
+      name: "Push Up"
+      category: "chest"
+      equipment: "bodyweight"
+      muscles: ["chest", "shoulders", "triceps"]
+      aliases: ["pushups", "push-ups"]
+      primary_muscle: "chest"
+  
+  # Cardio Exercises
+  cardio:
+    running:
+      name: "Running"
+      category: "cardio"
+      equipment: "none"
+      muscles: ["legs", "core"]
+      aliases: ["run", "jog", "sprint"]
+      primary_muscle: "legs"
+      
+    cycling:
+      name: "Cycling"
+      category: "cardio"
+      equipment: "bike"
+      muscles: ["legs", "core"]
+      aliases: ["bike", "bicycle", "spin"]
+      primary_muscle: "legs"
+      
+    swimming:
+      name: "Swimming"
+      category: "cardio"
+      equipment: "pool"
+      muscles: ["full_body"]
+      aliases: ["swim", "pool"]
+      primary_muscle: "full_body"
+      
+    rowing:
+      name: "Rowing"
+      category: "cardio"
+      equipment: "rower"
+      muscles: ["back", "legs", "arms"]
+      aliases: ["row", "ergometer"]
+      primary_muscle: "back"
+
+# Mobile App Configuration
+mobile:
+  # React Native Configuration
+  react_native:
+    version: "0.74.5"
+    expo_version: "~51.0.0"
+    
+  # Voice Recognition
+  voice:
+    enabled: true
+    continuous: false
+    timeout: 5000  # milliseconds
+    language: "en-US"
+    
+  # Health Data Sync
+  health_sync:
+    enabled: true
+    frequency: "realtime"  # realtime, hourly, daily
+    batch_size: 100
+    
+  # Offline Support
+  offline:
+    enabled: true
+    cache_duration: 86400  # seconds (24 hours)
+    sync_on_connect: true
+
+# Web Dashboard Configuration
+web:
+  # Next.js Configuration
+  nextjs:
+    version: "14.0.4"
+    typescript: true
+    
+  # Charts Configuration
+  charts:
+    provider: "recharts"  # recharts, chart.js, d3
+    theme: "light"
+    animations: true
+    
+  # Real-time Updates
+  realtime:
+    enabled: true
+    provider: "supabase"  # supabase, socket.io
+    channels:
+      - "workouts"
+      - "health_data"
+      - "analytics"
+
+# API Configuration
+api:
+  # FastAPI Configuration
+  fastapi:
+    version: "0.104.0"
+    host: "0.0.0.0"
+    port: 8000
+    workers: 1
+    
+  # Rate Limiting
+  rate_limiting:
+    enabled: true
+    requests_per_minute: 100
+    burst_size: 20
+    
+  # Authentication
+  auth:
+    enabled: true
+    provider: "supabase"  # supabase, firebase, auth0
+    jwt_secret: "${JWT_SECRET}"
+    token_expiry: 3600  # seconds
+    
+  # CORS
+  cors:
+    enabled: true
+    origins: ["http://localhost:3000", "https://yourdomain.com"]
+    methods: ["GET", "POST", "PUT", "DELETE"]
+    headers: ["Content-Type", "Authorization"]
+
+# Monitoring & Logging
+monitoring:
+  # Logging
+  logging:
+    level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+    format: "json"
+    file: "logs/fitness_app.log"
+    
+  # Metrics
+  metrics:
+    enabled: true
+    provider: "prometheus"  # prometheus, datadog, newrelic
+    port: 9090
+    
+  # Error Tracking
+  error_tracking:
+    enabled: true
+    provider: "sentry"  # sentry, bugsnag, rollbar
+    dsn: "${SENTRY_DSN}"
+
+# Security Configuration
+security:
+  # Data Encryption
+  encryption:
+    enabled: true
+    algorithm: "AES-256-GCM"
+    key: "${ENCRYPTION_KEY}"
+    
+  # Data Privacy
+  privacy:
+    gdpr_compliant: true
+    data_retention_days: 365
+    anonymize_data: false
+    
+  # API Security
+  api_security:
+    rate_limiting: true
+    input_validation: true
+    sql_injection_protection: true
+    xss_protection: true
+
+# Deployment Configuration
+deployment:
+  # Environment
+  environment: "development"  # development, staging, production
+  
+  # Docker
+  docker:
+    enabled: true
+    image: "fitness-tracker-app"
+    tag: "latest"
+    
+  # Kubernetes
+  kubernetes:
+    enabled: false
+    namespace: "fitness-app"
+    replicas: 3
+    
+  # CI/CD
+  cicd:
+    enabled: true
+    provider: "github_actions"  # github_actions, gitlab_ci, jenkins
+    test_coverage_threshold: 80
+    security_scan: true
+

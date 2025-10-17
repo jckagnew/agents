@@ -1,0 +1,57 @@
+# CrewAI Agents Configuration
+# Define your AI agents with their roles, goals, and capabilities
+
+agents:
+  - name: "{{AGENT_1_NAME}}"
+    role: "{{AGENT_1_ROLE}}"
+    goal: "{{AGENT_1_GOAL}}"
+    backstory: "{{AGENT_1_BACKSTORY}}"
+    llm:
+      provider: "openai"
+      model: "gpt-4o-mini"
+      temperature: 0.7
+      max_tokens: 2000
+    tools:
+      - "web_search"
+      - "file_operations"
+    verbose: true
+    allow_delegation: false
+
+  - name: "{{AGENT_2_NAME}}"
+    role: "{{AGENT_2_ROLE}}"
+    goal: "{{AGENT_2_GOAL}}"
+    backstory: "{{AGENT_2_BACKSTORY}}"
+    llm:
+      provider: "openai"
+      model: "gpt-4o-mini"
+      temperature: 0.5
+      max_tokens: 2000
+    tools:
+      - "web_search"
+      - "code_analysis"
+    verbose: true
+    allow_delegation: true
+
+  - name: "{{AGENT_3_NAME}}"
+    role: "{{AGENT_3_ROLE}}"
+    goal: "{{AGENT_3_GOAL}}"
+    backstory: "{{AGENT_3_BACKSTORY}}"
+    llm:
+      provider: "openai"
+      model: "gpt-4o"
+      temperature: 0.3
+      max_tokens: 3000
+    tools:
+      - "web_search"
+      - "file_operations"
+      - "code_analysis"
+    verbose: true
+    allow_delegation: true
+
+# Global configuration
+global_config:
+  max_iterations: 10
+  max_execution_time: 300
+  memory: true
+  planning: true
+  verbose: true

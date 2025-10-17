@@ -1,0 +1,264 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* React Flow styles */
+.react-flow {
+  background: #f8fafc;
+}
+
+.react-flow__node {
+  cursor: pointer;
+}
+
+.react-flow__node.selected {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.react-flow__handle {
+  width: 8px;
+  height: 8px;
+  background: #3b82f6;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.react-flow__handle:hover {
+  background: #2563eb;
+}
+
+.react-flow__edge {
+  stroke: #94a3b8;
+  stroke-width: 2;
+}
+
+.react-flow__edge.selected {
+  stroke: #3b82f6;
+  stroke-width: 3;
+}
+
+.react-flow__controls {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.react-flow__controls-button {
+  background: white;
+  border: none;
+  color: #64748b;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.react-flow__controls-button:hover {
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.react-flow__minimap {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Main layout adjustments for mobile */
+  .flex {
+    flex-direction: column;
+  }
+  
+  .flex-1 {
+    min-height: 50vh;
+  }
+  
+  /* Sidebar adjustments */
+  .w-64 {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  
+  /* Component library adjustments */
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  /* Properties panel adjustments */
+  .w-80 {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+  /* Button adjustments for touch */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Input adjustments */
+  input, textarea {
+    min-height: 44px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Search bar adjustments */
+  .search-input {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  /* Category filters adjustments */
+  .category-filters {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  .category-filters button {
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  /* Toolbar adjustments */
+  .toolbar {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .toolbar button {
+    flex: 1;
+    min-width: 80px;
+  }
+  
+  /* Canvas adjustments */
+  .react-flow {
+    min-height: 400px;
+  }
+  
+  /* Hide minimap on mobile */
+  .react-flow__minimap {
+    display: none;
+  }
+  
+  /* Adjust controls for mobile */
+  .react-flow__controls {
+    position: relative;
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small screens */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-filters button {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+  
+  .toolbar button {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+  }
+  
+  /* Stack layout vertically on very small screens */
+  .flex.flex-col {
+    height: auto;
+  }
+  
+  .flex-1 {
+    min-height: 300px;
+  }
+}
+
+/* Custom component styles */
+.component-library-item {
+  @apply p-3 border border-gray-200 rounded-lg hover:border-blue-300 hover:shadow-md transition-all duration-200 cursor-pointer;
+}
+
+.component-library-item:hover {
+  @apply transform scale-105;
+}
+
+.properties-panel {
+  @apply bg-white border-l border-gray-200 p-4 overflow-y-auto;
+}
+
+.canvas-container {
+  @apply bg-gray-50 relative overflow-hidden;
+}
+
+.toolbar {
+  @apply bg-white border-b border-gray-200 px-4 py-2 flex items-center space-x-4;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.6s ease-out;
+}
+
+/* Selection styles */
+.selected {
+  @apply ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Drag preview */
+.drag-preview {
+  @apply opacity-50 transform rotate-3;
+}
+
+/* Loading states */
+.loading {
+  @apply animate-pulse bg-gray-200 rounded;
+}
+
+/* Error states */
+.error {
+  @apply border-red-300 bg-red-50 text-red-700;
+}
+
+/* Success states */
+.success {
+  @apply border-green-300 bg-green-50 text-green-700;
+}

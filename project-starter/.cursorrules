@@ -1,0 +1,69 @@
+# 🎯 Software Factory Verification Rules
+
+## 🚨 CRITICAL: VERIFICATION BEFORE CELEBRATION
+
+### ⚠️ MANDATORY VERIFICATION PROTOCOL
+Before declaring ANY success or capturing learnings:
+
+1. **FUNCTIONAL VERIFICATION**
+   - [ ] Interactive features actually work (forms submit, buttons respond)
+   - [ ] Real data processing (not just mock/static displays)
+   - [ ] Complete user flows (end-to-end functionality)
+   - [ ] Error handling works (graceful failures, not crashes)
+
+2. **TECHNICAL VERIFICATION**
+   - [ ] Builds successfully (no compilation errors)
+   - [ ] Deploys successfully (production works, not just local)
+   - [ ] Performance acceptable (loads in reasonable time)
+   - [ ] Cross-platform compatibility verified
+
+3. **BUSINESS LOGIC VERIFICATION**
+   - [ ] Calculations accurate (math matches expected results)
+   - [ ] Business rules enforced (validation, constraints work)
+   - [ ] Data integrity maintained (input/output consistency)
+   - [ ] Security verified (no exposed sensitive data)
+
+### 🚫 PROHIBITED ACTIONS
+- **NEVER** claim "✅ WORKING" without full verification
+- **NEVER** declare "✅ Complete" for partial functionality
+- **NEVER** capture learnings from unverified work
+- **NEVER** celebrate page loads as functional demos
+
+### 📊 STATUS REPORTING STANDARDS
+- **✅ Complete Success**: All verification checks pass, production-ready
+- **🟡 Partial Success**: Core functionality works, some features incomplete
+- **❌ Not Working**: Basic functionality fails, major bugs present
+
+### 🔄 VERIFICATION PROCESS
+1. **Define Success Criteria** before starting work
+2. **Test-Driven Development** with verification at each step
+3. **Incremental Verification** of each feature as built
+4. **Final Validation** before any success declaration
+
+### 🎯 LEARNING CAPTURE GATES
+- Only capture learnings from verified successes
+- Document what actually works vs. what's just placeholder
+- Distinguish between "deployed" and "functional"
+- Be honest about limitations and incomplete features
+
+### 🚀 QUALITY METRICS
+- Verification coverage percentage
+- False positive/negative rates
+- Learning accuracy rate
+- Time to verification vs. development time
+
+## 🎉 SUCCESS CRITERIA
+- No premature celebrations
+- All claims verified before stating
+- Learnings only from real functionality
+- Clear, honest status reporting
+
+**Remember: Verification before celebration. Reality before learnings. Quality before quantity.**
+
+## 🔧 MANDATORY VERIFICATION SCRIPT
+Before claiming ANY success, run:
+```bash
+./project-starter/verify_deployment.sh
+```
+
+Only declare success if ALL verifications pass.

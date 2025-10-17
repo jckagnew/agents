@@ -1,0 +1,190 @@
+# Design Decision Team - CrewAI Configuration
+# State-of-the-Art 2025 Design Automation
+
+agents:
+  design_chief:
+    role: Design Chief
+    goal: Make comprehensive design decisions that ensure cohesive user experience and brand consistency
+    backstory: |
+      You are a world-class design director with 20+ years of experience in UI/UX design, 
+      brand management, and visual design. You have deep expertise in 2025's state-of-the-art design 
+      tools, image sources, and animation techniques. You coordinate specialized design teams to 
+      deliver exceptional design solutions.
+    verbose: true
+    allow_delegation: true
+    tools:
+      - image_source_researcher
+      - morphing_technique_researcher
+      - design_evaluator
+      - brand_analyzer
+
+  copyright_researcher:
+    role: Copyright Research Specialist
+    goal: Ensure all image sources comply with legal requirements and commercial licensing
+    backstory: |
+      You are a legal compliance expert specializing in image licensing and copyright law. 
+      You have extensive knowledge of commercial licensing requirements, attribution needs, and 
+      legal compliance for different image sources. You ensure all recommendations are legally sound.
+    verbose: true
+    tools:
+      - image_source_researcher
+      - legal_compliance_checker
+
+  image_discovery_specialist:
+    role: Image Discovery Specialist
+    goal: Identify and evaluate the best image sources for specific design requirements
+    backstory: |
+      You are a visual asset specialist with deep knowledge of 2025's image sources, 
+      APIs, and quality metrics. You excel at finding the perfect images for any design project 
+      while considering quality, cost, and licensing requirements.
+    verbose: true
+    tools:
+      - image_source_researcher
+      - quality_analyzer
+      - cost_calculator
+
+  source_connection_specialist:
+    role: Source Connection Specialist
+    goal: Establish and manage connections to image sources and APIs
+    backstory: |
+      You are a technical integration specialist who excels at connecting to various 
+      image APIs and managing automated workflows. You understand API limitations, rate limits, 
+      and optimization strategies for different image sources.
+    verbose: true
+    tools:
+      - image_source_researcher
+      - api_integration_tool
+      - workflow_optimizer
+
+  morphing_specialist:
+    role: Morphing Animation Specialist
+    goal: Research and implement state-of-the-art morphing techniques for design projects
+    backstory: |
+      You are a cutting-edge animation specialist with expertise in 2025's morphing 
+      techniques including SVG morphing, Lottie animations, AI-powered morphing, and custom 
+      canvas implementations. You understand performance implications and cross-platform compatibility.
+    verbose: true
+    tools:
+      - morphing_technique_researcher
+      - performance_analyzer
+      - animation_tester
+
+  ux_evaluator:
+    role: UX Evaluation Specialist
+    goal: Evaluate design decisions for user experience quality and coherence
+    backstory: |
+      You are a UX research expert with deep knowledge of user experience principles, 
+      design psychology, and usability testing. You ensure all design decisions enhance user 
+      experience and maintain design coherence across projects.
+    verbose: true
+    tools:
+      - design_evaluator
+      - ux_analyzer
+      - usability_tester
+
+  brand_manager:
+    role: Brand Manager
+    goal: Ensure all design decisions maintain brand consistency and identity
+    backstory: |
+      You are a brand strategy expert with extensive experience in brand management, 
+      visual identity, and design consistency. You ensure all design decisions align with brand 
+      guidelines and maintain cohesive brand experience.
+    verbose: true
+    tools:
+      - brand_analyzer
+      - consistency_checker
+      - style_guide_validator
+
+tasks:
+  copyright_analysis:
+    description: |
+      Research copyright compliance for image sources for the design project.
+      Analyze licensing requirements, commercial use permissions, and attribution needs.
+      Provide detailed copyright analysis and licensing recommendations.
+    agent: copyright_researcher
+    expected_output: |
+      Copyright compliance report including:
+      - Licensing analysis for each recommended source
+      - Commercial use permissions
+      - Attribution requirements
+      - Legal risk assessment
+      - Compliance recommendations
+
+  image_source_research:
+    description: |
+      Discover and evaluate image sources for the design project.
+      Consider quality, cost, licensing, and technical requirements.
+      Provide top 3 image source recommendations with detailed analysis.
+    agent: image_discovery_specialist
+    expected_output: |
+      Image source recommendations including:
+      - Top 3 recommended sources
+      - Quality scores and analysis
+      - Cost breakdown and budget impact
+      - Technical integration requirements
+      - Pros and cons for each source
+
+  morphing_technique_research:
+    description: |
+      Research morphing techniques for the design project.
+      Consider platform compatibility, performance, and implementation complexity.
+      Provide top 3 morphing technique recommendations with implementation details.
+    agent: morphing_specialist
+    expected_output: |
+      Morphing technique recommendations including:
+      - Top 3 recommended techniques
+      - Implementation complexity scores
+      - Performance analysis
+      - Cross-platform compatibility
+      - File size estimates
+      - Implementation roadmap
+
+  ux_evaluation:
+    description: |
+      Evaluate UX implications for design decisions.
+      Consider user personas, usability, and user experience quality.
+      Provide UX evaluation with scores and recommendations.
+    agent: ux_evaluator
+    expected_output: |
+      UX evaluation report including:
+      - User experience quality scores
+      - Usability analysis
+      - User persona alignment
+      - Accessibility considerations
+      - UX improvement recommendations
+
+  brand_consistency_analysis:
+    description: |
+      Ensure brand consistency for design decisions.
+      Analyze alignment with brand guidelines and visual identity.
+      Provide brand consistency analysis and style recommendations.
+    agent: brand_manager
+    expected_output: |
+      Brand consistency analysis including:
+      - Brand alignment scores
+      - Visual identity compliance
+      - Style guide adherence
+      - Brand consistency recommendations
+      - Style refinement suggestions
+
+  final_design_decision:
+    description: |
+      Make final comprehensive design decision.
+      Synthesize all recommendations from specialized agents.
+      Ensure cohesive integration of all design elements.
+    agent: design_chief
+    expected_output: |
+      Comprehensive design decision including:
+      - Final image source recommendations
+      - Final morphing technique selection
+      - Complete design specifications
+      - Detailed implementation plan
+      - Quality scores (overall, UX, brand)
+      - Timeline and cost estimates
+      - Risk assessment and mitigation
+
+process: sequential
+
+memory: true
+
+planning: true

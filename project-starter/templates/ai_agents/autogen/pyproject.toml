@@ -1,0 +1,40 @@
+[project]
+name = "{{PROJECT_SLUG}}"
+version = "0.1.0"
+description = "{{PROJECT_DESCRIPTION}}"
+authors = [{ name = "{{AUTHOR_NAME}}", email = "{{AUTHOR_EMAIL}}" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "autogen-core>=0.2.0",
+    "autogen-agentchat>=0.2.0",
+    "autogen-ext[openai]>=0.2.0",
+    "autogen-ext[anthropic]>=0.2.0",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.0.0",
+    "asyncio>=3.4.3",
+    "typing-extensions>=4.0.0",
+]
+
+[project.scripts]
+{{PROJECT_SLUG}} = "{{PROJECT_SLUG}}.main:run"
+run_agents = "{{PROJECT_SLUG}}.main:run"
+train = "{{PROJECT_SLUG}}.main:train"
+replay = "{{PROJECT_SLUG}}.main:replay"
+test = "{{PROJECT_SLUG}}.main:test"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true

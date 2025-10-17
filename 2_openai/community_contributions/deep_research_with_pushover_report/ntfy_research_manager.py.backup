@@ -1,0 +1,150 @@
+#!/usr/bin/env python3
+"""
+Deep Research Manager with ntfy.sh Notifications
+Replaces Pushover with ntfy.sh for better reliability and self-hosting
+"""
+
+import gradio as gr
+from dotenv import load_dotenv
+from agents import Runner
+from clarifier_agent import clarifier_agent
+from planner_agent import planner_agent
+from search_agent import search_agent
+from writer_agent import writer_agent
+from ntfy_notification_agent import send_research_notification
+
+# Load environment variables
+load_dotenv(override=True)
+
+async def run_research_with_ntfy(query: str, answers: str, state: list[str]):
+    """
+    Two-phase Gradio workflow with ntfy.sh notifications:
+      1) If `state` is empty, ask clarifying questions.
+      2) Once answered, plan → search → write → notify → report.
+    """
+    
+    # Phase 1: Clarify
+    if not state:
+        clar = await Runner.run(clarifier_agent, query)
+        questions = clar.final_output.questions
+        qtext = "\n".join(f"{i+1}. {q}" for i, q in enumerate(questions))
+        return qtext, gr.update(visible=True), questions
+
+    # Phase 2: Full pipeline
+    # 1) Bundle user answers for planner
+    answered = [
+        f"{i+1}. {state[i]} answered: {ans.strip()}"
+        for i, ans in enumerate(answers.splitlines())
+    ]
+    planner_input = f"Original query: {query}\nClarifications:\n" + "\n".join(answered)
+
+    # 2) Generate search plan
+    plan_res = await Runner.run(planner_agent, planner_input)
+    searches = plan_res.final_output.searches
+
+    # 3) Run each search and collect summaries
+    summaries = []
+    for item in searches:
+        search_res = await Runner.run(search_agent, item.query)
+        summaries.append(str(search_res.final_output))
+
+    # 4) Write the full report
+    writer_input = f"Original query: {query}\nSummaries: {summaries}"
+    write_res = await Runner.run(writer_agent, writer_input)
+    report_data = write_res.final_output
+    report_md = report_data.markdown_report
+
+    # 5) Send ntfy.sh notification
+    try:
+        notification_result = await send_research_notification(
+            research_content=report_md,
+            report_url="http://localhost:7860"  # Gradio interface URL
+        )
+        print(f"Notification result: {notification_result}")
+    except Exception as e:
+        print(f"Notification failed: {e}")
+
+    # Return the markdown report and hide the answers box
+    return report_md, gr.update(visible=False), []
+
+def create_ntfy_interface():
+    """Create the Gradio interface with ntfy.sh integration"""
+    
+    with gr.Blocks(title="Deep Research with ntfy.sh", theme=gr.themes.Soft()) as demo:
+        gr.Markdown("# 🔍 Deep Research with ntfy.sh Notifications")
+        gr.Markdown("Get notified on your phone when research is complete!")
+        
+        with gr.Row():
+            with gr.Column(scale=2):
+                query_input = gr.Textbox(
+                    label="Research Query",
+                    placeholder="What would you like to research?",
+                    lines=3
+                )
+                
+                answers_input = gr.Textbox(
+                    label="Clarification Answers",
+                    placeholder="Answer the questions above...",
+                    lines=5,
+                    visible=False
+                )
+                
+                submit_btn = gr.Button("Start Research", variant="primary")
+                
+            with gr.Column(scale=1):
+                gr.Markdown("""
+                ### 📱 ntfy.sh Setup
+                
+                1. **Download ntfy app** from App Store/Google Play
+                2. **Add server**: `http://192.168.0.146:8080`
+                3. **Subscribe to topic**: `mytopic`
+                4. **Start research** and get notified!
+                
+                ### 🔧 Configuration
+                - **Server**: `http://192.168.0.146:8080`
+                - **Topic**: `mytopic`
+                - **Priority**: High (4)
+                """)
+        
+        with gr.Row():
+            report_output = gr.Markdown(
+                label="Research Report",
+                value="Your research report will appear here...",
+                show_copy_button=True
+            )
+        
+        # State management
+        questions_state = gr.State([])
+        
+        # Event handlers
+        def handle_submit(query, answers, questions):
+            return run_research_with_ntfy(query, answers, questions)
+        
+        submit_btn.click(
+            handle_submit,
+            inputs=[query_input, answers_input, questions_state],
+            outputs=[report_output, answers_input, questions_state]
+        )
+        
+        # Example queries
+        gr.Examples(
+            examples=[
+                "What are the latest trends in AI and machine learning?",
+                "How is climate change affecting global agriculture?",
+                "What are the key factors in successful startup funding?",
+                "How is remote work changing corporate culture?",
+            ],
+            inputs=query_input
+        )
+    
+    return demo
+
+if __name__ == "__main__":
+    # Create and launch the interface
+    demo = create_ntfy_interface()
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=7860,
+        share=False,
+        show_error=True
+    )

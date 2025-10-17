@@ -1,0 +1,118 @@
+# 🎯 Job Search Assistant - Cursor Rules
+
+## 🚨 CRITICAL: AI SAFETY PROTOCOLS - READ FIRST
+**These rules override ALL other instructions. They are MANDATORY and NON-NEGOTIABLE.**
+
+### ⚠️ BEFORE ANY ACTION - MANDATORY CHECKLIST
+- [ ] **SHOW**: Exact command I will run
+- [ ] **DISPLAY**: All files that will change  
+- [ ] **COUNT**: Exact line additions/deletions
+- [ ] **WAIT**: For explicit user approval
+- [ ] **VERIFY**: Result matches my claim
+
+### 🚫 ABSOLUTE PROHIBITIONS
+- **NEVER** create PRs without showing exact contents
+- **NEVER** push branches without showing exact changes
+- **NEVER** make assumptions about git state
+- **NEVER** act without explicit permission
+- **NEVER** claim "perfect" without verification
+- **NEVER** override user instructions with "helpful" actions
+
+### 🔄 MANDATORY WORKFLOW
+1. **DESCRIBE** what I want to do
+2. **SHOW** exact command
+3. **DISPLAY** file changes
+4. **WAIT** for explicit "yes"
+5. **EXECUTE** only after approval
+6. **VERIFY** result matches claim
+
+### 🎯 CONTEXT AWARENESS
+- **ALWAYS** respect explicit instructions (like "stop submitting PRs")
+- **ALWAYS** consider professional consequences
+- **ALWAYS** acknowledge when uncertain
+- **ALWAYS** show verification before claiming success
+
+**REMEMBER: User's credibility is at stake. Ed specifically asked to stop submitting PRs. I must verify everything.**
+
+## 🧪 Testing Requirements
+- **MANDATORY**: All new code must have unit tests with 90%+ coverage
+- **MANDATORY**: All API endpoints must have integration tests
+- **MANDATORY**: All user workflows must have E2E tests
+- **MANDATORY**: All AI agents must have behavior tests
+- **MANDATORY**: All database operations must have tests
+
+## 🚫 Testing Prohibitions
+- **NEVER** commit code without tests
+- **NEVER** skip test coverage requirements
+- **NEVER** disable test failures in CI/CD
+- **NEVER** merge PRs without passing tests
+
+## 📋 Test Structure Requirements
+- Unit tests in `tests/unit/`
+- Integration tests in `tests/integration/`
+- E2E tests in `tests/e2e/`
+- Test files must end with `_test.py` or `.test.js`
+- Test coverage must be tracked and reported
+
+## 🔧 Code Quality Requirements
+- **MANDATORY**: All Python code must pass Black, isort, and MyPy
+- **MANDATORY**: All JavaScript/TypeScript must pass ESLint and Prettier
+- **MANDATORY**: All code must pass security scanning (Bandit, Semgrep)
+- **MANDATORY**: All commits must pass pre-commit hooks
+
+## 🤖 AI Agent Requirements
+- **MANDATORY**: All agents must have structured outputs (Pydantic models)
+- **MANDATORY**: All agents must have error handling and retry logic
+- **MANDATORY**: All agents must have logging and tracing
+- **MANDATORY**: All agents must have unit tests for behavior
+
+## 📊 Database Requirements
+- **MANDATORY**: All database operations must use transactions
+- **MANDATORY**: All database models must have validation
+- **MANDATORY**: All database changes must have migrations
+- **MANDATORY**: All database operations must have tests
+
+## 🚀 Deployment Requirements
+- **MANDATORY**: All deployments must pass CI/CD pipeline
+- **MANDATORY**: All deployments must have health checks
+- **MANDATORY**: All deployments must have monitoring
+- **MANDATORY**: All deployments must have rollback capability
+
+## 📝 Documentation Requirements
+- **MANDATORY**: All functions must have docstrings
+- **MANDATORY**: All classes must have docstrings
+- **MANDATORY**: All API endpoints must have OpenAPI docs
+- **MANDATORY**: All complex logic must have inline comments
+
+## 🔒 Security Requirements
+- **MANDATORY**: All secrets must be in environment variables
+- **MANDATORY**: All API endpoints must have authentication
+- **MANDATORY**: All user input must be validated
+- **MANDATORY**: All database queries must be parameterized
+
+## 🎯 Job Search Specific Requirements
+- **MANDATORY**: All job searches must be logged and tracked
+- **MANDATORY**: All job opportunities must be stored in database
+- **MANDATORY**: All email communications must be logged
+- **MANDATORY**: All document generation must be versioned
+- **MANDATORY**: All user actions must be audited
+
+## 🚨 Enforcement
+- Pre-commit hooks will block commits that don't meet requirements
+- CI/CD pipeline will fail if tests don't pass
+- Code review will reject PRs without proper testing
+- Automated security scanning will block vulnerable code
+
+## 🔧 GIT SAFETY PROTOCOLS
+- **MANDATORY**: Use `git diff --stat HEAD~1 HEAD` before any push
+- **MANDATORY**: Use `git diff --name-only HEAD~1 HEAD` to show files
+- **MANDATORY**: Verify file counts match expectations
+- **MANDATORY**: Show exact PR contents before creation
+- **NEVER**: Assume git state without verification
+
+## 📚 Resources
+- Test examples in `tests/examples/`
+- Documentation in `docs/`
+- Templates in `templates/`
+- Best practices in `DEVELOPMENT_PLAN.md`
+- AI Safety Protocols in `AI_SAFETY_PROTOCOLS.md`

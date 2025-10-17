@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Assistant - Resilient Mobile</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .content { padding: 30px 20px; }
+        .status-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .status-online { background: #28a745; }
+        .status-offline { background: #dc3545; }
+        .status-checking { background: #ffc107; }
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-warning { background: #ffc107; color: #333; }
+        .btn-info { background: #17a2b8; color: white; }
+        .links { margin-top: 20px; }
+        .link-item {
+            display: block;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        .link-item:hover { background: #e9ecef; transform: translateX(5px); }
+        .footer { text-align: center; padding: 20px; color: #6c757d; font-size: 12px; }
+        .alert {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert-warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        .alert-danger { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Job Search Assistant</h1>
+            <p>Resilient AI-Powered Platform</p>
+        </div>
+        
+        <div class="content">
+            <div class="status-card">
+                <div id="status-indicator" class="status-indicator status-checking"></div>
+                <span id="status-text">Checking server status...</span>
+            </div>
+            
+            <div id="alert" class="alert"></div>
+            
+            <button class="btn btn-primary" onclick="startServer()">
+                🚀 Start Server (Smart)
+            </button>
+            
+            <button class="btn btn-success" onclick="checkPorts()">
+                🔍 Check Ports
+            </button>
+            
+            <button class="btn btn-warning" onclick="fixImports()">
+                🔧 Fix Imports
+            </button>
+            
+            <button class="btn btn-info" onclick="openAPI()">
+                📚 Open API Docs
+            </button>
+            
+            <div class="links">
+                <h3 style="margin-bottom: 15px; color: #333;">Quick Links</h3>
+                <a href="http://localhost:8000/docs" class="link-item" target="_blank">
+                    📖 API Documentation (Port 8000)
+                </a>
+                <a href="http://localhost:8001/docs" class="link-item" target="_blank">
+                    📖 API Documentation (Port 8001)
+                </a>
+                <a href="http://localhost:8002/docs" class="link-item" target="_blank">
+                    📖 API Documentation (Port 8002)
+                </a>
+                <a href="http://localhost:8000/api/job-opportunities/" class="link-item" target="_blank">
+                    💼 Job Opportunities
+                </a>
+                <a href="http://localhost:8000/api/analytics/overview" class="link-item" target="_blank">
+                    📊 Analytics Dashboard
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Job Search Assistant v1.0.0 - Resilient Edition</p>
+            <p>Made with ❤️ for your career success</p>
+        </div>
+    </div>
+
+    <script>
+        const PORTS = [8000, 8001, 8002, 8003, 8004, 8005];
+        let currentPort = null;
+        
+        window.onload = function() {
+            checkAllPorts();
+        };
+        
+        async function checkAllPorts() {
+            document.getElementById('status-indicator').className = 'status-indicator status-checking';
+            document.getElementById('status-text').textContent = 'Checking all ports...';
+            
+            for (const port of PORTS) {
+                try {
+                    const response = await fetch(`http://localhost:${port}/health`, {
+                        method: 'GET',
+                        timeout: 2000
+                    });
+                    
+                    if (response.ok) {
+                        currentPort = port;
+                        document.getElementById('status-indicator').className = 'status-indicator status-online';
+                        document.getElementById('status-text').textContent = `Server running on port ${port}`;
+                        showAlert(`✅ Server found on port ${port}`, 'success');
+                        return;
+                    }
+                } catch (error) {
+                    // Port not responding, continue checking
+                }
+            }
+            
+            document.getElementById('status-indicator').className = 'status-indicator status-offline';
+            document.getElementById('status-text').textContent = 'No server found';
+            showAlert('⚠️ No server running. Use the Start Server button.', 'warning');
+        }
+        
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert alert-${type}`;
+            alert.style.display = 'block';
+            setTimeout(() => {
+                alert.style.display = 'none';
+            }, 5000);
+        }
+        
+        function startServer() {
+            showAlert('🚀 Starting server with smart launcher...', 'info');
+            // In a real implementation, this would trigger the server start
+            setTimeout(() => {
+                checkAllPorts();
+            }, 3000);
+        }
+        
+        function checkPorts() {
+            showAlert('🔍 Checking for port conflicts...', 'info');
+            checkAllPorts();
+        }
+        
+        function fixImports() {
+            showAlert('🔧 Attempting to fix import issues...', 'info');
+            // In a real implementation, this would trigger import fixes
+        }
+        
+        function openAPI() {
+            if (currentPort) {
+                window.open(`http://localhost:${currentPort}/docs`, '_blank');
+            } else {
+                showAlert('❌ No server running. Start the server first.', 'danger');
+            }
+        }
+        
+        // Auto-refresh status every 30 seconds
+        setInterval(checkAllPorts, 30000);
+    </script>
+</body>
+</html>

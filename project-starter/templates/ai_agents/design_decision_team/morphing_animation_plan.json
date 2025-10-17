@@ -1,0 +1,28 @@
+{
+  "technique": "Lottie Animation",
+  "tools": [
+    "Adobe After Effects",
+    "Bodymovin Plugin",
+    "LottieFiles"
+  ],
+  "steps": [
+    "1. Import Before and After character images",
+    "2. Create keyframe animation in After Effects",
+    "3. Use Puppet Pin Tool for smooth morphing",
+    "4. Add easing and timing adjustments",
+    "5. Export as Lottie JSON using Bodymovin",
+    "6. Integrate into React Native app"
+  ],
+  "before_files": [
+    "before_character_1_20251011_182458.png",
+    "before_character_2_20251011_182512.png",
+    "before_character_3_20251011_182529.png"
+  ],
+  "after_files": [
+    "after_character_1_20251011_182550.png",
+    "after_character_2_20251011_182604.png",
+    "after_character_3_20251011_182623.png"
+  ],
+  "estimated_time": "2-4 hours",
+  "file_size": "50-500KB"
+}

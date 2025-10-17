@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Assistant - Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .status-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .status-indicator {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .status-online {
+            background: #28a745;
+        }
+        
+        .status-offline {
+            background: #dc3545;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .links {
+            margin-top: 20px;
+        }
+        
+        .link-item {
+            display: block;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #333;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .link-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .link-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 12px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Job Search Assistant</h1>
+            <p>AI-Powered Job Search Platform</p>
+        </div>
+        
+        <div class="content">
+            <div class="status-card">
+                <div id="status-indicator" class="status-indicator status-offline"></div>
+                <span id="status-text">Checking server status...</span>
+            </div>
+            
+            <button class="btn btn-primary" onclick="startServer()">
+                🚀 Start Server
+            </button>
+            
+            <button class="btn btn-success" onclick="openAPI()">
+                📚 Open API Docs
+            </button>
+            
+            <button class="btn btn-secondary" onclick="openHealth()">
+                ❤️ Health Check
+            </button>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Starting server...</p>
+            </div>
+            
+            <div class="links">
+                <h3 style="margin-bottom: 15px; color: #333;">Quick Links</h3>
+                
+                <a href="http://localhost:8000/docs" class="link-item" target="_blank">
+                    <span class="link-icon">📖</span>
+                    API Documentation
+                </a>
+                
+                <a href="http://localhost:8000/redoc" class="link-item" target="_blank">
+                    <span class="link-icon">📋</span>
+                    Alternative Docs
+                </a>
+                
+                <a href="http://localhost:8000/api/job-opportunities/" class="link-item" target="_blank">
+                    <span class="link-icon">💼</span>
+                    Job Opportunities
+                </a>
+                
+                <a href="http://localhost:8000/api/analytics/overview" class="link-item" target="_blank">
+                    <span class="link-icon">📊</span>
+                    Analytics Dashboard
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Job Search Assistant v1.0.0</p>
+            <p>Made with ❤️ for your career success</p>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        
+        // Check server status on load
+        window.onload = function() {
+            checkServerStatus();
+        };
+        
+        async function checkServerStatus() {
+            try {
+                const response = await fetch(`${API_BASE}/health`, {
+                    method: 'GET',
+                    timeout: 3000
+                });
+                
+                if (response.ok) {
+                    document.getElementById('status-indicator').className = 'status-indicator status-online';
+                    document.getElementById('status-text').textContent = 'Server is running';
+                } else {
+                    throw new Error('Server not responding');
+                }
+            } catch (error) {
+                document.getElementById('status-indicator').className = 'status-indicator status-offline';
+                document.getElementById('status-text').textContent = 'Server is offline';
+            }
+        }
+        
+        function startServer() {
+            document.getElementById('loading').style.display = 'block';
+            
+            // Show instructions
+            setTimeout(() => {
+                alert(`To start the server, run this command in Terminal:
+
+cd /Users/jackagnew/projects/agents/job-search-assistant
+./start_job_search.sh
+
+Or double-click the "Job Search Assistant" app in your Applications folder.`);
+                
+                document.getElementById('loading').style.display = 'none';
+            }, 1000);
+        }
+        
+        function openAPI() {
+            window.open('http://localhost:8000/docs', '_blank');
+        }
+        
+        function openHealth() {
+            window.open('http://localhost:8000/health', '_blank');
+        }
+        
+        // Auto-refresh status every 30 seconds
+        setInterval(checkServerStatus, 30000);
+    </script>
+</body>
+</html>
