@@ -266,7 +266,19 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ onNavigate }) 
             </div>
           </div>
           <div className="progress-track">
-            <div className="progress-fill" style={{ width: `${progressPercentage}%` }} />
+            <div 
+              className="progress-fill" 
+              style={{ 
+                width: `${progressPercentage}%`,
+                background: progressPercentage >= 0 
+                  ? `linear-gradient(90deg, 
+                      ${progressPercentage >= 80 ? '#10b981' : progressPercentage >= 60 ? '#34d399' : progressPercentage >= 40 ? '#6ee7b7' : '#93c5fd'} 0%, 
+                      ${progressPercentage >= 80 ? '#059669' : progressPercentage >= 60 ? '#10b981' : progressPercentage >= 40 ? '#34d399' : '#60a5fa'} 100%)`
+                  : `linear-gradient(90deg, 
+                      ${progressPercentage <= -20 ? '#dc2626' : progressPercentage <= -10 ? '#ef4444' : '#f87171'} 0%, 
+                      ${progressPercentage <= -20 ? '#b91c1c' : progressPercentage <= -10 ? '#dc2626' : '#ef4444'} 100%)`
+              }} 
+            />
           </div>
           <p style={{ ...metricLabelStyle, textAlign: 'center', marginTop: 'var(--spacing-sm)' }}>
             {Math.round(progressPercentage)}% to goal
