@@ -268,15 +268,14 @@ export const DashboardScreen: React.FC<DashboardScreenProps> = ({ onNavigate }) 
           <div 
             className="progress-track" 
             style={{
-              background: 'linear-gradient(90deg, #dc2626 0%, #f87171 20%, #fbbf24 40%, #34d399 60%, #10b981 80%, #059669 100%)'
+              background: 'rgba(17, 24, 39, 0.08)'
             }}
           >
             <div 
               className="progress-fill" 
               style={{ 
                 width: `${Math.max(0, Math.min(100, progressPercentage))}%`,
-                background: 'rgba(255, 255, 255, 0.3)',
-                backdropFilter: 'blur(2px)'
+                background: 'linear-gradient(90deg, #dc2626 0%, #f87171 20%, #fbbf24 40%, #34d399 60%, #10b981 80%, #059669 100%)'
               }} 
             />
           </div>
