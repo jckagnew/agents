@@ -1,0 +1,2 @@
+-- TODO: Design project schema
+-- Tables for: project metadata, design versions, user feedback, state transitions
