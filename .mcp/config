@@ -1,0 +1,29 @@
+# MCP (Model Context Protocol) Configuration
+# This file contains API credentials and configuration for MCP integrations
+
+# Issue Tracker Configuration
+# Supported providers: GitHub, GitLab, Jira, Linear, Asana
+ISSUE_TRACKER_PROVIDER=github
+ISSUE_TRACKER_API_URL=https://api.github.com
+ISSUE_TRACKER_TOKEN=your_github_token_here
+ISSUE_TRACKER_OWNER=your_username_or_org
+ISSUE_TRACKER_REPO=your_repository_name
+
+# Optional: Custom field mappings
+ISSUE_TRACKER_PRIORITY_FIELD=priority
+ISSUE_TRACKER_STATUS_FIELD=status
+ISSUE_TRACKER_LABELS_FIELD=labels
+
+# Rate limiting (requests per minute)
+ISSUE_TRACKER_RATE_LIMIT=60
+
+# Default issue settings
+ISSUE_TRACKER_DEFAULT_LABELS=software-factory,backlog-sync
+ISSUE_TRACKER_DEFAULT_ASSIGNEE=your_username
+
+# Webhook configuration (optional)
+ISSUE_TRACKER_WEBHOOK_URL=
+ISSUE_TRACKER_WEBHOOK_SECRET=
+
+# Debug mode
+ISSUE_TRACKER_DEBUG=false

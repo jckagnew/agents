@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual QA Factory Test Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #F8F9FA;
+            color: #212529;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 96px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #212529;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #6C757D;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #0066FF;
+            color: #FFFFFF;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: opacity 0.2s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        .cta-button:active {
+            opacity: 0.95;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 96px;
+        }
+
+        .feature-card {
+            background: #FFFFFF;
+            padding: 24px;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: #212529;
+        }
+
+        .feature-card p {
+            color: #6C757D;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .stats {
+            background: #FFFFFF;
+            padding: 48px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #E5E7EB;
+        }
+
+        .stats h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #212529;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            margin-top: 32px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0066FF;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #6C757D;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .stats {
+                padding: 24px;
+            }
+
+            .stats h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>Visual QA Factory</h1>
+            <p>AI-powered visual design quality assurance that gives Claude Code "vision" to iterate on designs and validate against brand principles.</p>
+            <a href="#" class="cta-button">Get Started</a>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>Automated Testing</h3>
+                <p>Playwright MCP enables AI agents to take screenshots, compare against design principles, and iterate automatically until quality targets are met.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Brand Compliance</h3>
+                <p>Every design is validated against comprehensive brand guidelines including colors, typography, spacing, and component standards.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Quality Scoring</h3>
+                <p>Objective 0-100 quality assessment across brand compliance, responsive design, accessibility, performance, and visual polish.</p>
+            </div>
+        </div>
+
+        <div class="stats">
+            <h2>Factory Performance</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">90+</span>
+                    <span class="stat-label">Quality Score</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">60%</span>
+                    <span class="stat-label">Time Saved</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">40%</span>
+                    <span class="stat-label">Faster Approval</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">792</span>
+                    <span class="stat-label">Hours Freed/Year</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

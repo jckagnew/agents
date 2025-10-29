@@ -1,0 +1,23 @@
+{
+  "mockup_dir": ".claude/idea-to-design/test-session/mockups/iteration-0/option-c",
+  "screens_tested": 2,
+  "viewports_tested": 3,
+  "screenshots": [
+    ".claude/idea-to-design/test-session/mockups/iteration-0/option-c/screenshots/dashboard-desktop-1440x900.png",
+    ".claude/idea-to-design/test-session/mockups/iteration-0/option-c/screenshots/dashboard-tablet-768x1024.png",
+    ".claude/idea-to-design/test-session/mockups/iteration-0/option-c/screenshots/dashboard-mobile-375x667.png",
+    ".claude/idea-to-design/test-session/mockups/iteration-0/option-c/screenshots/splash-desktop-1440x900.png",
+    ".claude/idea-to-design/test-session/mockups/iteration-0/option-c/screenshots/splash-tablet-768x1024.png",
+    ".claude/idea-to-design/test-session/mockups/iteration-0/option-c/screenshots/splash-mobile-375x667.png"
+  ],
+  "issues": [],
+  "scores": {
+    "brand_compliance": 25,
+    "responsive_design": 20,
+    "accessibility": 25,
+    "performance": 15,
+    "visual_polish": 15,
+    "overall_score": 100
+  },
+  "duration_ms": 4004
+}

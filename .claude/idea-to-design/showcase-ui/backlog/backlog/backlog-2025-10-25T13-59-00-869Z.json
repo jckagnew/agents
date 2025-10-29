@@ -1,0 +1,86 @@
+{
+  "timestamp": "2025-10-25T13:59:00.870Z",
+  "totalItems": 7,
+  "items": [
+    {
+      "title": "Finalize Partner Showcase content & metrics",
+      "description": "Coordinate with marketing to insert final copy, case-study metrics, and CTA language into the selected mockup (Option B).",
+      "priority": "P1",
+      "source": "partner-showcase-pack",
+      "status": "pending",
+      "labels": [
+        "launch",
+        "content"
+      ]
+    },
+    {
+      "title": "Confirm Partner Showcase CTA destinations",
+      "description": "Verify all CTA buttons link to the correct contact/scheduling workflows before staging deployment.",
+      "priority": "P1",
+      "source": "partner-showcase-pack",
+      "status": "pending",
+      "labels": [
+        "launch",
+        "cta"
+      ]
+    },
+    {
+      "title": "Complete Visual QA rerun with system Chrome",
+      "description": "Rerun Playwright visual QA with CHROME_PATH set to the local Chrome binary so we have a passing automated report.",
+      "priority": "P1",
+      "source": "visual-qa",
+      "status": "pending",
+      "labels": [
+        "qa",
+        "visual"
+      ]
+    },
+    {
+      "title": "Configure GA4 tracking and conversion goals",
+      "description": "Set up GA4 property for the Partner Showcase UI and configure conversion goals before going live.",
+      "priority": "P1",
+      "source": "partner-showcase-pack",
+      "status": "pending",
+      "labels": [
+        "analytics"
+      ]
+    },
+    {
+      "title": "Deploy Partner Showcase to staging",
+      "description": "Run vercel deploy --preview and validate the preview environment.",
+      "priority": "P1",
+      "source": "deployment-summary",
+      "status": "pending",
+      "labels": [
+        "deployment",
+        "staging"
+      ]
+    },
+    {
+      "title": "Conduct stakeholder review",
+      "description": "Schedule a review session with partnerships/BD using partner-showcase-pack.md.",
+      "priority": "P2",
+      "source": "partner-showcase-pack",
+      "status": "pending",
+      "labels": [
+        "stakeholder"
+      ]
+    },
+    {
+      "title": "Launch Partner Showcase to production",
+      "description": "Run vercel --prod, confirm DNS, and perform post-launch smoke tests.",
+      "priority": "P1",
+      "source": "deployment-summary",
+      "status": "pending",
+      "labels": [
+        "deployment",
+        "production"
+      ]
+    }
+  ],
+  "metadata": {
+    "sessionDir": ".claude/idea-to-design/showcase-ui/backlog",
+    "generatedBy": "backlog-sync.js",
+    "version": "1.0.0"
+  }
+}

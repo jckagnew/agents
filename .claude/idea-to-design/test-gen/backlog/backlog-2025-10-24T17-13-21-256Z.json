@@ -1,0 +1,46 @@
+{
+  "timestamp": "2025-10-24T17:13:21.257Z",
+  "totalItems": 3,
+  "items": [
+    {
+      "title": "[Architecture] Migration to Production Infrastructure",
+      "description": "Easy upgrade to Zustand/Redux if needed\n\n**When to Upgrade**:\n- App grows beyond 10 features\n- Need for complex async state\n- Time-travel debugging required\n\n**Alternatives**:\n- **Zustand**: Drop-in r",
+      "priority": "P3",
+      "source": "Architecture (architecture-tech-stack.md)",
+      "labels": [
+        "infrastructure",
+        "scaling"
+      ],
+      "status": "backlog"
+    },
+    {
+      "title": "[Architecture] Backend API Implementation",
+      "description": "Add backend API for cloud sync and multi-device support. Would follow REST conventions:\n- `POST /api/sync` - Cloud sync\n- `GET /api/export` - Data export\n- `POST /api/auth/login` - Authentication\n\nSee `architecture-tech-stack.md` for migration path.",
+      "priority": "P2",
+      "source": "Architecture (architecture-api.md)",
+      "labels": [
+        "backend",
+        "api",
+        "future"
+      ],
+      "status": "backlog"
+    },
+    {
+      "title": "[UX] Implement Command Palette",
+      "description": "Add keyboard-driven command palette for power users (Cmd+K)",
+      "priority": "P2",
+      "source": "UX (ux-interactions.md)",
+      "labels": [
+        "ux",
+        "keyboard-shortcuts",
+        "power-users"
+      ],
+      "status": "backlog"
+    }
+  ],
+  "metadata": {
+    "sessionDir": ".claude/idea-to-design/test-gen",
+    "generatedBy": "backlog-sync.js",
+    "version": "1.0.0"
+  }
+}

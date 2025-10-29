@@ -1,0 +1,88 @@
+[
+  {
+    "title": "Voice-Activated Task Creation",
+    "summary": "Allow users to create tasks using voice commands for hands-free productivity",
+    "findings": "Market research shows 68% of mobile users prefer voice input for quick actions. Voice-activated productivity is growing 45% YoY. Main competitor (Todoist) lacks robust voice features.",
+    "feasibility": "High",
+    "cost": "Medium",
+    "confidence": 0.8,
+    "opportunity_driver": [
+      "Mobile-first user base growing",
+      "Voice AI becoming mainstream",
+      "Competitor gap identified"
+    ],
+    "dependencies": [
+      "Speech recognition API integration",
+      "Natural language processing for task parsing"
+    ],
+    "timeframe": "Q2",
+    "next_steps": "Prototype voice UI, test with 50 beta users, validate task accuracy >90%",
+    "tags": ["user-experience", "mobile", "voice"]
+  },
+  {
+    "title": "AI-Powered Priority Suggestions",
+    "summary": "Use machine learning to automatically suggest task priorities based on user behavior, deadlines, and context",
+    "findings": "Exploratory concept. Requires significant ML infrastructure and training data. Uncertain ROI. Similar features in competitors show mixed adoption (15-40%).",
+    "feasibility": "Medium",
+    "cost": "Very High",
+    "confidence": 0.3,
+    "opportunity_driver": [
+      "Differentiation from competitors",
+      "Reduce decision fatigue",
+      "Personalization trend"
+    ],
+    "dependencies": [
+      "ML infrastructure (training, inference)",
+      "User behavioral data collection (6+ months)",
+      "A/B testing framework",
+      "Data science team"
+    ],
+    "timeframe": "Exploratory",
+    "next_steps": "Run feasibility spike, estimate infrastructure costs, interview 20 users about priority pain points",
+    "tags": ["ai", "analytics", "exploratory"]
+  },
+  {
+    "title": "Collaborative Team Workspaces",
+    "summary": "Enable teams to share task lists, assign work, and track progress collaboratively",
+    "findings": "Strong customer demand from enterprise segment. 82% of trial users requested team features. Competitive requirement for enterprise deals. Clear monetization path (team plans).",
+    "feasibility": "High",
+    "cost": "High",
+    "confidence": 0.9,
+    "opportunity_driver": [
+      "Enterprise customer requests (15+ companies)",
+      "Upsell opportunity (+$50/mo per team)",
+      "Competitive requirement for market positioning",
+      "Viral growth potential (team invites)"
+    ],
+    "dependencies": [
+      "Multi-tenancy architecture",
+      "Real-time sync infrastructure",
+      "Permission system",
+      "Team billing integration"
+    ],
+    "timeframe": "Post-MVP",
+    "next_steps": "Finalize architecture design, scope MVP team features, estimate 8-10 week timeline",
+    "tags": ["user-experience", "business", "enterprise"]
+  },
+  {
+    "title": "Offline Mode Support",
+    "summary": "Allow users to access and modify tasks without internet connection, with automatic sync when online",
+    "findings": "Moderate demand (32% of users report connectivity issues). Critical for mobile users and travelers. Implementation complexity high due to conflict resolution.",
+    "feasibility": "Medium-High",
+    "cost": "Medium-High",
+    "confidence": 0.6,
+    "opportunity_driver": [
+      "Mobile user experience improvement",
+      "International market expansion",
+      "Reliability and trust perception"
+    ],
+    "dependencies": [
+      "Client-side storage architecture",
+      "Conflict resolution algorithm",
+      "Background sync service"
+    ],
+    "timeframe": "v2",
+    "next_steps": "Research offline-first frameworks (e.g., PouchDB, WatermelonDB), prototype conflict resolution",
+    "tags": ["user-experience", "infrastructure", "mobile"]
+  }
+]

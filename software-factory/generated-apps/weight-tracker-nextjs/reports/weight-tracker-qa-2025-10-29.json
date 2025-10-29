@@ -1,0 +1,309 @@
+{
+  "screens": [
+    {
+      "name": "Splash",
+      "key": "splash",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 1
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 1
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 1
+          },
+          "diff": null,
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Login",
+      "key": "login",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "metrics": {
+            "hasH1": true,
+            "hasInputs": 2,
+            "hasButtons": 1
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "metrics": {
+            "hasH1": true,
+            "hasInputs": 2,
+            "hasButtons": 1
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "metrics": {
+            "hasH1": true,
+            "hasInputs": 2,
+            "hasButtons": 1
+          },
+          "diff": null,
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Dashboard",
+      "buttonText": null,
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 14,
+            "hasCards": 1
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 14,
+            "hasCards": 1
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 14,
+            "hasCards": 1
+          },
+          "diff": null,
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Log Entry",
+      "buttonText": "Log",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 15,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 15,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 15,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "buttonText": "History",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 24,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 24,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 24,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "buttonText": "Analytics",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 17,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 17,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 17,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "buttonText": "Settings",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 18,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 18,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "metrics": {
+            "hasH1": true,
+            "hasButtons": 18,
+            "hasCards": 0
+          },
+          "diff": null,
+          "success": true
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "screenshots/splash-desktop-1440x900.png",
+    "screenshots/splash-tablet-768x1024.png",
+    "screenshots/splash-mobile-375x667.png",
+    "screenshots/login-desktop-1440x900.png",
+    "screenshots/login-tablet-768x1024.png",
+    "screenshots/login-mobile-375x667.png",
+    "screenshots/dashboard-desktop-1440x900.png",
+    "screenshots/dashboard-tablet-768x1024.png",
+    "screenshots/dashboard-mobile-375x667.png",
+    "screenshots/log-desktop-1440x900.png",
+    "screenshots/log-tablet-768x1024.png",
+    "screenshots/log-mobile-375x667.png",
+    "screenshots/history-desktop-1440x900.png",
+    "screenshots/history-tablet-768x1024.png",
+    "screenshots/history-mobile-375x667.png",
+    "screenshots/analytics-desktop-1440x900.png",
+    "screenshots/analytics-tablet-768x1024.png",
+    "screenshots/analytics-mobile-375x667.png",
+    "screenshots/settings-desktop-1440x900.png",
+    "screenshots/settings-tablet-768x1024.png",
+    "screenshots/settings-mobile-375x667.png"
+  ],
+  "diffs": [],
+  "scores": {
+    "brandCompliance": 25,
+    "responsiveDesign": 20,
+    "accessibility": 25,
+    "performance": 15,
+    "visualPolish": 15
+  },
+  "issues": [],
+  "duration": 44.344,
+  "overallScore": 100,
+  "grade": "A"
+}

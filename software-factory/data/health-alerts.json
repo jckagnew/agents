@@ -1,0 +1,20 @@
+[
+  {
+    "id": "npm-critical-2024-10-17",
+    "title": "Critical vulnerability in transitive Next.js dependency",
+    "description": "npm audit reported a critical vulnerability in one of the transitive packages bundled with Next.js 14.1.0. The issue is tracked via npm advisory; remediation pending upstream patch.",
+    "source": "npm audit",
+    "severity": "critical",
+    "status": "watching",
+    "detectedAt": "2025-10-17T15:45:00.000Z",
+    "updatedAt": "2025-10-17T15:45:00.000Z",
+    "affectedProjects": [
+      "software-factory/splash-creator"
+    ],
+    "references": [
+      "https://docs.npmjs.com/about-audit-reports"
+    ],
+    "remediation": "Monitor Next.js release notes; plan upgrade once patched. Consider running `npm audit fix` when patch becomes available.",
+    "nextReview": "2025-10-20T15:45:00.000Z"
+  }
+]

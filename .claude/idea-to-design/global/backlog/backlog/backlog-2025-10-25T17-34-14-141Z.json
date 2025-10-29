@@ -1,0 +1,99 @@
+{
+  "timestamp": "2025-10-25T17:34:14.142Z",
+  "totalItems": 4,
+  "items": [
+    {
+      "id": "domain-routing",
+      "title": "Configure domain routing for partner DBAs",
+      "description": "Set up Vercel path-based routing (or separate projects) so each future DBA/app can live under www.clevelsalesguy.com (e.g., /d2c, /bespoke, /enterprise).",
+      "priority": "P1",
+      "labels": [
+        "domain",
+        "infrastructure"
+      ],
+      "status": "pending",
+      "createdBy": "cursor"
+    },
+    {
+      "id": "analytics-provisioning",
+      "title": "Provision analytics properties per DBA",
+      "description": "Create GA4 (or Segment) properties for each DBA category and document the env vars needed for per-app tracking.",
+      "priority": "P1",
+      "labels": [
+        "analytics"
+      ],
+      "status": "pending",
+      "createdBy": "cursor"
+    },
+    {
+      "id": "dba-metrics-view",
+      "title": "Design DBA metrics view for Software Factory admin",
+      "description": "Create UI designs and component specifications for the DBA dashboard metrics view. Include KPI cards, charts, filtering, and drill-down views for financial, hosting, and analytics data.",
+      "priority": "P2",
+      "status": "backlog",
+      "labels": [
+        "admin",
+        "dashboard",
+        "ui-design"
+      ],
+      "linkedSpec": ".claude/idea-to-design/software-factory-admin/dba-dashboard-spec.md",
+      "estimatedEffort": "2-3 weeks",
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Dashboard mockups for overview and detail views",
+        "Component specifications for KPI cards and charts",
+        "Responsive design for desktop and tablet",
+        "Accessibility compliance (WCAG AA)",
+        "Interactive prototype for stakeholder review"
+      ],
+      "createdAt": "2025-10-25T14:00:00Z",
+      "createdBy": "claude"
+    },
+    {
+      "id": "dba-analytics-api",
+      "title": "Implement API endpoints to serve per-DBA analytics",
+      "description": "Build Next.js API routes to aggregate and serve financial (Stripe), hosting (Vercel), and analytics (GA4) data for each DBA. Include caching, error handling, and role-based access control.",
+      "priority": "P2",
+      "status": "backlog",
+      "labels": [
+        "api",
+        "analytics",
+        "backend"
+      ],
+      "linkedSpec": ".claude/idea-to-design/software-factory-admin/dba-dashboard-spec.md#64-api-endpoints",
+      "estimatedEffort": "3-4 weeks",
+      "dependencies": [
+        "dba-metrics-view"
+      ],
+      "acceptanceCriteria": [
+        "GET /api/admin/dbas - List all DBAs with summary metrics",
+        "GET /api/admin/metrics/:dbaId - Fetch aggregated metrics for specific DBA",
+        "GET /api/admin/financials/:dbaId - Stripe data integration",
+        "GET /api/admin/hosting/:dbaId - Vercel metrics integration",
+        "GET /api/admin/analytics/:dbaId - GA4 data integration",
+        "API response caching (Redis) for performance",
+        "Error handling and retry logic for external APIs",
+        "Role-based access control middleware",
+        "API documentation with examples",
+        "Unit and integration tests (80% coverage)"
+      ],
+      "technicalNotes": {
+        "integrations": [
+          "Stripe API",
+          "Vercel API",
+          "Google Analytics 4 API"
+        ],
+        "caching": "Redis with 1-hour TTL",
+        "auth": "JWT-based with role checks",
+        "database": "PostgreSQL for metric aggregation"
+      },
+      "createdAt": "2025-10-25T14:00:00Z",
+      "createdBy": "claude"
+    }
+  ],
+  "metadata": {
+    "sessionDir": ".claude/idea-to-design/global/backlog",
+    "generatedBy": "backlog-sync.js",
+    "version": "1.0.0"
+  }
+}

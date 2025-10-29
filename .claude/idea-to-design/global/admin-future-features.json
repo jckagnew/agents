@@ -1,0 +1,49 @@
+[
+  {
+    "title": "Automated Partner Billing Exports",
+    "summary": "Generate recurring financial reports per DBA with automated delivery to partners",
+    "findings": "Partners currently request manual billing breakdowns. Automation would reduce admin overhead and improve partner satisfaction. Similar features in competitor platforms show 40% reduction in support tickets.",
+    "feasibility": "High",
+    "cost": "Medium",
+    "confidence": 0.5,
+    "opportunity_driver": [
+      "Reduce manual admin work",
+      "Improve partner transparency",
+      "Self-service financial reporting"
+    ],
+    "dependencies": [
+      "Stripe API integration for billing data",
+      "Email delivery system",
+      "PDF generation library",
+      "Per-DBA financial data aggregation"
+    ],
+    "timeframe": "v2",
+    "next_steps": "Survey partners on preferred report formats, estimate Stripe API usage costs, prototype PDF templates",
+    "tags": ["admin", "automation", "financial"]
+  },
+  {
+    "title": "White-Label Provisioning Wizard",
+    "summary": "Script-based wizard to spin up new DBA projects with zero-code setup",
+    "findings": "Current DBA setup requires manual configuration across Vercel, DNS, analytics, and environment variables. Automation would enable faster partnership launches and reduce setup errors. Estimated 80% time savings (4 hours → 45 minutes).",
+    "feasibility": "Medium-High",
+    "cost": "High",
+    "confidence": 0.4,
+    "opportunity_driver": [
+      "Faster DBA launch timeline",
+      "Reduce configuration errors",
+      "Enable non-technical team members to provision DBAs",
+      "Scalability for multiple simultaneous launches"
+    ],
+    "dependencies": [
+      "Vercel API for project creation",
+      "DNS API integration (Cloudflare/Route53)",
+      "GA4 API for property creation",
+      "Template repository structure",
+      "Environment variable management system",
+      "Rollback mechanism for failed provisions"
+    ],
+    "timeframe": "Exploratory",
+    "next_steps": "Spike on Vercel/DNS API capabilities, design wizard UI flow, estimate API rate limits and costs, create rollback strategy",
+    "tags": ["infrastructure", "automation", "devops"]
+  }
+]

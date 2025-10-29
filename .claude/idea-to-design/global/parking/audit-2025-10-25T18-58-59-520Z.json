@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-10-25T18:58:59.520Z",
+  "source": "ai-studio",
+  "sourceFile": ".claude/idea-to-design/global/name-audit-service-idea.json",
+  "totalIdeas": 1,
+  "duplicates": 0,
+  "promotionReady": 0,
+  "confidenceThreshold": 0.6,
+  "parkingFile": ".claude/idea-to-design/global/parking/parking-lot-2025-10-25T18-58-59-518Z.json",
+  "summaryFile": ".claude/idea-to-design/global/parking/ai-studio-summary-2025-10-25T18-58-59-520Z.md",
+  "ideas": [
+    {
+      "id": "ai-1761418739512-dyibox9hf",
+      "title": "Name Audit Service for Clients",
+      "value": 9,
+      "effort": 5,
+      "confidence": 0.4,
+      "roi": 0.7200000000000001,
+      "promotionReady": false
+    }
+  ]
+}

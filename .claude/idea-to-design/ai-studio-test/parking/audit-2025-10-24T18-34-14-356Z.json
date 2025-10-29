@@ -1,0 +1,49 @@
+{
+  "timestamp": "2025-10-24T18:34:14.356Z",
+  "source": "ai-studio",
+  "sourceFile": "ai-studio-sample.json",
+  "totalIdeas": 4,
+  "duplicates": 0,
+  "promotionReady": 3,
+  "confidenceThreshold": 0.6,
+  "parkingFile": ".claude/idea-to-design/ai-studio-test/parking/parking-lot-2025-10-24T18-34-14-355Z.json",
+  "summaryFile": ".claude/idea-to-design/ai-studio-test/parking/ai-studio-summary-2025-10-24T18-34-14-356Z.md",
+  "ideas": [
+    {
+      "id": "ai-1761330854349-yjxwjohpu",
+      "title": "Voice-Activated Task Creation",
+      "value": 9,
+      "effort": 5,
+      "confidence": 0.8,
+      "roi": 1.4400000000000002,
+      "promotionReady": true
+    },
+    {
+      "id": "ai-1761330854354-19lxjtxjr",
+      "title": "AI-Powered Priority Suggestions",
+      "value": 6,
+      "effort": 10,
+      "confidence": 0.3,
+      "roi": 0.18,
+      "promotionReady": false
+    },
+    {
+      "id": "ai-1761330854354-0mnjpi86i",
+      "title": "Collaborative Team Workspaces",
+      "value": 9,
+      "effort": 8,
+      "confidence": 0.9,
+      "roi": 1.0125,
+      "promotionReady": true
+    },
+    {
+      "id": "ai-1761330854354-12x8wjoff",
+      "title": "Offline Mode Support",
+      "value": 9,
+      "effort": 8,
+      "confidence": 0.6,
+      "roi": 0.6749999999999999,
+      "promotionReady": true
+    }
+  ]
+}

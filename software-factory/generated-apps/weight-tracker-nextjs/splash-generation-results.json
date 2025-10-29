@@ -1,0 +1,119 @@
+{
+  "timestamp": "2025-10-17T14:56:05.931753",
+  "project_config": {
+    "projectType": "fitness",
+    "theme": "transformation",
+    "colorScheme": "red-to-green",
+    "animationType": "morphing",
+    "searchQueries": [
+      "fitness transformation before after",
+      "weight loss journey cartoon",
+      "fitness motivation character",
+      "health transformation animation",
+      "workout progress cartoon",
+      "body transformation story",
+      "fitness success journey",
+      "health improvement animation"
+    ],
+    "content": {
+      "title": "Transform Your Life",
+      "subtitle": "Track. Transform. Triumph.",
+      "description": "Your journey starts here.",
+      "ctaPrimary": "Create Profile",
+      "ctaSecondary": "Log In",
+      "stats": [
+        {
+          "label": "Complete",
+          "value": "67%"
+        },
+        {
+          "label": "Days to Goal",
+          "value": "3"
+        }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.4,
+      "animation_potential": 0.3,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.4,
+    "appName": "Weight Tracker Pro",
+    "outputPath": "/Users/jackagnew/projects/agents/software-factory/generated-apps/weight-tracker-nextjs"
+  },
+  "phases": {
+    "Image Sourcing": {
+      "status": "success",
+      "stdout": "\u26a0\ufe0f MCP framework not found, using fallback image sourcing\n\u26a0\ufe0f Open source image client not found, using basic image sourcing\n\ud83d\ude80 Generic Image Sourcing Agent\n==================================================\nProject Type: fitness\nSearch Queries: 8\nTarget Pairs: 100\n\ud83c\udfaf Starting image sourcing for fitness project...\n\ud83d\udcca Target: 100 image pairs\n\ud83d\udd0d Search queries: 8\n\ud83c\udf1f PRIMARY: Searching open source repositories...\n\u26a0\ufe0f Open source aggregator not available, skipping direct repository search\n   Found 0 pairs from open source repositories\n\ud83d\udd0d SECONDARY: Searching with MCP servers (open source focus)...\n\u26a0\ufe0f Brave Search MCP server not available, skipping\n   Brave Query 1: Found 0 potential pairs for 'fitness transformation before after'\n\u26a0\ufe0f Brave Search MCP server not available, skipping\n   Brave Query 2: Found 0 potential pairs for 'weight loss journey cartoon'\n\u26a0\ufe0f Brave Search MCP server not available, skipping\n   Brave Query 3: Found 0 potential pairs for 'fitness motivation character'\n\u26a0\ufe0f Perplexity MCP server not available, skipping\n   Perplexity Query 4: Found 0 potential pairs for 'health transformation animation'\n\u26a0\ufe0f Perplexity MCP server not available, skipping\n   Perplexity Query 5: Found 0 potential pairs for 'workout progress cartoon'\n\u26a0\ufe0f Perplexity MCP server not available, skipping\n   Perplexity Query 6: Found 0 potential pairs for 'body transformation story'\n\ud83d\udcca Total unique image pairs found: 0\n\ud83d\udd0d Validating image accessibility and open source licensing...\n\u274c No valid image pairs found. Check your MCP server configurations.\n",
+      "stderr": ""
+    },
+    "Design Curation": {
+      "status": "success",
+      "stdout": "\u2705 Selected 3 top image pairs.\n",
+      "stderr": ""
+    },
+    "Animation Generation": {
+      "status": "success",
+      "stdout": "\u2705 Animation generation complete!\n\ud83d\udcc1 Components saved to /Users/jackagnew/projects/agents/software-factory/generated-apps/weight-tracker-nextjs/src/components/splash-prototypes\n\ud83d\udcc4 Comparison page saved to /Users/jackagnew/projects/agents/software-factory/generated-apps/weight-tracker-nextjs/src/app/splash-comparison/page.tsx\n",
+      "stderr": ""
+    }
+  },
+  "success": true,
+  "generated_components": [
+    {
+      "before_url": "https://images.pexels.com/photos/6670943/pexels-photo-6670943.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "after_url": "https://images.pexels.com/photos/5622199/pexels-photo-5622199.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "before_description": "Photo by Moe Magners - Person holding 'weight loss' sign for fitness motivation and health goals.",
+      "after_description": "Photo by Gustavo Fring - Close-up image of a woman measuring her waist with a tape measure, promoting fitness and health goals.",
+      "source": "pexels,pexels",
+      "project_type": "fitness",
+      "quality_score": 0.8999999999999999,
+      "commercial_appeal": 1.0,
+      "animation_potential": 0.75,
+      "overall_score": 0.895,
+      "scores": {
+        "commercial_appeal": 1.0,
+        "animation_potential": 0.75,
+        "design_quality": 0.8999999999999999,
+        "overall": 0.895
+      }
+    },
+    {
+      "before_url": "https://images.pexels.com/photos/6670943/pexels-photo-6670943.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "after_url": "https://images.pexels.com/photos/6672086/pexels-photo-6672086.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "before_description": "Photo by Moe Magners - Person holding 'weight loss' sign for fitness motivation and health goals.",
+      "after_description": "Photo by Moe Magners - Confident woman showing weight loss message painted on her stomach, symbolizing motivation and lifestyle change.",
+      "source": "pexels,pexels",
+      "project_type": "fitness",
+      "quality_score": 0.8999999999999999,
+      "commercial_appeal": 1.0,
+      "animation_potential": 0.75,
+      "overall_score": 0.895,
+      "scores": {
+        "commercial_appeal": 1.0,
+        "animation_potential": 0.75,
+        "design_quality": 0.8999999999999999,
+        "overall": 0.895
+      }
+    },
+    {
+      "before_url": "https://images.pexels.com/photos/6670943/pexels-photo-6670943.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "after_url": "https://images.pexels.com/photos/5622199/pexels-photo-5622199.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "before_description": "Photo by Moe Magners - Person holding 'weight loss' sign for fitness motivation and health goals.",
+      "after_description": "Photo by Gustavo Fring - Close-up image of a woman measuring her waist with a tape measure, promoting fitness and health goals.",
+      "source": "pexels,pexels",
+      "project_type": "fitness",
+      "quality_score": 0.8999999999999999,
+      "commercial_appeal": 1.0,
+      "animation_potential": 0.75,
+      "overall_score": 0.895,
+      "scores": {
+        "commercial_appeal": 1.0,
+        "animation_potential": 0.75,
+        "design_quality": 0.8999999999999999,
+        "overall": 0.895
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-24T18:04:55.423Z",
+  "totalIdeas": 3,
+  "ideas": [
+    {
+      "id": "idea-1761329095422-ukjwjgk9d",
+      "title": "Dark Mode Theme",
+      "description": "Add dark mode theme option for better viewing in low-light environments",
+      "drivers": [
+        "User requests",
+        "Modern UI trend",
+        "Reduce eye strain"
+      ],
+      "estimatedValue": 7,
+      "estimatedEffort": 3,
+      "confidence": 0.85,
+      "dependencies": [],
+      "targetPhase": "post-mvp",
+      "theme": "user-experience",
+      "source": "customer-feedback",
+      "status": "parked",
+      "createdAt": "2025-10-24T18:04:55.422Z",
+      "updatedAt": "2025-10-24T18:04:55.422Z"
+    },
+    {
+      "id": "idea-1761329095422-fcr44i8gv",
+      "title": "Real-time Collaboration",
+      "description": "Allow multiple users to edit documents simultaneously with live cursor tracking",
+      "drivers": [
+        "Team workflow improvement",
+        "Competitor parity"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 9,
+      "confidence": 0.3,
+      "dependencies": [
+        "WebSocket infrastructure",
+        "Operational transformation algorithm"
+      ],
+      "targetPhase": "exploratory",
+      "theme": "user-experience",
+      "source": "competitive-analysis",
+      "status": "parked",
+      "createdAt": "2025-10-24T18:04:55.422Z",
+      "updatedAt": "2025-10-24T18:04:55.422Z"
+    },
+    {
+      "id": "idea-1761329095422-isycd0zzz",
+      "title": "Advanced Analytics Dashboard",
+      "description": "Provide detailed usage analytics with custom reports and cohort analysis",
+      "drivers": [
+        "Enterprise customers need reporting",
+        "Product insights",
+        "Upsell opportunity"
+      ],
+      "estimatedValue": 7,
+      "estimatedEffort": 6,
+      "confidence": 0.8,
+      "dependencies": [
+        "Analytics data pipeline"
+      ],
+      "targetPhase": "post-mvp",
+      "theme": "analytics",
+      "source": "team-brainstorm",
+      "status": "parked",
+      "createdAt": "2025-10-24T18:04:55.422Z",
+      "updatedAt": "2025-10-24T18:04:55.422Z"
+    }
+  ]
+}

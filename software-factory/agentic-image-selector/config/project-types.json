@@ -1,0 +1,270 @@
+{
+  "fitness": {
+    "projectType": "fitness",
+    "theme": "transformation",
+    "colorScheme": "red-to-green",
+    "animationType": "morphing",
+    "searchQueries": [
+      "fitness transformation before after",
+      "weight loss journey cartoon",
+      "fitness motivation character",
+      "health transformation animation",
+      "workout progress cartoon",
+      "body transformation story",
+      "fitness success journey",
+      "health improvement animation"
+    ],
+    "content": {
+      "title": "Transform Your Life",
+      "subtitle": "Track. Transform. Triumph.",
+      "description": "Your journey starts here.",
+      "ctaPrimary": "Create Profile",
+      "ctaSecondary": "Log In",
+      "stats": [
+        { "label": "Complete", "value": "67%" },
+        { "label": "Days to Goal", "value": "3" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.4,
+      "animation_potential": 0.3,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.4
+  },
+  "finance": {
+    "projectType": "finance",
+    "theme": "wealth-building",
+    "colorScheme": "blue-to-gold",
+    "animationType": "scale",
+    "searchQueries": [
+      "wealth building cartoon",
+      "financial growth animation",
+      "money management character",
+      "investment success story",
+      "financial planning cartoon",
+      "wealth accumulation journey",
+      "money growth animation",
+      "financial freedom character"
+    ],
+    "content": {
+      "title": "Build Your Wealth",
+      "subtitle": "Invest. Grow. Prosper.",
+      "description": "Your financial future starts here.",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Learn More",
+      "stats": [
+        { "label": "Portfolio Growth", "value": "+12%" },
+        { "label": "Days Active", "value": "30" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.5,
+      "animation_potential": 0.2,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.5
+  },
+  "productivity": {
+    "projectType": "productivity",
+    "theme": "efficiency",
+    "colorScheme": "purple-to-pink",
+    "animationType": "fade",
+    "searchQueries": [
+      "productivity cartoon character",
+      "efficiency improvement animation",
+      "task management success",
+      "workflow optimization",
+      "productivity boost cartoon",
+      "work efficiency character",
+      "task completion animation",
+      "productivity journey"
+    ],
+    "content": {
+      "title": "Boost Your Productivity",
+      "subtitle": "Organize. Execute. Succeed.",
+      "description": "Achieve more with less effort.",
+      "ctaPrimary": "Start Free",
+      "ctaSecondary": "View Demo",
+      "stats": [
+        { "label": "Tasks Completed", "value": "247" },
+        { "label": "Efficiency Gain", "value": "+35%" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.3,
+      "animation_potential": 0.4,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.3
+  },
+  "ecommerce": {
+    "projectType": "ecommerce",
+    "theme": "shopping",
+    "colorScheme": "orange-to-yellow",
+    "animationType": "slide",
+    "searchQueries": [
+      "shopping cartoon character",
+      "ecommerce success animation",
+      "online shopping journey",
+      "retail transformation",
+      "shopping experience cartoon",
+      "ecommerce growth story",
+      "online store success",
+      "shopping satisfaction animation"
+    ],
+    "content": {
+      "title": "Shop Smarter",
+      "subtitle": "Discover. Compare. Buy.",
+      "description": "Your perfect purchase awaits.",
+      "ctaPrimary": "Start Shopping",
+      "ctaSecondary": "Browse Deals",
+      "stats": [
+        { "label": "Products Found", "value": "1,247" },
+        { "label": "Savings", "value": "$89" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.6,
+      "animation_potential": 0.2,
+      "design_quality": 0.2
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.6
+  },
+  "education": {
+    "projectType": "education",
+    "theme": "learning",
+    "colorScheme": "green-to-blue",
+    "animationType": "fade",
+    "searchQueries": [
+      "learning cartoon character",
+      "education journey animation",
+      "skill development story",
+      "knowledge growth cartoon",
+      "learning progress animation",
+      "educational success story",
+      "student achievement cartoon",
+      "learning transformation"
+    ],
+    "content": {
+      "title": "Learn & Grow",
+      "subtitle": "Study. Practice. Master.",
+      "description": "Your learning journey begins here.",
+      "ctaPrimary": "Start Learning",
+      "ctaSecondary": "View Courses",
+      "stats": [
+        { "label": "Courses Completed", "value": "12" },
+        { "label": "Skills Gained", "value": "8" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.3,
+      "animation_potential": 0.3,
+      "design_quality": 0.4
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.3
+  },
+  "gaming": {
+    "projectType": "gaming",
+    "theme": "adventure",
+    "colorScheme": "purple-to-cyan",
+    "animationType": "morphing",
+    "searchQueries": [
+      "gaming character cartoon",
+      "video game adventure animation",
+      "gaming journey story",
+      "player progression cartoon",
+      "gaming success animation",
+      "game character transformation",
+      "gaming achievement story",
+      "player growth cartoon"
+    ],
+    "content": {
+      "title": "Level Up",
+      "subtitle": "Play. Progress. Prevail.",
+      "description": "Your gaming adventure awaits.",
+      "ctaPrimary": "Start Playing",
+      "ctaSecondary": "View Leaderboard",
+      "stats": [
+        { "label": "Level", "value": "47" },
+        { "label": "Achievements", "value": "23" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.4,
+      "animation_potential": 0.4,
+      "design_quality": 0.2
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.4
+  },
+  "social": {
+    "projectType": "social",
+    "theme": "connection",
+    "colorScheme": "pink-to-purple",
+    "animationType": "scale",
+    "searchQueries": [
+      "social media cartoon",
+      "connection animation",
+      "social networking character",
+      "community building story",
+      "social interaction cartoon",
+      "friendship animation",
+      "social success story",
+      "community growth cartoon"
+    ],
+    "content": {
+      "title": "Connect & Share",
+      "subtitle": "Meet. Share. Engage.",
+      "description": "Your social network starts here.",
+      "ctaPrimary": "Join Now",
+      "ctaSecondary": "Explore",
+      "stats": [
+        { "label": "Connections", "value": "1,247" },
+        { "label": "Posts", "value": "89" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.4,
+      "animation_potential": 0.3,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.4
+  },
+  "custom": {
+    "projectType": "custom",
+    "theme": "custom",
+    "colorScheme": "red-to-green",
+    "animationType": "morphing",
+    "searchQueries": [
+      "custom project cartoon",
+      "application character",
+      "software success story",
+      "app transformation animation"
+    ],
+    "content": {
+      "title": "Welcome to Your App",
+      "subtitle": "Discover. Use. Enjoy.",
+      "description": "Your experience starts here.",
+      "ctaPrimary": "Get Started",
+      "ctaSecondary": "Learn More",
+      "stats": [
+        { "label": "Users", "value": "1,000+" },
+        { "label": "Rating", "value": "4.8★" }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.4,
+      "animation_potential": 0.3,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.4
+  }
+}

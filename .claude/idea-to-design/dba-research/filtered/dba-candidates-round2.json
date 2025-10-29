@@ -1,0 +1,238 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "generatedAt": "2025-10-25T19:06:40.827Z",
+    "totalCandidates": 22,
+    "categories": {
+      "consumer": 7,
+      "bespoke": 7,
+      "enterprise": 8
+    },
+    "source": "ai-studio-round2",
+    "focus": "conflict-avoidant-naming",
+    "constraints": [
+      "Avoid Apex conflicts",
+      "Avoid Pixel/Spark conflicts",
+      "Emphasize uniqueness",
+      "Domain-friendly",
+      "Low trademark risk"
+    ]
+  },
+  "candidates": [
+    {
+      "name": "Fathomly",
+      "category": "consumer",
+      "reasoning": "-  This is an invented word combining \"Fathom\" (to understand deeply) with the friendly suffix \"-ly\". It immediately communicates the brand's value proposition: making complex AI tools simple and easy to understand. It aligns perfectly with the values of simplicity, accessibility, and empowerment. The name is soft, approachable, and sounds intelligent without being intimidating.",
+      "domainAssessment": "-  `fathomly.com` is currently available for registration. This is a huge advantage.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.821Z"
+    },
+    {
+      "name": "Quillan",
+      "category": "consumer",
+      "reasoning": "-  An invented name derived from \"Quill\" (a tool for writing and precision) with a modern, soft-sounding suffix \"-an\". It evokes intelligence, creativity, and personal productivity. The name sounds personal and trustworthy, almost like a helpful colleague. It's easy to spell, pronounce, and remember, fitting the \"playful but professional\" tone.",
+      "domainAssessment": "-  `quillan.com` appears to be available for registration.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Veridian",
+      "category": "consumer",
+      "reasoning": "-  A creative spelling of \"viridian,\" a shade of blue-green. This name is abstract but evokes feelings of growth, freshness, and clarity. It sounds modern, clean, and sophisticated. The name is not tied to any specific function, giving it excellent scalability as the company's product line grows. The \"-ian\" ending gives it a polished, tech-forward feel without using generic terms.",
+      "domainAssessment": "-  `veridian.com` is a premium domain. However, creative variations like `veridian.ai`, `getveridian.com`, or `veridianos.com` are likely available and effective.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Locusive",
+      "category": "consumer",
+      "reasoning": "-  This invented word is a blend of \"Locus\" (a central or main point) and the suffix \"-ive\" (tending to; having the quality of). The name implies a central hub or a tool that brings focus and organization to your digital life. It sounds innovative and powerful yet remains approachable. It's a strong, scalable name that suggests empowerment and control.",
+      "domainAssessment": "-  `locusive.com` is currently available for registration.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Mycelia",
+      "category": "consumer",
+      "reasoning": "-  Inspired by mycelium, the intelligent, interconnected root network of fungi. This nature-inspired term is a powerful metaphor for a connected, smart, and community-driven platform. It's unique and memorable, appealing to tech enthusiasts who appreciate clever concepts. The name sounds organic and innovative, perfectly reflecting an AI company that empowers users through connection and intelligence.",
+      "domainAssessment": "-  `mycelia.com` is a premium domain. Alternatives like `mycelia.io`, `mycelia.ai`, or `gomycelia.com` are strong, modern options.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Zenoa",
+      "category": "consumer",
+      "reasoning": "-  A short, invented word that feels both modern and timeless. It combines the feeling of \"Zen\" (simplicity, calm, focus) with a fluid, open-ended \"oa\" sound. The name is incredibly easy to say and remember. It conveys a sense of effortless productivity and clean design, aligning with the \"simplicity\" and \"modern\" brand values. It's abstract enough to be highly scalable for any future product.",
+      "domainAssessment": "-  `zenoa.com` appears to be available for registration.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Jotful",
+      "category": "consumer",
+      "reasoning": "-  A playful combination of \"Jot\" (to write or note down quickly) and \"Joyful\". This name perfectly captures the brand personality: playful, approachable, and empowering. It suggests that using the software is not a chore but a pleasant and efficient experience. It’s ideal for personal productivity tools and consumer apps, as it's instantly understood and has a positive emotional resonance.",
+      "domainAssessment": "-  `jotful.com` is currently available for registration.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Verinex",
+      "category": "bespoke",
+      "reasoning": "*   **Reasoning:**",
+      "domainAssessment": "*   **Domain Availability Assessment:** `verinex.com` appears to be taken but is parked/for sale, meaning it could potentially be acquired. `verinex.io`, `verinex.ai`, and `verinex.tech` are available. Modifiers like `verinexlabs.com` or `verinexdigital.com` are also strong options.",
+      "conflictRisk": "Conflict Risk Level:",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Spokeform",
+      "category": "bespoke",
+      "reasoning": "*   **Reasoning:**",
+      "domainAssessment": "*   **Domain Availability Assessment:** `spokeform.com` is currently available. This is a significant advantage.",
+      "conflictRisk": "Conflict Risk Level:",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Renova",
+      "category": "bespoke",
+      "reasoning": "*   **Reasoning:**",
+      "domainAssessment": "*   **Domain Availability Assessment:** `renovadigital.com` is available.",
+      "conflictRisk": "Conflict Risk Level:",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Confluent",
+      "category": "bespoke",
+      "reasoning": "*   **Reasoning:**",
+      "domainAssessment": "*   **Domain Availability Assessment:** `confluentcore.com` is available.",
+      "conflictRisk": "Conflict Risk Level:",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Modus",
+      "category": "bespoke",
+      "reasoning": "*   **Reasoning:**",
+      "domainAssessment": "*   **Domain Availability Assessment:** `modusbuilt.com` is available.",
+      "conflictRisk": "Conflict Risk Level:",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Sterling",
+      "category": "bespoke",
+      "reasoning": "*   **Reasoning:**",
+      "domainAssessment": "*   **Domain Availability Assessment:** `sterlingvector.com` is available.",
+      "conflictRisk": "Conflict Risk Level:",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Fulcrum",
+      "category": "bespoke",
+      "reasoning": "*   **Reasoning:**",
+      "domainAssessment": "*   **Domain Availability Assessment:** `fulcrumforge.com` is available.",
+      "conflictRisk": "Conflict Risk Level:",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Veriquant",
+      "category": "enterprise",
+      "reasoning": "-  A portmanteau of \"Veritas\" (Latin for truth) and \"Quant\" (quantitative data). It immediately communicates data-driven truth and accuracy. The name is sophisticated, easy to pronounce, and feels both classical and cutting-edge. It avoids all listed conflicts by being a completely unique, invented word. It sounds like a definitive source of business intelligence.",
+      "domainAssessment": "-  Very High. `veriquant.com` appears to be available.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Lucidata",
+      "category": "enterprise",
+      "reasoning": "-  A fusion of \"Lucid\" (clear, understandable) and \"Data\". The name promises clarity from complexity, a core value proposition for any C-Level dashboard or BI tool. The \"-ata\" suffix gives it a sophisticated, almost Latin sound, which elevates the brand. It is memorable and suggests intelligent illumination of facts.",
+      "domainAssessment": "-  Very High. `lucidata.com` appears to be available.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Praetori",
+      "category": "enterprise",
+      "reasoning": "-  Derived from \"Praetor,\" a title granted to high-ranking magistrates in Ancient Rome who commanded armies and held significant authority. Shortening it to \"Praetori\" makes it sound like a modern tech platform while retaining the gravitas of its origin. It conveys leadership, command, and strategic authority without using any generic terms. It’s a powerful, one-word name that is easy to remember in a boardroom.",
+      "domainAssessment": "-  Very High. `praetori.com` appears to be available.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Correlai",
+      "category": "enterprise",
+      "reasoning": "-  A sleek, modern combination of \"Correlate\" and \"AI\". This name directly speaks to the product's function—using artificial intelligence to find meaningful correlations in business data. It's tech-forward, concise, and easy to spell. It perfectly positions the company as an innovator in the AI-powered analytics space.",
+      "domainAssessment": "-  Very High. `correlai.com` appears to be available.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Axiomark",
+      "category": "enterprise",
+      "reasoning": "-  This name combines \"Axiom\" (a self-evident truth or established principle) with \"Mark\" (a standard, a target, a sign of quality). The name suggests a new standard of excellence based on foundational truths discovered in data. It feels definitive, authoritative, and results-oriented. It’s a strong, intellectual name that appeals to a data-driven C-suite.",
+      "domainAssessment": "-  Very High. `axiomark.com` appears to be available.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Fulcrix",
+      "category": "enterprise",
+      "reasoning": "-  An invented word derived from \"Fulcrum,\" the pivotal point that allows a lever to create massive force. This is a powerful metaphor for what the software does: it provides the key insight that allows executives to apply leverage for maximum business impact. Adding the \"x\" makes it feel modern, technical, and scalable, while the root word conveys immense strategic value.",
+      "domainAssessment": "-  Very High. `fulcrix.com` appears to be available.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Altimeter",
+      "category": "enterprise",
+      "reasoning": "-  This name uses a powerful and sophisticated metaphor. An altimeter measures altitude, helping pilots navigate and reach new heights. For a C-Level executive, the software is their business \"altimeter,\" providing the critical data needed to elevate the company's performance and trajectory. It's a real word used in a novel context, making it memorable, professional, and evocative of achieving superior results.",
+      "domainAssessment": "-  Likely Available. `altimeter.com` is taken, but variations like `altimeterai.com`, `getaltimeter.com` or `altimetercorp.com` might be options. The name is strong enough that a slight domain modification could be worthwhile.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    },
+    {
+      "name": "Clarivon",
+      "category": "enterprise",
+      "reasoning": "-  A sophisticated and invented name blending \"Clarity\" with the suffix \"-von,\" which adds a sense of prestige and authority. The name sounds like a proprietary element or a high-end service. It conveys the core benefit of the product—providing clear, actionable intelligence—in an elegant and exclusive package. It is smooth, memorable, and sounds distinctly premium.",
+      "domainAssessment": "-  Very High. `clarivon.com` appears to be available.",
+      "conflictRisk": "Conflict Risk Level",
+      "source": "ai-studio-round2",
+      "generatedAt": "2025-10-25T19:06:40.827Z"
+    }
+  ],
+  "topRecommendations": {
+    "consumer": [
+      "Fathomly",
+      "Quillan",
+      "Veridian"
+    ],
+    "bespoke": [
+      "Verinex",
+      "Spokeform",
+      "Renova"
+    ],
+    "enterprise": [
+      "Veriquant",
+      "Lucidata",
+      "Praetori"
+    ]
+  }
+}

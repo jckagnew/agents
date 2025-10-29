@@ -1,0 +1,33 @@
+{
+  "apiKey": "AIzaSyCzvHSDaZJAkV-iXBm20rlCgncjJTFQwm8",
+  "account": "jckagnew@gmail.com",
+  "models": {
+    "primary": "gemini-2.5-pro",
+    "fast": "gemini-2.5-flash",
+    "vision": "gemini-2.5-flash-image",
+    "reasoning": "gemini-2.0-pro-exp"
+  },
+  "endpoints": {
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+    "models": "https://generativelanguage.googleapis.com/v1beta/models",
+    "generate": "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+  },
+  "settings": {
+    "temperature": 0.7,
+    "maxOutputTokens": 8192,
+    "topP": 0.8,
+    "topK": 40
+  },
+  "businessContext": {
+    "company": "C-Level Sales Guy LLC",
+    "industry": "AI-powered software development and sales consulting",
+    "location": "Dallas, TX",
+    "focus": "C-Level executive services and AI automation"
+  },
+  "promptTemplates": {
+    "marketAnalysis": "Analyze the {market} market for {industry} companies, focusing on opportunities for {companyType} executives. Include market size, trends, competitive landscape, and strategic recommendations.",
+    "opportunityEvaluation": "Evaluate the business opportunity: {opportunity}. Consider market potential, competitive advantage, resource requirements, and implementation risks. Provide a structured analysis with recommendations.",
+    "strategicPlanning": "Develop a strategic plan for {company} in the {industry} industry. Include market positioning, competitive strategy, growth opportunities, and risk mitigation strategies.",
+    "financialModeling": "Create a financial model for {opportunity} including revenue projections, cost structure, break-even analysis, and ROI calculations. Consider {timeframe} timeline and {market} market conditions."
+  }
+}

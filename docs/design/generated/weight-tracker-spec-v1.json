@@ -1,0 +1,533 @@
+{
+  "project_metadata": {
+    "project_name": "Weight Tracker Pro",
+    "design_version": "1.0",
+    "created_date": "2025-10-27",
+    "design_style": "modern"
+  },
+  "design_system": {
+    "colors": {
+      "primary": "#2563EB",
+      "secondary": "#10B981",
+      "accent": "#F97316",
+      "success": "#22C55E",
+      "warning": "#EAB308",
+      "error": "#EF4444",
+      "neutral": {
+        "50": "#F8FAFC",
+        "100": "#F1F5F9",
+        "200": "#E2E8F0",
+        "300": "#CBD5F5",
+        "400": "#94A3B8",
+        "500": "#64748B",
+        "600": "#475569",
+        "700": "#334155",
+        "800": "#1E293B",
+        "900": "#0F172A"
+      }
+    },
+    "typography": {
+      "font_families": {
+        "heading": "Inter",
+        "body": "Inter",
+        "mono": "IBM Plex Mono"
+      },
+      "scale": {
+        "xs": "0.75rem",
+        "sm": "0.875rem",
+        "base": "1rem",
+        "lg": "1.125rem",
+        "xl": "1.25rem",
+        "2xl": "1.5rem",
+        "3xl": "1.875rem",
+        "4xl": "2.25rem",
+        "5xl": "3rem"
+      },
+      "weights": {
+        "normal": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      }
+    },
+    "spacing": {
+      "unit": "8px",
+      "scale": {
+        "0": "0px",
+        "1": "8px",
+        "2": "16px",
+        "3": "24px",
+        "4": "32px",
+        "5": "40px",
+        "6": "48px",
+        "8": "64px",
+        "10": "80px",
+        "12": "96px"
+      }
+    },
+    "breakpoints": {
+      "mobile": "375px",
+      "tablet": "768px",
+      "desktop": "1440px",
+      "wide": "1920px"
+    },
+    "elevation": {
+      "sm": "0 1px 2px 0 rgba(15, 23, 42, 0.05)",
+      "md": "0 4px 6px -1px rgba(15, 23, 42, 0.08)",
+      "lg": "0 10px 15px -3px rgba(15, 23, 42, 0.1)",
+      "xl": "0 20px 25px -5px rgba(15, 23, 42, 0.12)"
+    }
+  },
+  "component_library": [
+    {
+      "component_name": "PillButton",
+      "type": "button",
+      "purpose": "Primary call-to-action button for key flows",
+      "variants": ["primary", "secondary", "ghost"],
+      "states": ["default", "hover", "active", "disabled"],
+      "accessibility_requirements": ["Minimum 4.5:1 contrast", "Keyboard focus outline", "ARIA label for icon-only variant"],
+      "responsive_behavior": "Full-width on mobile, intrinsic width on tablet and desktop"
+    },
+    {
+      "component_name": "StatCard",
+      "type": "card",
+      "purpose": "Display key metrics such as current weight and body-fat delta",
+      "variants": ["default", "trend-up", "trend-down"],
+      "states": ["loading", "empty", "populated"],
+      "accessibility_requirements": ["Announce metric and delta via aria-live", "Provide textual trend description"],
+      "responsive_behavior": "Stack vertically on mobile, three-column grid on desktop"
+    },
+    {
+      "component_name": "TrendChart",
+      "type": "data-display",
+      "purpose": "Render weight and body fat trends over adjustable periods",
+      "variants": ["line", "area"],
+      "states": ["loading", "empty", "populated", "error"],
+      "accessibility_requirements": ["Provide tabular fallback", "Ensure color and marker differentiation"],
+      "responsive_behavior": "Adaptive height with tooltip repositioning on smaller screens"
+    },
+    {
+      "component_name": "ProgressBar",
+      "type": "data-display",
+      "purpose": "Show goal progress as percentage",
+      "variants": ["standard", "success", "warning"],
+      "states": ["default", "indeterminate"],
+      "accessibility_requirements": ["aria-valuenow/aria-valuemin/aria-valuemax attributes", "Visible label for percentage"],
+      "responsive_behavior": "Full-width with label alignment adjustments across breakpoints"
+    },
+    {
+      "component_name": "NavigationBar",
+      "type": "navigation",
+      "purpose": "Primary navigation across dashboard sections",
+      "variants": ["top", "side", "mobile-bottom"],
+      "states": ["default", "active", "hover"],
+      "accessibility_requirements": ["Keyboard arrow navigation", "aria-current for active page"],
+      "responsive_behavior": "Collapses to bottom navigation on mobile and sidebar on desktop"
+    },
+    {
+      "component_name": "DataTable",
+      "type": "data-display",
+      "purpose": "List historical weight entries with filters and sorting",
+      "variants": ["default", "dense"],
+      "states": ["loading", "empty", "populated", "error"],
+      "accessibility_requirements": ["Table headers with scope", "Keyboard accessible filters"],
+      "responsive_behavior": "Horizontal scroll with sticky headers on mobile"
+    },
+    {
+      "component_name": "LogEntryForm",
+      "type": "input",
+      "purpose": "Capture daily weight, body fat, notes, and habits",
+      "variants": ["modal", "inline"],
+      "states": ["default", "submitting", "success", "error"],
+      "accessibility_requirements": ["Field labels associated with inputs", "Error messages programmatically tied to fields"],
+      "responsive_behavior": "Single column on mobile, two-column grouping on desktop"
+    },
+    {
+      "component_name": "NotificationToast",
+      "type": "data-display",
+      "purpose": "Provide contextual feedback for actions",
+      "variants": ["success", "warning", "error", "info"],
+      "states": ["visible", "dismissed"],
+      "accessibility_requirements": ["aria-live=polite", "Dismiss button accessible via keyboard"],
+      "responsive_behavior": "Anchored bottom on mobile and top-right on desktop"
+    }
+  ],
+  "screens": [
+    {
+      "screen_name": "Splash",
+      "route": "/",
+      "purpose": "Introduce brand value and drive start actions",
+      "layout_structure": {
+        "header": "Minimal logo top-left with optional skip link",
+        "main_content": "Hero split layout with headline, supporting copy, CTA buttons, and feature highlights",
+        "sidebar": "Not applicable",
+        "footer": "Legal links and secondary CTA"
+      },
+      "components_used": ["NavigationBar", "PillButton", "StatCard"],
+      "content_sections": [
+        {
+          "section_name": "Hero",
+          "purpose": "Communicate core value proposition",
+          "hierarchy_level": "primary",
+          "content_type": "text"
+        },
+        {
+          "section_name": "Feature Highlights",
+          "purpose": "Showcase key benefits",
+          "hierarchy_level": "secondary",
+          "content_type": "data"
+        },
+        {
+          "section_name": "Testimonials",
+          "purpose": "Provide social proof",
+          "hierarchy_level": "tertiary",
+          "content_type": "text"
+        }
+      ],
+      "user_interactions": [
+        {
+          "interaction_type": "click",
+          "trigger": "Start Journey CTA",
+          "expected_outcome": "Navigate to signup/login"
+        },
+        {
+          "interaction_type": "navigate",
+          "trigger": "Skip to dashboard link",
+          "expected_outcome": "Scroll to app preview"
+        }
+      ],
+      "data_states": ["loading", "populated"],
+      "responsive_priorities": {
+        "mobile": ["Stack hero vertically", "Show single testimonial"],
+        "tablet": ["Two-column hero", "Display two testimonials"],
+        "desktop": ["Full split hero", "Display feature cards grid"]
+      }
+    },
+    {
+      "screen_name": "Login",
+      "route": "/login",
+      "purpose": "Authenticate returning users securely",
+      "layout_structure": {
+        "header": "Brand logo and back to home link",
+        "main_content": "Centered card with email/password form and social logins",
+        "sidebar": "Motivational illustration on desktop",
+        "footer": "Forgot password and support links"
+      },
+      "components_used": ["LogEntryForm", "PillButton", "NotificationToast"],
+      "content_sections": [
+        {
+          "section_name": "Login Form",
+          "purpose": "Collect credentials",
+          "hierarchy_level": "primary",
+          "content_type": "interactive"
+        },
+        {
+          "section_name": "Secondary Actions",
+          "purpose": "Forgot password and create account",
+          "hierarchy_level": "secondary",
+          "content_type": "text"
+        }
+      ],
+      "user_interactions": [
+        {
+          "interaction_type": "submit",
+          "trigger": "Login button",
+          "expected_outcome": "Attempt authentication"
+        },
+        {
+          "interaction_type": "click",
+          "trigger": "Forgot password link",
+          "expected_outcome": "Open password reset flow"
+        }
+      ],
+      "data_states": ["loading", "error", "success"],
+      "responsive_priorities": {
+        "mobile": ["Full-width form", "Inline error messaging"],
+        "tablet": ["Card with shadow", "Display illustration"],
+        "desktop": ["Split layout with marketing panel", "Persist helpful tips"]
+      }
+    },
+    {
+      "screen_name": "Dashboard",
+      "route": "/dashboard",
+      "purpose": "Provide daily snapshot of progress and quick actions",
+      "layout_structure": {
+        "header": "Top nav with user indicator and quick actions",
+        "main_content": "Grid of stat cards, trend charts, and quick logging widget",
+        "sidebar": "Goal summary and habit checklist",
+        "footer": "Secondary navigation and data sources"
+      },
+      "components_used": [
+        "NavigationBar",
+        "StatCard",
+        "TrendChart",
+        "ProgressBar",
+        "PillButton",
+        "NotificationToast"
+      ],
+      "content_sections": [
+        {
+          "section_name": "Today's Summary",
+          "purpose": "Show current metrics",
+          "hierarchy_level": "primary",
+          "content_type": "data"
+        },
+        {
+          "section_name": "Trends",
+          "purpose": "Visualize 30-day progress",
+          "hierarchy_level": "secondary",
+          "content_type": "data"
+        },
+        {
+          "section_name": "Quick Log",
+          "purpose": "Enable fast entry",
+          "hierarchy_level": "tertiary",
+          "content_type": "interactive"
+        }
+      ],
+      "user_interactions": [
+        {
+          "interaction_type": "click",
+          "trigger": "Log Today button",
+          "expected_outcome": "Open log entry modal"
+        },
+        {
+          "interaction_type": "input",
+          "trigger": "Adjust goal",
+          "expected_outcome": "Update progress bar"
+        }
+      ],
+      "data_states": ["loading", "empty", "populated", "error"],
+      "responsive_priorities": {
+        "mobile": ["Stack cards", "Condense charts with horizontal scroll"],
+        "tablet": ["Two-column card layout", "Inline sidebar"],
+        "desktop": ["Three-column layout", "Persistent sidebar"]
+      }
+    },
+    {
+      "screen_name": "History",
+      "route": "/history",
+      "purpose": "Allow users to review and search historical entries",
+      "layout_structure": {
+        "header": "Filter bar with date range and metric toggles",
+        "main_content": "Data table with pagination and inline charts",
+        "sidebar": "Saved filters and export options",
+        "footer": "Data retention disclaimer"
+      },
+      "components_used": ["NavigationBar", "DataTable", "TrendChart", "PillButton"],
+      "content_sections": [
+        {
+          "section_name": "Filters",
+          "purpose": "Refine history list",
+          "hierarchy_level": "primary",
+          "content_type": "interactive"
+        },
+        {
+          "section_name": "Entries Table",
+          "purpose": "Display historical data",
+          "hierarchy_level": "secondary",
+          "content_type": "data"
+        },
+        {
+          "section_name": "Insights",
+          "purpose": "Surface patterns",
+          "hierarchy_level": "tertiary",
+          "content_type": "text"
+        }
+      ],
+      "user_interactions": [
+        {
+          "interaction_type": "click",
+          "trigger": "Export CSV",
+          "expected_outcome": "Download data"
+        },
+        {
+          "interaction_type": "navigate",
+          "trigger": "View entry",
+          "expected_outcome": "Open detail modal"
+        }
+      ],
+      "data_states": ["loading", "empty", "populated", "error"],
+      "responsive_priorities": {
+        "mobile": ["Single column list", "Simplified filters"],
+        "tablet": ["Two-column layout", "Sticky filter bar"],
+        "desktop": ["Full table with sticky columns", "Sidebar visible"]
+      }
+    },
+    {
+      "screen_name": "Log Entry",
+      "route": "/log",
+      "purpose": "Provide guided entry form with validation and recommendations",
+      "layout_structure": {
+        "header": "Progress header with step indicator",
+        "main_content": "Multi-step form for metrics, nutrition notes, habits",
+        "sidebar": "Tips and historical context",
+        "footer": "Save/cancel buttons and autosave status"
+      },
+      "components_used": ["LogEntryForm", "ProgressBar", "NotificationToast", "PillButton"],
+      "content_sections": [
+        {
+          "section_name": "Daily Metrics",
+          "purpose": "Enter weight and body fat",
+          "hierarchy_level": "primary",
+          "content_type": "interactive"
+        },
+        {
+          "section_name": "Wellness Notes",
+          "purpose": "Capture subjective data",
+          "hierarchy_level": "secondary",
+          "content_type": "interactive"
+        },
+        {
+          "section_name": "Recommendations",
+          "purpose": "Provide contextual tips",
+          "hierarchy_level": "tertiary",
+          "content_type": "text"
+        }
+      ],
+      "user_interactions": [
+        {
+          "interaction_type": "submit",
+          "trigger": "Save entry",
+          "expected_outcome": "Persist data and show toast"
+        },
+        {
+          "interaction_type": "input",
+          "trigger": "Auto-suggest habits",
+          "expected_outcome": "Populate quick chips"
+        }
+      ],
+      "data_states": ["draft", "saving", "success", "error"],
+      "responsive_priorities": {
+        "mobile": ["Single-column wizard", "Sticky submit"],
+        "tablet": ["Stepper side panel", "Inline tips"],
+        "desktop": ["Two-column layout", "Autosave indicator"]
+      }
+    },
+    {
+      "screen_name": "Analytics",
+      "route": "/analytics",
+      "purpose": "Deliver deeper insights and correlations",
+      "layout_structure": {
+        "header": "Metric selector and comparison filters",
+        "main_content": "Interactive charts and correlation widgets",
+        "sidebar": "Goals comparisons and anomalies",
+        "footer": "Data source disclosure"
+      },
+      "components_used": ["NavigationBar", "TrendChart", "DataTable", "StatCard"],
+      "content_sections": [
+        {
+          "section_name": "Metric Overview",
+          "purpose": "Select metrics for analysis",
+          "hierarchy_level": "primary",
+          "content_type": "interactive"
+        },
+        {
+          "section_name": "Correlations",
+          "purpose": "Reveal relationships",
+          "hierarchy_level": "secondary",
+          "content_type": "data"
+        },
+        {
+          "section_name": "Insights Feed",
+          "purpose": "Explain patterns",
+          "hierarchy_level": "tertiary",
+          "content_type": "text"
+        }
+      ],
+      "user_interactions": [
+        {
+          "interaction_type": "click",
+          "trigger": "Add comparison metric",
+          "expected_outcome": "Overlay additional data"
+        },
+        {
+          "interaction_type": "navigate",
+          "trigger": "View anomaly detail",
+          "expected_outcome": "Open insights drawer"
+        }
+      ],
+      "data_states": ["loading", "empty", "populated", "error"],
+      "responsive_priorities": {
+        "mobile": ["Stack charts", "Swipeable insight cards"],
+        "tablet": ["Grid of charts", "Sticky filters"],
+        "desktop": ["Three-column analytics board", "Sidebar insights"]
+      }
+    },
+    {
+      "screen_name": "Settings",
+      "route": "/settings",
+      "purpose": "Manage profile, preferences, and integrations",
+      "layout_structure": {
+        "header": "Tabbed navigation for settings categories",
+        "main_content": "Cards for profile, goals, notifications, integrations",
+        "sidebar": "Support links and account status",
+        "footer": "Legal and privacy links"
+      },
+      "components_used": ["NavigationBar", "DataTable", "PillButton", "NotificationToast"],
+      "content_sections": [
+        {
+          "section_name": "Profile",
+          "purpose": "Update personal info",
+          "hierarchy_level": "primary",
+          "content_type": "interactive"
+        },
+        {
+          "section_name": "Goals",
+          "purpose": "Set weight targets",
+          "hierarchy_level": "secondary",
+          "content_type": "interactive"
+        },
+        {
+          "section_name": "Integrations",
+          "purpose": "Manage device connections",
+          "hierarchy_level": "tertiary",
+          "content_type": "interactive"
+        }
+      ],
+      "user_interactions": [
+        {
+          "interaction_type": "submit",
+          "trigger": "Save settings",
+          "expected_outcome": "Persist updates"
+        },
+        {
+          "interaction_type": "click",
+          "trigger": "Connect integration",
+          "expected_outcome": "Launch OAuth flow"
+        }
+      ],
+      "data_states": ["loading", "empty", "populated", "error"],
+      "responsive_priorities": {
+        "mobile": ["Accordion sections", "Priority for profile"],
+        "tablet": ["Two-column layout", "Persistent tabs"],
+        "desktop": ["Tabbed interface with sidebar", "Detailed integration cards"]
+      }
+    }
+  ],
+  "navigation_structure": {
+    "primary_navigation": ["Dashboard", "History", "Log Entry", "Analytics", "Settings"],
+    "secondary_navigation": ["Goals", "Insights", "Community"],
+    "user_navigation": ["profile", "notifications", "logout"]
+  },
+  "accessibility_requirements": {
+    "color_contrast": "WCAG 2.1 AA minimum (4.5:1 for text, 3:1 for UI components)",
+    "keyboard_navigation": "All interactive elements accessible via keyboard",
+    "screen_reader": "Semantic HTML, ARIA labels, meaningful alt text",
+    "focus_indicators": "Visible focus states for all interactive elements",
+    "text_scaling": "Readable at 200% zoom without horizontal scroll"
+  },
+  "implementation_notes": {
+    "technical_stack": ["Next.js", "React", "Tailwind CSS", "ShadCN", "Supabase", "Recharts"],
+    "performance_targets": {
+      "page_load": "< 3 seconds",
+      "interaction_delay": "< 100ms",
+      "lighthouse_score": "> 90"
+    },
+    "special_considerations": [
+      "Initial Figma Make runs performed manually on Professional plan",
+      "Ensure Supabase clients table exists before deploying orchestrator",
+      "Plan for automated GA4 domain mapping once final DBAs selected"
+    ]
+  }
+}

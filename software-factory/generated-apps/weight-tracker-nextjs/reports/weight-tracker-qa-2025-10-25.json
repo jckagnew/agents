@@ -1,0 +1,285 @@
+{
+  "screens": [
+    {
+      "name": "Dashboard",
+      "buttonText": null,
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "screenshot": "screenshots/dashboard-desktop-1440x900.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "screenshot": "screenshots/dashboard-tablet-768x1024.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "screenshot": "screenshots/dashboard-mobile-375x667.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Log Entry",
+      "buttonText": "Log Entry",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "screenshot": "screenshots/log-desktop-1440x900.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "screenshot": "screenshots/log-tablet-768x1024.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "screenshot": "screenshots/log-mobile-375x667.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "History",
+      "buttonText": "History",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "screenshot": "screenshots/history-desktop-1440x900.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "screenshot": "screenshots/history-tablet-768x1024.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "screenshot": "screenshots/history-mobile-375x667.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Analytics",
+      "buttonText": "Analytics",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "screenshot": "screenshots/analytics-desktop-1440x900.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "screenshot": "screenshots/analytics-tablet-768x1024.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "screenshot": "screenshots/analytics-mobile-375x667.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        }
+      ]
+    },
+    {
+      "name": "Settings",
+      "buttonText": "Settings",
+      "viewports": [
+        {
+          "viewport": "Desktop",
+          "dimensions": "1440x900",
+          "screenshot": "screenshots/settings-desktop-1440x900.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Tablet",
+          "dimensions": "768x1024",
+          "screenshot": "screenshots/settings-tablet-768x1024.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        },
+        {
+          "viewport": "Mobile",
+          "dimensions": "375x667",
+          "screenshot": "screenshots/settings-mobile-375x667.png",
+          "metrics": {
+            "title": "Weight Tracker Pro",
+            "hasH1": true,
+            "h1Text": "Transform Your Life,One Weigh-In at a Time",
+            "hasButtons": 1,
+            "hasCards": 0,
+            "hasPillButtons": 1,
+            "hasNavigation": false,
+            "errors": []
+          },
+          "success": true
+        }
+      ]
+    }
+  ],
+  "scores": {
+    "brandCompliance": 25,
+    "responsiveDesign": 20,
+    "accessibility": 25,
+    "performance": 15,
+    "visualPolish": 15
+  },
+  "issues": [],
+  "duration": 20.61,
+  "grade": "A",
+  "overallScore": 100
+}
