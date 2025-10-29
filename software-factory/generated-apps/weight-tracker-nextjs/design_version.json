@@ -1,0 +1,21 @@
+{
+  "design_version": "v2",
+  "figma_file": "https://www.figma.com/design/9VIHjmpJFTTyvxFpAE70qB/Weight-Tracker-v2?node-id=0-1&m=dev&t=05CG2YxPFqLUY1Ck-1",
+  "figma_file_id": "9VIHjmpJFTTyvxFpAE70qB",
+  "spec_path": "docs/design/generated/weight-tracker-spec-v1.json",
+  "spec_hash": "2f774977c77d61f6f106f990f0a3fbb524e6ff084a68043c753483a102bc0a6f",
+  "baseline_path": "software-factory/generated-apps/weight-tracker-nextjs/screenshots/baseline/v2",
+  "baseline_hash": "0330d273b500b354078255d34dc70d99007c03e400dde701913fdf82fd064c69",
+  "last_updated": "2025-10-29",
+  "status": "implemented",
+  "notes": [
+    "v2 design system tokens implemented (colors, typography, spacing)",
+    "Inter font family applied throughout",
+    "Primary color updated to #2563EB, Secondary to #10B981, Accent to #F97316",
+    "Shared components updated to use v2 design tokens",
+    "Complete baseline coverage: 21 PNGs (7 screens × 3 viewports)",
+    "All screens captured: Splash, Login, Dashboard, Log Entry, History, Analytics, Settings",
+    "Visual QA score: 94/100 (Grade A) - exceeds 85 threshold",
+    "Baseline refreshed after Next.js 14.2.33 upgrade (full-page captures, hash 0330d273b500b354078255d34dc70d99007c03e400dde701913fdf82fd064c69)"
+  ]
+}
