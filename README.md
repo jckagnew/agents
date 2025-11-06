@@ -14,15 +14,71 @@ Enforce a "design-approved before code" principle by leveraging AI for key steps
 
 ### Service Tiers
 
-1. **Express Tier:** Fully-automated path - provide requirements, get notified upon completion
-2. **Concierge Tier:** Collaborative path with explicit approval steps for prompt engineering and design review
+1. **Express Tier:** Fully-automated with **agent-in-the-loop** validation
+   - Codex generates designs and validates them automatically
+   - AI compares against benchmark screenshots iteratively
+   - No human approval needed
+   - ~4-5 minutes from intake to code
+   - Best for: MVPs, prototypes, internal tools
+
+2. **Concierge Tier:** Collaborative with **human-in-the-loop** design
+   - User iterates designs in Stitch (stitch.withgoogle.com)
+   - Human approval gates throughout workflow
+   - Full creative control
+   - ~15-30 minutes from intake to code
+   - Best for: Client projects, brand-critical apps
+
+3. **Premium Tier:** Hybrid approach
+   - Stitch rapid prototype → Figma professional refinement
+   - Human + agent collaboration
+   - Maximum quality and control
+   - Best for: Enterprise applications
+
+## 🔄 Design Validation Approaches
+
+### Human-in-the-Loop (Concierge Tier)
+
+Uses **Google Stitch** for iterative human-guided design:
+
+```
+Intake → Gemini Analysis → Stitch Prompts → Human Iterates in Stitch →
+Human Approves → HTML Export → Code Generation → Complete
+```
+
+**Key Feature**: Human creative control with Stitch's AI-assisted design tool
+
+### Agent-in-the-Loop (Express Tier)
+
+Uses **Codex multimodal capabilities** for automated validation:
+
+```
+Intake → Gemini Analysis → Codex Generates → Playwright Renders →
+Codex Compares vs Benchmark → Codex Iterates (max 5x) → Code Generation → Complete
+```
+
+**Key Feature**: AI validates its own work visually, no human needed
+
+### Comparison
+
+| Feature | Express (Agent) | Concierge (Human) | Premium (Hybrid) |
+|---------|----------------|-------------------|------------------|
+| **Speed** | ~5 minutes | ~20 minutes | ~40 minutes |
+| **Cost** | $1-2 per project | $2-3 per project | $5-10 per project |
+| **Human Time** | 0 minutes | 15-25 minutes | 30-60 minutes |
+| **Creative Control** | Limited | Full | Maximum |
+| **Consistency** | High | Varies | High |
+| **Best For** | MVPs, prototypes | Client work | Enterprise apps |
+
+For detailed technical documentation, see:
+- [Stitch Workflow (Human)](docs/STITCH_WORKFLOW_IMPLEMENTATION.md)
+- [Agent-in-the-Loop (Codex)](docs/AGENT_IN_THE_LOOP.md)
 
 ### Division of Labor
 
-- **Gemini (Orchestrator):** Project management, task delegation, communication
-- **Codex (Backend Specialist):** Supabase schema, Edge Functions, service integrations
-- **Cursor (Frontend/UI Specialist):** User-facing Expo application
-- **Claude (Foundation Architect):** Initial project structure, documentation, architecture
+- **Gemini:** Requirements analysis, design system generation, screen mapping
+- **Codex (Express Tier):** Automated design generation with visual validation
+- **Claude:** HTML→React Native conversion, code quality validation
+- **Cursor:** Local development, final integration, deployment
 
 ## 📋 Phased Execution
 
