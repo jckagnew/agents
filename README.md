@@ -34,51 +34,82 @@ Enforce a "design-approved before code" principle by leveraging AI for key steps
    - Maximum quality and control
    - Best for: Enterprise applications
 
-## 🔄 Design Validation Approaches
+## 🔄 Master Workflow: Unified Design-First Approach
 
-### Human-in-the-Loop (Concierge Tier)
+**Key Innovation**: One workflow with flexible checkpoints. Both tiers share 90% of the same process.
 
-Uses **Google Stitch** for iterative human-guided design:
-
-```
-Intake → Gemini Analysis → Stitch Prompts → Human Iterates in Stitch →
-Human Approves → HTML Export → Code Generation → Complete
-```
-
-**Key Feature**: Human creative control with Stitch's AI-assisted design tool
-
-### Agent-in-the-Loop (Express Tier)
-
-Uses **Codex multimodal capabilities** for automated validation:
+### The Unified Workflow
 
 ```
-Intake → Gemini Analysis → Codex Generates → Playwright Renders →
-Codex Compares vs Benchmark → Codex Iterates (max 5x) → Code Generation → Complete
+1. Conversation → PRD Generation (BOTH)
+   ↓
+2. Requirements Analysis with locked brand guideline (BOTH)
+   ↓
+3. Design Approval:
+   • Express: Codex auto-generates against locked guideline
+   • Concierge: Human iterates in Stitch with creative control
+   ↓
+4. Code Generation (BOTH)
+   ↓
+5. Agent validates CODE matches approved DESIGN (BOTH)
+   ↓
+6. Package & Handoff (BOTH)
 ```
 
-**Key Feature**: AI validates its own work visually, no human needed
+**Breakthrough**: Agent-in-the-loop validates that **generated code matches approved design**, regardless of whether that design came from Codex (Express) or Stitch (Concierge).
+
+### Key Features (Both Tiers)
+
+✅ **PRD Generation**: Free-form conversation → structured requirements
+✅ **Locked Brand Guideline**: 1 URL marked "Must Follow" (colors, typography, layout)
+✅ **Code Validation**: Agent ensures code matches approved design pixel-perfect
+✅ **Website Refresh**: Point at existing site, generate modernized version
 
 ### Comparison
 
-| Feature | Express (Agent) | Concierge (Human) | Premium (Hybrid) |
-|---------|----------------|-------------------|------------------|
-| **Speed** | ~5 minutes | ~20 minutes | ~40 minutes |
-| **Cost** | $1-2 per project | $2-3 per project | $5-10 per project |
-| **Human Time** | 0 minutes | 15-25 minutes | 30-60 minutes |
-| **Creative Control** | Limited | Full | Maximum |
-| **Consistency** | High | Varies | High |
-| **Best For** | MVPs, prototypes | Client work | Enterprise apps |
+| Feature | Express (Auto) | Concierge (Human) | Shared? |
+|---------|----------------|-------------------|---------|
+| **PRD Generation** | ✓ Free-form → structured | ✓ Free-form → structured | ✅ 100% |
+| **Requirements Analysis** | ✓ Gemini + locked guideline | ✓ Gemini + locked guideline | ✅ 100% |
+| **Design Approval** | Codex auto (3-4 min) | Stitch human (15-25 min) | ❌ Diverges |
+| **Code Generation** | Already done by Codex | HTML → React Native | ⚠️ Different |
+| **Code Validation** | Agent validates match | Agent validates match | ✅ 100% |
+| **Packaging** | ZIP generation | ZIP generation | ✅ 100% |
+| **Speed** | ~5 minutes | ~25 minutes | - |
+| **Cost** | $1.40 per project | $1.35 per project | - |
+| **Human Time** | 0 minutes | 20 minutes | - |
+| **Best For** | MVPs, prototypes, internal tools | Client work, brand-critical apps | - |
 
-For detailed technical documentation, see:
-- [Stitch Workflow (Human)](docs/STITCH_WORKFLOW_IMPLEMENTATION.md)
-- [Agent-in-the-Loop (Codex)](docs/AGENT_IN_THE_LOOP.md)
+### Documentation
+
+- **[Master Workflow](docs/MASTER_WORKFLOW.md)** - Complete unified architecture
+- [Stitch Integration](docs/STITCH_WORKFLOW_IMPLEMENTATION.md) - Concierge tier details
+- [Agent-in-the-Loop](docs/AGENT_IN_THE_LOOP.md) - Code validation process
+
+### New Product: Website Refresh
+
+Point the factory at an existing website:
+
+```typescript
+executeWorkflow(
+  [{ role: 'user', content: 'Modernize our company website' }],
+  'express',  // or 'concierge'
+  'https://mycompany.com'  // Existing site as baseline
+);
+
+// Result:
+// ✅ Modern, responsive design
+// ✅ Preserves brand identity (colors, typography, logo)
+// ✅ Updates UX to 2025 standards
+// ✅ Validates new code matches brand requirements
+```
 
 ### Division of Labor
 
-- **Gemini:** Requirements analysis, design system generation, screen mapping
-- **Codex (Express Tier):** Automated design generation with visual validation
-- **Claude:** HTML→React Native conversion, code quality validation
-- **Cursor:** Local development, final integration, deployment
+- **Gemini:** PRD generation, requirements analysis, design system, screen mapping (both tiers)
+- **Codex:** Design generation (Express), code validation (both tiers)
+- **Playwright:** Render code for validation (both tiers)
+- **Claude/Cursor:** HTML→React Native (Concierge), code refinement (both tiers)
 
 ## 📋 Phased Execution
 
