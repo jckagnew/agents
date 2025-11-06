@@ -1,0 +1,36 @@
+{
+  "name": "design-first-software-factory",
+  "version": "0.1.0",
+  "description": "A sophisticated, auditable, and user-centric workflow that accelerates the journey from idea to production-ready code",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "test": "jest",
+    "lint": "eslint .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-native": "^0.72.0",
+    "expo": "^50.0.0",
+    "expo-router": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-native": "^0.72.0",
+    "typescript": "^5.0.0"
+  },
+  "keywords": [
+    "expo",
+    "react-native",
+    "design-first",
+    "ai",
+    "code-generation"
+  ],
+  "author": "Your Name",
+  "license": "PROPRIETARY"
+}
