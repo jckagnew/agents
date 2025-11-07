@@ -117,12 +117,12 @@ Then **both** converge to use agent-in-the-loop to ensure the **code implementat
 │    • Skip to Phase 5                                        │
 │                                                              │
 │  Concierge Path:                                            │
-│    • Convert Stitch HTML → React Native                     │
+│    • Convert Stitch HTML → Expo (universal React Native)   │
 │    • Claude/Cursor generates TypeScript components          │
 │    • Apply design system                                    │
 │                                                              │
 │  Output:                                                    │
-│    • Complete React Native components for all screens       │
+│    • Complete Expo components for all screens (iOS/Android/Web) │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
@@ -135,7 +135,7 @@ Then **both** converge to use agent-in-the-loop to ensure the **code implementat
 │  For Each Screen:                                           │
 │    ┌──────────────────────────────────────┐               │
 │    │ 1. Playwright Renders                │               │
-│    │    - Generated React Native code     │               │
+│    │    - Generated Expo code             │               │
 │    │    - Captures screenshot             │               │
 │    └────────────┬─────────────────────────┘               │
 │                 │                                           │
@@ -215,10 +215,12 @@ Concierge: Human generates design → Agent validates code matches design
                          SAME VALIDATION FOR BOTH
 ```
 
-The agent's job is to ensure that the **React Native code, when rendered, visually matches the approved design** - regardless of whether that approved design came from:
+The agent's job is to ensure that the **Expo code, when rendered, visually matches the approved design** - regardless of whether that approved design came from:
 - Codex (Express tier)
 - Stitch (Concierge tier)
 - Figma (Premium tier - future)
+
+**Why Expo?** Every generated app is built with Expo to ensure universal accessibility across iOS, Android, and Web from a single codebase.
 
 ## Shared Components Across Both Tiers
 
@@ -296,11 +298,11 @@ const screenMappings = await gemini.generateScreenMappings(
 // THE SAME for both Express and Concierge
 
 for (const screen of approvedDesigns) {
-  // 1. Render generated code
+  // 1. Render generated Expo code
   const rendered = await playwright.renderComponentAndCapture(
     screen.code,
     screen.name,
-    'react-native'
+    'expo'
   );
 
   // 2. Compare against approved design (the benchmark)
@@ -335,7 +337,7 @@ But the **validation logic is identical**!
 | **1. PRD Generation** | Free-form conversation → PRD | Free-form conversation → PRD | ✅ 100% shared |
 | **2. Requirements Analysis** | Gemini analyzes inspiration + locked guideline | Gemini analyzes inspiration + locked guideline | ✅ 100% shared |
 | **3. Design Approval** | Codex auto-generates (3-4 min) | Human iterates in Stitch (15-25 min) | ❌ Diverges here |
-| **4. Code Generation** | Already done by Codex | HTML → React Native | ⚠️ Different paths |
+| **4. Code Generation** | Already done by Codex | HTML → Expo | ⚠️ Different paths |
 | **5. Code Validation** | Agent validates code matches Codex design | Agent validates code matches Stitch design | ✅ 100% shared |
 | **6. Packaging** | Generate ZIP | Generate ZIP | ✅ 100% shared |
 

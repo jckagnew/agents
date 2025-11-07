@@ -51,11 +51,11 @@ This document describes the complete implementation of the Stitch-integrated Des
                      │
                      ▼
 ┌─────────────────────────────────────────────────────────────┐
-│       Claude/Cursor: HTML → React Native                     │
-│  - Convert HTML to TypeScript components                     │
+│       Claude/Cursor: HTML → Expo (universal React Native)    │
+│  - Convert HTML to TypeScript Expo components                │
 │  - Apply design system                                       │
 │  - Generate navigation structure                             │
-│  - Package complete Expo project                             │
+│  - Package complete Expo project (iOS, Android, Web)         │
 └────────────────────┬────────────────────────────────────────┘
                      │
                      ▼
@@ -255,7 +255,7 @@ Main workflow orchestrator:
 
 ### 2. convert-html-to-react-native
 
-**Purpose**: Convert single Stitch HTML export to React Native component
+**Purpose**: Convert single Stitch HTML export to Expo component (universal React Native)
 
 **Endpoint**: `POST /convert-html-to-react-native`
 
@@ -299,10 +299,10 @@ Main workflow orchestrator:
 
 **Workflow**:
 1. Get all approved Stitch designs
-2. Convert each to React Native screen
+2. Convert each to Expo screen (iOS, Android, Web compatible)
 3. Generate navigation structure
 4. Generate theme file from design system
-5. Generate package.json with dependencies
+5. Generate package.json with Expo dependencies
 6. Package all as ZIP file
 7. Upload to storage
 8. Update job status to `completed`
@@ -365,10 +365,10 @@ Main workflow orchestrator:
 #### Step 4: Code Generation (2-5 minutes, automated)
 1. User clicks "Generate Code"
 2. Background job starts:
-   - Converts each HTML to React Native
+   - Converts each HTML to Expo (universal React Native)
    - Generates navigation
    - Generates theme file
-   - Packages complete project
+   - Packages complete Expo project (iOS, Android, Web)
 3. User receives notification
 4. Downloads ZIP file
 

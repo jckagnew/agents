@@ -185,7 +185,12 @@ Generate a comprehensive problem deconstruction including:
 1. **User Stories**: 8-12 user stories in the format "As a [role], I want [goal], so that [benefit]" with acceptance criteria
 2. **Features**: Break down the app into 6-10 core features
 3. **UX Requirements**: Define 10-15 UX requirements covering navigation, interaction, feedback, accessibility, and performance
-4. **Design System**: Create a design system incorporating the inspiration website aesthetics${lockedGuideline ? ' (following the locked brand guideline exactly)' : ''}
+4. **Design System**: Create a platform-aware design system for Expo (universal React Native)${lockedGuideline ? ' (following the locked brand guideline exactly)' : ''}
+   - IMPORTANT: This app will run on iOS, Android, and Web from a single codebase
+   - Use platform-specific values where appropriate (colors, typography, spacing)
+   - iOS: Follow iOS Human Interface Guidelines (San Francisco font, specific spacing)
+   - Android: Follow Material Design (Roboto font, elevation for shadows)
+   - Web: Use web-optimized values (larger text for desktop, CSS shadows)
 
 Return your analysis as a structured JSON object with these exact keys:
 {
@@ -218,10 +223,10 @@ Return your analysis as a structured JSON object with these exact keys:
   ],
   "design_system": {
     "colors": {
-      "primary": "#hex",
-      "secondary": "#hex",
+      "primary": { "ios": "#hex", "android": "#hex", "web": "#hex" },
+      "secondary": { "ios": "#hex", "android": "#hex", "web": "#hex" },
       "accent": "#hex",
-      "background": "#hex",
+      "background": { "ios": "#hex", "android": "#hex", "web": "#hex" },
       "surface": "#hex",
       "error": "#hex",
       "success": "#hex",
@@ -234,17 +239,17 @@ Return your analysis as a structured JSON object with these exact keys:
     },
     "typography": {
       "fontFamily": {
-        "heading": "Font name",
-        "body": "Font name",
-        "mono": "Font name"
+        "heading": { "ios": "System", "android": "Roboto", "web": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" },
+        "body": { "ios": "System", "android": "Roboto", "web": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" },
+        "mono": "Courier"
       },
       "scale": {
-        "h1": 32,
-        "h2": 24,
-        "h3": 20,
-        "h4": 18,
-        "body": 16,
-        "small": 14
+        "h1": { "ios": 34, "android": 32, "web": 40 },
+        "h2": { "ios": 28, "android": 24, "web": 32 },
+        "h3": { "ios": 22, "android": 20, "web": 24 },
+        "h4": { "ios": 18, "android": 18, "web": 20 },
+        "body": { "ios": 17, "android": 16, "web": 16 },
+        "small": { "ios": 15, "android": 14, "web": 14 }
       },
       "weights": {
         "light": 300,
@@ -255,18 +260,19 @@ Return your analysis as a structured JSON object with these exact keys:
     },
     "spacing": {
       "baseUnit": 8,
-      "scale": [4, 8, 16, 24, 32, 48, 64]
+      "scale": [4, 8, 16, 24, 32, 48, 64],
+      "xl": { "ios": 32, "android": 28, "web": 48 }
     },
     "borderRadius": {
       "small": 4,
-      "medium": 8,
-      "large": 16,
+      "medium": { "ios": 10, "android": 8, "web": 8 },
+      "large": { "ios": 16, "android": 12, "web": 12 },
       "full": 9999
     },
     "shadows": {
-      "small": "shadow definition",
-      "medium": "shadow definition",
-      "large": "shadow definition"
+      "small": { "ios": "iOS shadow", "android": "elevation: 2", "web": "CSS box-shadow" },
+      "medium": { "ios": "iOS shadow", "android": "elevation: 4", "web": "CSS box-shadow" },
+      "large": { "ios": "iOS shadow", "android": "elevation: 8", "web": "CSS box-shadow" }
     }
   }
 }`;
