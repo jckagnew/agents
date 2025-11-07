@@ -68,6 +68,24 @@ interface PRDGenerationResult {
   conversation_history: ConversationMessage[];
 }
 
+/**
+ * Website Refresh Modes
+ */
+export enum WebsiteRefreshMode {
+  PRESERVE_BRAND = 'preserve_brand',     // Keep branding, modernize UX
+  REFRESH_BRAND = 'refresh_brand',       // Keep screens/flow, new branding
+  FULL_MODERNIZATION = 'full_modernization' // Modernize both UX and brand
+}
+
+/**
+ * PRD Input Types
+ */
+export enum PRDInputType {
+  GENERATE = 'generate',       // Generate PRD from conversation
+  IMPORT = 'import',           // Import existing PRD document
+  AUGMENT = 'augment'          // Start with partial PRD, fill gaps via conversation
+}
+
 interface PRDConfig {
   geminiApiKey: string;
   model?: string;
@@ -86,6 +104,43 @@ export class PRDGenerationService {
   }
 
   /**
+   * MAIN ENTRY POINT: Process PRD input (generate, import, or augment)
+   */
+  async processPRDInput(
+    inputType: PRDInputType,
+    input: {
+      conversation?: ConversationMessage[];
+      existingPRD?: PRD | Partial<PRD>;
+      prdDocument?: string; // Markdown/text PRD document
+      existingWebsiteUrl?: string;
+      websiteRefreshMode?: WebsiteRefreshMode;
+    }
+  ): Promise<PRDGenerationResult> {
+    switch (inputType) {
+      case PRDInputType.GENERATE:
+        return this.generatePRDFromConversation(
+          input.conversation || [],
+          input.existingWebsiteUrl,
+          input.websiteRefreshMode
+        );
+
+      case PRDInputType.IMPORT:
+        return this.importPRDDocument(
+          input.prdDocument || input.existingPRD!
+        );
+
+      case PRDInputType.AUGMENT:
+        return this.augmentPartialPRD(
+          input.existingPRD!,
+          input.conversation || []
+        );
+
+      default:
+        throw new Error(`Unknown PRD input type: ${inputType}`);
+    }
+  }
+
+  /**
    * Generate PRD from free-form conversation
    *
    * This is the entry point for both tiers - converts unstructured ideas
@@ -93,12 +148,14 @@ export class PRDGenerationService {
    */
   async generatePRDFromConversation(
     conversationHistory: ConversationMessage[],
-    existingWebsiteUrl?: string // For "Website Refresh" product
+    existingWebsiteUrl?: string, // For "Website Refresh" product
+    websiteRefreshMode: WebsiteRefreshMode = WebsiteRefreshMode.PRESERVE_BRAND
   ): Promise<PRDGenerationResult> {
     console.log('📝 Generating PRD from conversation...');
     console.log(`📊 Conversation length: ${conversationHistory.length} messages`);
     if (existingWebsiteUrl) {
       console.log(`🌐 Baseline website: ${existingWebsiteUrl}`);
+      console.log(`🎨 Refresh mode: ${websiteRefreshMode}`);
     }
 
     // Build prompt for PRD generation
@@ -165,6 +222,116 @@ Return as JSON with the complete PRD structure.`;
   }
 
   /**
+   * Import existing PRD document
+   * Accepts PRD as markdown/text or structured object
+   */
+  async importPRDDocument(
+    prdInput: string | PRD | Partial<PRD>
+  ): Promise<PRDGenerationResult> {
+    console.log('📥 Importing existing PRD document...');
+
+    let prd: PRD;
+
+    if (typeof prdInput === 'string') {
+      // Parse markdown/text PRD into structured format
+      const prompt = `You are a product manager. Parse this PRD document into structured format.
+
+**PRD Document:**
+${prdInput}
+
+Convert to structured JSON matching this schema:
+{
+  "project_name": string,
+  "executive_summary": string,
+  "problem_statement": string,
+  "target_audience": { "primary": string, "secondary"?: string },
+  "user_stories": [{ id, as_a, i_want, so_that, priority, acceptance_criteria[] }],
+  "features": [{ id, name, description, user_story_ids[], technical_requirements[]? }],
+  "non_functional_requirements": [{ category, requirement, rationale }],
+  "inspiration_sources": [{ url, locked, notes }],
+  "success_metrics": [{ metric, target, measurement_method }],
+  "out_of_scope": string[],
+  "assumptions": string[],
+  "constraints": string[]
+}
+
+If information is missing, use empty arrays or reasonable defaults. Mark any URLs mentioned as inspiration sources.`;
+
+      const response = await this.callGemini(prompt);
+      prd = this.parsePRDFromResponse(response);
+    } else if ('project_name' in prdInput && 'user_stories' in prdInput) {
+      // Already structured PRD
+      prd = prdInput as PRD;
+    } else {
+      // Partial PRD - fill in missing fields
+      prd = this.fillMissingPRDFields(prdInput as Partial<PRD>);
+    }
+
+    const analysis = this.analyzePRDCompleteness(prd);
+
+    console.log(`✅ PRD Imported`);
+    console.log(`   Confidence: ${(analysis.confidence * 100).toFixed(0)}%`);
+    if (analysis.missing_information.length > 0) {
+      console.log(`   Missing: ${analysis.missing_information.join(', ')}`);
+    }
+
+    return {
+      prd,
+      confidence: analysis.confidence,
+      missing_information: analysis.missing_information,
+      clarifying_questions: analysis.clarifying_questions,
+      conversation_history: [],
+    };
+  }
+
+  /**
+   * Augment partial PRD with conversation
+   * Start with existing PRD elements, fill gaps via conversation
+   */
+  async augmentPartialPRD(
+    partialPRD: Partial<PRD>,
+    conversationHistory: ConversationMessage[]
+  ): Promise<PRDGenerationResult> {
+    console.log('🔧 Augmenting partial PRD with conversation...');
+
+    const conversationText = conversationHistory
+      .map((m) => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`)
+      .join('\n\n');
+
+    const prompt = `You are a product manager. Complete this partial PRD using information from the conversation.
+
+**Partial PRD:**
+${JSON.stringify(partialPRD, null, 2)}
+
+**Conversation:**
+${conversationText}
+
+Generate a complete PRD that:
+1. Preserves ALL existing information from the partial PRD
+2. Fills in missing fields using conversation context
+3. Expands on incomplete sections
+4. Maintains consistency with existing content
+
+Return complete PRD as structured JSON.`;
+
+    const response = await this.callGemini(prompt);
+    const completedPRD = this.parsePRDFromResponse(response);
+
+    const analysis = this.analyzePRDCompleteness(completedPRD);
+
+    console.log(`✅ PRD Augmented`);
+    console.log(`   Confidence: ${(analysis.confidence * 100).toFixed(0)}%`);
+
+    return {
+      prd: completedPRD,
+      confidence: analysis.confidence,
+      missing_information: analysis.missing_information,
+      clarifying_questions: analysis.clarifying_questions,
+      conversation_history: conversationHistory,
+    };
+  }
+
+  /**
    * Convert PRD to ProjectIntake format
    * This bridges the PRD to the actual workflow execution
    */
@@ -184,38 +351,77 @@ Return as JSON with the complete PRD structure.`;
 
   /**
    * Analyze existing website for "Website Refresh" use case
-   * Captures current design, extracts brand guidelines, identifies refresh opportunities
+   * Supports different refresh modes:
+   * - PRESERVE_BRAND: Keep branding, modernize UX
+   * - REFRESH_BRAND: Keep screens/flow, apply new branding
+   * - FULL_MODERNIZATION: Modernize both
    */
-  async analyzeExistingWebsite(websiteUrl: string): Promise<{
+  async analyzeExistingWebsite(
+    websiteUrl: string,
+    refreshMode: WebsiteRefreshMode = WebsiteRefreshMode.PRESERVE_BRAND
+  ): Promise<{
     screenshot: string;
+    refresh_mode: WebsiteRefreshMode;
+
+    // Brand analysis (always extracted, but usage depends on mode)
     brand_analysis: {
       colors: string[];
       typography: { family: string; usage: string }[];
       logo_url?: string;
-      brand_guidelines: string[];
+      brand_guidelines: string[]; // Used if PRESERVE_BRAND
+      should_preserve: boolean; // True for PRESERVE_BRAND, false for REFRESH_BRAND
     };
+
+    // Screens/flow analysis (used for REFRESH_BRAND)
+    screens_analysis: {
+      identified_screens: { name: string; purpose: string; key_elements: string[] }[];
+      user_flows: { flow_name: string; steps: string[] }[];
+      navigation_patterns: string[];
+      information_architecture: string;
+    };
+
     ux_analysis: {
       strengths: string[];
       weaknesses: string[];
       opportunities: string[];
     };
+
     technical_analysis: {
       framework?: string;
       responsive: boolean;
       accessibility_score?: number;
       performance_issues: string[];
     };
-    recommended_improvements: string[];
+
+    recommended_improvements: {
+      ux_improvements: string[]; // Always recommended
+      brand_refresh_ideas?: string[]; // If REFRESH_BRAND
+    };
   }> {
     console.log(`🔍 Analyzing existing website: ${websiteUrl}`);
+    console.log(`🎨 Refresh mode: ${refreshMode}`);
 
     // Capture screenshot (this would use the screenshot service)
     const screenshot = 'base64-screenshot'; // TODO: Actual implementation
 
     // Analyze with vision
+    const modeInstructions = {
+      [WebsiteRefreshMode.PRESERVE_BRAND]: `
+This is a PRESERVE BRAND refresh - we'll modernize the UX while keeping the brand identity intact.
+Focus on extracting brand guidelines that MUST be preserved (colors, typography, logo usage).`,
+      [WebsiteRefreshMode.REFRESH_BRAND]: `
+This is a REFRESH BRAND project - we'll keep the screens and user flows but apply entirely new branding.
+Focus on extracting the information architecture, user flows, and screen structure.
+Brand analysis is for reference only - we'll replace it with new branding.`,
+      [WebsiteRefreshMode.FULL_MODERNIZATION]: `
+This is a FULL MODERNIZATION - we'll update both UX and branding.
+Analyze both the current brand and UX, but we'll be replacing both.`,
+    };
+
     const analysisPrompt = `Analyze this existing website screenshot from ${websiteUrl}.
 
-This is for a "Website Refresh" project where we'll create an updated version while preserving the brand identity.
+**Refresh Mode: ${refreshMode}**
+${modeInstructions[refreshMode]}
 
 Provide comprehensive analysis:
 
@@ -223,22 +429,53 @@ Provide comprehensive analysis:
    - Extract color palette (hex codes)
    - Identify typography (font families and usage)
    - Locate logo
-   - Extract brand guidelines (things that MUST be preserved)
+   - Extract brand guidelines
+   - should_preserve: ${refreshMode === WebsiteRefreshMode.PRESERVE_BRAND}
 
-2. **UX Analysis**:
+2. **Screens/Flow Analysis** ${refreshMode === WebsiteRefreshMode.REFRESH_BRAND ? '(CRITICAL for this mode)' : ''}:
+   - Identify all screens/pages visible or implied
+   - Map out user flows (e.g., "Homepage → Product → Cart → Checkout")
+   - Document navigation patterns
+   - Describe information architecture
+
+3. **UX Analysis**:
    - Strengths: What works well
    - Weaknesses: What needs improvement
    - Opportunities: Modern UX patterns that could enhance it
 
-3. **Technical Analysis**:
+4. **Technical Analysis**:
    - Detect framework if possible
    - Assess responsiveness
    - Identify performance issues
 
-4. **Recommended Improvements**:
-   - Specific, actionable improvements for the refresh
+5. **Recommended Improvements**:
+   - ux_improvements: Always include
+   - brand_refresh_ideas: ${refreshMode === WebsiteRefreshMode.REFRESH_BRAND ? 'Include fresh branding ideas' : 'Only if full modernization'}
 
-Return as structured JSON.`;
+Return as structured JSON matching this schema:
+{
+  "screenshot": "base64-placeholder",
+  "refresh_mode": "${refreshMode}",
+  "brand_analysis": {
+    "colors": ["#hex1", "#hex2"],
+    "typography": [{ "family": "Font Name", "usage": "headings/body" }],
+    "logo_url": "url or null",
+    "brand_guidelines": ["guideline1", "guideline2"],
+    "should_preserve": ${refreshMode === WebsiteRefreshMode.PRESERVE_BRAND}
+  },
+  "screens_analysis": {
+    "identified_screens": [{ "name": "Home", "purpose": "...", "key_elements": ["nav", "hero"] }],
+    "user_flows": [{ "flow_name": "Purchase Flow", "steps": ["Browse", "Add to Cart", "Checkout"] }],
+    "navigation_patterns": ["Top nav", "Footer links"],
+    "information_architecture": "Description of how content is organized"
+  },
+  "ux_analysis": { "strengths": [], "weaknesses": [], "opportunities": [] },
+  "technical_analysis": { "framework": "React", "responsive": true, "performance_issues": [] },
+  "recommended_improvements": {
+    "ux_improvements": [],
+    "brand_refresh_ideas": []
+  }
+}`;
 
     // TODO: Actual Gemini call with vision
     const response = await this.callGemini(analysisPrompt);
@@ -371,6 +608,28 @@ Return as a structured JSON object with all fields. Use "unknown" or empty array
     }
 
     return JSON.parse(jsonMatch[0]);
+  }
+
+  /**
+   * Fill in missing PRD fields with defaults
+   */
+  private fillMissingPRDFields(partialPRD: Partial<PRD>): PRD {
+    return {
+      project_name: partialPRD.project_name || 'Untitled Project',
+      executive_summary: partialPRD.executive_summary || '',
+      problem_statement: partialPRD.problem_statement || '',
+      target_audience: partialPRD.target_audience || { primary: 'General users' },
+      user_stories: partialPRD.user_stories || [],
+      features: partialPRD.features || [],
+      non_functional_requirements: partialPRD.non_functional_requirements || [],
+      inspiration_sources: partialPRD.inspiration_sources || [],
+      success_metrics: partialPRD.success_metrics || [],
+      out_of_scope: partialPRD.out_of_scope || [],
+      assumptions: partialPRD.assumptions || [],
+      constraints: partialPRD.constraints || [],
+      timeline_estimate: partialPRD.timeline_estimate,
+      budget_estimate: partialPRD.budget_estimate,
+    };
   }
 
   /**
