@@ -25,7 +25,6 @@ require('dotenv').config();
  */
 
 const fs = require('fs');
-const path = require('path');
 
 // ============================================================================
 // Configuration
@@ -448,7 +447,7 @@ function normalizeToDomain(name) {
  *     recommendation: 'Avoid this name or consult trademark attorney'
  *   }
  */
-async function checkTrademarkConflicts(businessName, industry = null) {
+async function checkTrademarkConflicts(businessName) {
   console.log(`™️  Checking trademark conflicts for: ${businessName}`);
 
   // Normalize name for trademark search
@@ -1130,7 +1129,7 @@ function generateSocialNotes(platformAvailability, availableCount) {
  * @param {string} platform - Platform name (for platform-specific rules)
  * @returns {string} Valid social handle
  */
-function normalizeToHandle(name, platform) {
+function normalizeToHandle(name) {
   // TODO: Implement normalization with platform-specific rules
   // Twitter: 15 chars max, alphanumeric + underscore
   // Instagram: 30 chars max, alphanumeric + period + underscore
