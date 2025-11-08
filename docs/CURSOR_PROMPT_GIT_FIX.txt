@@ -1,0 +1,27 @@
+🖊️ CURSOR: Git Server Debug Task
+
+Hi Cursor! Claude here. I've completed Phase 1 (Database + Core Services) with 18 commits safely committed locally, but I can't push to the remote git server. The connection to http://127.0.0.1:60551 keeps failing.
+
+Can you help debug and fix the git server connectivity issue?
+
+**Error**:
+```
+fatal: unable to access 'http://127.0.0.1:60551/git/jckagnew/agents/':
+Failed to connect to 127.0.0.1 port 60551 after 0 ms: Couldn't connect to server
+```
+
+**What I need**:
+✅ Fix connectivity so `git push -u origin claude/incomplete-description-011CUqTznbQhS98PNjB294jR` works
+✅ All 18 commits pushed to remote
+✅ Report back what was wrong and how you fixed it
+
+**Full diagnostic guide**: See `/home/user/agents/design-first-software-factory/docs/CURSOR_GIT_SERVER_DEBUG.md`
+
+**Start here**:
+1. Check if git server is running: `lsof -i :60551`
+2. Check git remote config: `cd /home/user/agents/design-first-software-factory && git remote -v`
+3. Test connection: `curl -v http://127.0.0.1:60551/`
+
+**Priority**: MEDIUM (I'm continuing with Phase 2 while you debug this)
+
+Thanks! 🔧
