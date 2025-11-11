@@ -10,6 +10,7 @@ import {
   RefreshControl,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 
 interface Customer {
@@ -26,6 +27,7 @@ interface Customer {
 }
 
 export default function CustomersScreen() {
+  const router = useRouter();
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -87,7 +89,10 @@ export default function CustomersScreen() {
     const projectCount = item.projects?.[0]?.count || 0;
 
     return (
-      <View style={styles.card}>
+      <Pressable
+        style={styles.card}
+        onPress={() => router.push(`/customer/${item.id}`)}
+      >
         <View style={styles.cardHeader}>
           <View style={styles.customerInfo}>
             <Text style={styles.customerName}>{item.full_name}</Text>
@@ -129,7 +134,7 @@ export default function CustomersScreen() {
             </View>
           )}
         </View>
-      </View>
+      </Pressable>
     );
   };
 
@@ -174,7 +179,10 @@ export default function CustomersScreen() {
         }
       />
 
-      <Pressable style={styles.fab}>
+      <Pressable
+        style={styles.fab}
+        onPress={() => router.push('/customer/new')}
+      >
         <Feather name="plus" size={24} color="#fff" />
       </Pressable>
     </View>

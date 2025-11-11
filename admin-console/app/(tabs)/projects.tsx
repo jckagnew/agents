@@ -10,6 +10,7 @@ import {
   RefreshControl,
 } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import { supabase } from '@/lib/supabase';
 
 interface Project {
@@ -29,6 +30,7 @@ interface Project {
 }
 
 export default function ProjectsScreen() {
+  const router = useRouter();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -108,7 +110,10 @@ export default function ProjectsScreen() {
   };
 
   const renderProject = ({ item }: { item: Project }) => (
-    <View style={styles.card}>
+    <Pressable
+      style={styles.card}
+      onPress={() => router.push(`/project/${item.id}`)}
+    >
       <View style={styles.cardHeader}>
         <View style={styles.projectInfo}>
           <View style={styles.nameRow}>
@@ -162,7 +167,7 @@ export default function ProjectsScreen() {
           </View>
         )}
       </View>
-    </View>
+    </Pressable>
   );
 
   const filters = [
@@ -237,7 +242,10 @@ export default function ProjectsScreen() {
         }
       />
 
-      <Pressable style={styles.fab}>
+      <Pressable
+        style={styles.fab}
+        onPress={() => router.push('/project/new')}
+      >
         <Feather name="plus" size={24} color="#fff" />
       </Pressable>
     </View>
