@@ -12,6 +12,8 @@ import {
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { supabase } from '@/lib/supabase';
+import { ListSkeleton } from '@/components/SkeletonLoader';
+import { useErrorHandler, getErrorMessage } from '@/hooks/useErrorHandler';
 
 interface Project {
   id: string;

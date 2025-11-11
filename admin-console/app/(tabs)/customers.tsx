@@ -12,6 +12,8 @@ import {
 import { Feather } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { supabase } from '@/lib/supabase';
+import { ListSkeleton } from '@/components/SkeletonLoader';
+import { useErrorHandler, getErrorMessage } from '@/hooks/useErrorHandler';
 
 interface Customer {
   id: string;
@@ -28,6 +30,7 @@ interface Customer {
 
 export default function CustomersScreen() {
   const router = useRouter();
+  const { handleError } = useErrorHandler();
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -45,12 +48,12 @@ export default function CustomersScreen() {
         .order('created_at', { ascending: false });
 
       if (error) {
-        console.error('Error fetching customers:', error);
+        handleError(error, { customMessage: getErrorMessage(error) });
       } else {
         setCustomers(data || []);
       }
     } catch (error) {
-      console.error('Error:', error);
+      handleError(error, { customMessage: 'Failed to load customers' });
     } finally {
       setLoading(false);
       setRefreshing(false);
@@ -140,8 +143,21 @@ export default function CustomersScreen() {
 
   if (loading) {
     return (
-      <View style={styles.centerContainer}>
-        <ActivityIndicator size="large" color="#007AFF" />
+      <View style={styles.container}>
+        <View style={styles.searchContainer}>
+          <Feather
+            name="search"
+            size={20}
+            color="#8E8E93"
+            style={styles.searchIcon}
+          />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search customers..."
+            editable={false}
+          />
+        </View>
+        <ListSkeleton count={5} type="customer" />
       </View>
     );
   }
