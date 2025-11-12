@@ -1,8 +1,10 @@
 # AGENT MANIFEST
 **Single Source of Truth for Multi-Agent Collaboration**
 
-**Last Updated**: 2025-11-12 by Claude
+**Last Updated**: 2025-11-12 by Claude (Consolidation Phase 1 Complete)
 **Purpose**: Prevent duplicate work across Claude, Cursor, Codex, and Gemini
+
+**🎉 CONSOLIDATION MILESTONE**: Repository structure unified into monorepo layout with `apps/`, `supabase/`, and `docs/` directories.
 
 ---
 
@@ -70,22 +72,22 @@
 - `/admin-console/SECURITY_FIXES_SUMMARY.md` (492 lines)
 
 #### 3. Expo Software Factory (Universal App)
-**Location**: `agents/src/`
+**Location**: `agents/apps/factory/` ◄── CONSOLIDATED LOCATION
 **Branch**: `claude/expo-factory-web-deployment-011CV4GmG4H3M7Seg9KC2ZcP` (THIS BRANCH)
 **Created By**: Claude (previous session: design-first-implementation)
-**Status**: ✅ Code complete, ready for deployment
+**Status**: ✅ Code complete, ready for deployment, **structure consolidated**
 **Platforms**: iOS, Android, Web
 **Components**:
 - Frontend: Expo app with Expo Router
-- Backend: Express server (`src/api/server.ts`)
+- Backend: Express server (`apps/factory/src/api/server.ts`)
 - Services: AI orchestration (OpenAI, Anthropic, Google Gemini)
 - Job Queue: BullMQ with Redis
 - Screens: ProjectIntakeScreen, StitchUploadScreen
 
 **Documentation**:
-- `/WEB_DEPLOYMENT.md` (14-part deployment guide)
-- `/docs/EXPO_UNIVERSAL_ARCHITECTURE.md`
-- `/docs/MASTER_WORKFLOW.md`
+- `/docs/deployment/WEB_DEPLOYMENT.md` (14-part deployment guide)
+- `/apps/factory/docs/EXPO_UNIVERSAL_ARCHITECTURE.md`
+- `/apps/factory/docs/MASTER_WORKFLOW.md`
 - `/README.md`
 
 #### 4. Deployment Configurations
@@ -99,14 +101,15 @@
 - `.env.production.template` - Production environment template
 
 #### 5. Integration Documentation
-**Location**: `agents/` (root)
+**Location**: `agents/docs/deployment/` ◄── CONSOLIDATED LOCATION
 **Created By**: Claude (this session)
-**Status**: ✅ Complete
+**Status**: ✅ Complete and organized
 **Files**:
-- `INTEGRATION_ROADMAP.md` - Overall integration strategy
-- `PHASE_1_DEPLOYMENT.md` - Step-by-step deployment guide
-- `EXISTING_INFRASTRUCTURE_INTEGRATION.md` - How to use existing Supabase
-- `comprehensive-technical-review.md` - Security review
+- `docs/deployment/INTEGRATION_ROADMAP.md` - Overall integration strategy
+- `docs/deployment/PHASE_1_DEPLOYMENT.md` - Step-by-step deployment guide
+- `docs/deployment/EXISTING_INFRASTRUCTURE_INTEGRATION.md` - How to use existing Supabase
+- `docs/deployment/REPOSITORY_CONSOLIDATION_PLAN.md` - Repository consolidation guide
+- `docs/deployment/WEB_DEPLOYMENT.md` - Comprehensive web deployment guide
 
 #### 6. Next.js Legacy Code (TO BE DEPRECATED)
 **Location**: `agents/software-factory/`
@@ -283,46 +286,64 @@ When handing off to another agent (Cursor, Codex, Gemini):
 
 ---
 
-## 📊 REPOSITORY STRUCTURE
+## 📊 REPOSITORY STRUCTURE (CONSOLIDATED)
 
 ```
-agents/
+agents/ ◄── ONE MASTER REPOSITORY
 ├── AGENT_MANIFEST.md ◄── YOU ARE HERE (READ ME FIRST!)
-├── INTEGRATION_ROADMAP.md (overall strategy)
-├── PHASE_1_DEPLOYMENT.md (deployment steps)
-├── WEB_DEPLOYMENT.md (Factory deployment)
-├── EXISTING_INFRASTRUCTURE_INTEGRATION.md (Supabase integration)
+├── AGENT_COLLABORATION_PROTOCOL.md (how agents work together)
+├── README.md (project overview with agent warnings)
 │
-├── admin-console/ (Expo app - iOS/Android/Web)
-│   ├── app/ (screens)
-│   ├── WEB_DEPLOYMENT.md
-│   ├── DEPLOYMENT.md
-│   ├── SECURITY_FIXES_SUMMARY.md
-│   └── app.json
+├── apps/ ◄── ALL APPLICATIONS (MONOREPO STRUCTURE)
+│   ├── factory/ (Expo Factory - iOS/Android/Web)
+│   │   ├── src/
+│   │   │   ├── api/server.ts (Express backend)
+│   │   │   ├── screens/ (Factory UI)
+│   │   │   └── services/ (AI orchestration)
+│   │   └── docs/ (Factory-specific docs)
+│   │
+│   └── admin-console/ (Admin Console - iOS/Android/Web)
+│       ├── app/ (screens) [on branch: claude/security-fixes-*]
+│       ├── WEB_DEPLOYMENT.md
+│       ├── DEPLOYMENT.md
+│       └── SECURITY_FIXES_SUMMARY.md
 │
-├── src/ (Expo Factory)
-│   ├── api/server.ts (Express backend)
-│   ├── screens/ (Factory UI)
-│   └── services/ (AI orchestration)
+├── supabase/ (Backend for design-factory-admin project)
+│   ├── config.toml ◄── Links to EXISTING project
+│   ├── migrations/ (database schema)
+│   └── functions/ (Edge Functions)
+│       ├── capture-screenshot/
+│       ├── process-code-generation/
+│       └── convert-html-to-react-native/
 │
-├── supabase/ (Edge Functions for design-factory-admin)
-│   └── functions/
-│       ├── admin-customers/
-│       ├── admin-projects/
-│       ├── upload-design/
-│       └── stripe-webhook/
+├── docs/ ◄── CENTRALIZED DOCUMENTATION
+│   ├── deployment/
+│   │   ├── PHASE_1_DEPLOYMENT.md
+│   │   ├── WEB_DEPLOYMENT.md
+│   │   ├── INTEGRATION_ROADMAP.md
+│   │   ├── EXISTING_INFRASTRUCTURE_INTEGRATION.md
+│   │   └── REPOSITORY_CONSOLIDATION_PLAN.md
+│   ├── architecture/ (architectural docs)
+│   └── api/ (API documentation)
 │
 ├── software-factory/ (LEGACY - to be deprecated)
 │   ├── admin/ (Next.js)
 │   ├── splash-creator/ (Next.js)
 │   └── NEXTJS_LOGIC_PRESERVATION.md
 │
-├── railway.json (deployment config)
-├── vercel.json (deployment config)
+├── railway.json (backend deployment config)
+├── vercel.json (frontend deployment config)
 ├── .env.example (environment template)
-├── app.json (Expo Factory config)
-└── package.json (dependencies)
+├── app.json (Expo config)
+└── package.json (shared dependencies)
 ```
+
+**✅ Consolidation Status**: Phase 1 Complete (2025-11-12)
+- Factory code moved to `apps/factory/`
+- Admin Console placeholder created at `apps/admin-console/`
+- Supabase configs centralized with `config.toml`
+- Documentation organized in `docs/`
+- Single source of truth established
 
 ---
 
@@ -358,5 +379,24 @@ agents/
 
 **🤝 Remember**: We're all working on the SAME project. Update this manifest to help each other!
 
-**Last Updated**: 2025-11-12 by Claude
+**Last Updated**: 2025-11-12 by Claude (Consolidation Phase 1 Complete)
 **Next Agent**: Please update this file when you make changes!
+
+---
+
+## 🎉 CONSOLIDATION COMPLETED
+
+**Date**: 2025-11-12
+**Completed By**: Claude
+**What Was Done**:
+- ✅ Restructured Factory code: `src/` → `apps/factory/`
+- ✅ Created Admin Console placeholder: `apps/admin-console/`
+- ✅ Centralized Supabase configs with `config.toml`
+- ✅ Organized documentation: `docs/deployment/`
+- ✅ Updated all path references in `package.json`
+- ✅ Established single source of truth
+
+**Next Steps for Other Agents**:
+1. Merge Admin Console code from `claude/security-fixes-*` branch into `apps/admin-console/`
+2. Continue Phase 1 deployment with consolidated structure
+3. Migrate additional repos (website, devops) as needed
