@@ -12,6 +12,43 @@
 
 ---
 
+## 🔐 Environment Configuration (IMPORTANT!)
+
+**🎯 Single Master .env File for Entire Monorepo**
+
+This project uses **ONE** `.env` file at the root that all apps inherit from. No more duplicate credentials!
+
+### Quick Setup
+
+```bash
+# 1. Create master .env from template
+npm run env:setup
+# OR manually: cp .env.example .env
+
+# 2. Edit .env and add real credentials
+nano .env
+
+# 3. Validate environment (optional)
+npm run env:validate
+```
+
+**What's Shared:**
+- ✓ Supabase credentials (design-factory-admin project)
+- ✓ AI API keys (OpenAI, Anthropic, Google)
+- ✓ Redis connection
+- ✓ Stripe keys
+- ✓ All configuration
+
+**Benefits:**
+- ✅ Fill in credentials **once**, used everywhere
+- ✅ Factory and Admin Console stay in sync
+- ✅ AI agents check ONE location
+- ✅ No duplicate configuration
+
+**📚 Read More:** [`ENV_MANAGEMENT_STRATEGY.md`](./ENV_MANAGEMENT_STRATEGY.md)
+
+---
+
 > A sophisticated, auditable, and user-centric workflow that accelerates the journey from idea to production-ready code.
 
 ## 🎯 Mission

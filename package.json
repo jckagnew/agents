@@ -17,7 +17,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "env:setup": "bash scripts/setup-env.sh",
+    "env:validate": "bash scripts/validate-env.sh",
+    "predev": "npm run env:validate"
   },
   "dependencies": {
     "react": "^18.2.0",

@@ -178,9 +178,39 @@
 
 ### Before Starting Any Work
 1. **READ THIS MANIFEST** - Check if work already exists
-2. **CHECK BRANCHES** - Review what's on each branch
-3. **REVIEW DOCUMENTATION** - Read existing docs before creating new ones
-4. **ASK THE USER** - If unclear, ask rather than duplicate
+2. **CHECK ENVIRONMENT** - Verify master .env exists (see below)
+3. **CHECK BRANCHES** - Review what's on each branch
+4. **REVIEW DOCUMENTATION** - Read existing docs before creating new ones
+5. **ASK THE USER** - If unclear, ask rather than duplicate
+
+### Environment Configuration (Critical!)
+**⚠️ STOP asking for credentials repeatedly!**
+
+All credentials are in **ONE master .env file** at repository root.
+
+**Before requesting API keys, CHECK**:
+```bash
+# Does .env exist?
+if [ -f .env ]; then
+  echo "✅ Credentials available"
+  # Load and use them
+else
+  echo "📋 Run: npm run env:setup"
+fi
+```
+
+**What's in master .env**:
+- Supabase credentials (shared by Factory + Admin Console)
+- AI API keys (OpenAI, Anthropic, Google)
+- Redis URL
+- Stripe keys
+- All configuration
+
+**Documentation**: [`ENV_MANAGEMENT_STRATEGY.md`](./ENV_MANAGEMENT_STRATEGY.md)
+
+**Scripts**:
+- `npm run env:setup` - Create .env from template
+- `npm run env:validate` - Check all required variables
 
 ### When You Complete Work
 1. **UPDATE THIS MANIFEST** - Add your completed work
