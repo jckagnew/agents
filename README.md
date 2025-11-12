@@ -1,5 +1,17 @@
 # Design-First Software Factory
 
+## 🤖 FOR AI AGENTS (Claude, Cursor, Codex, Gemini)
+
+**⚠️ STOP! READ THIS FIRST BEFORE DOING ANY WORK:**
+
+1. **Read**: [`AGENT_MANIFEST.md`](./AGENT_MANIFEST.md) - Single source of truth
+2. **Follow**: [`AGENT_COLLABORATION_PROTOCOL.md`](./AGENT_COLLABORATION_PROTOCOL.md) - How we work together
+3. **Update**: Both files when you complete work
+
+**Golden Rule**: Check what exists before creating anything new!
+
+---
+
 > A sophisticated, auditable, and user-centric workflow that accelerates the journey from idea to production-ready code.
 
 ## 🎯 Mission
