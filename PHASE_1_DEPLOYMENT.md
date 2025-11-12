@@ -43,130 +43,104 @@ Before starting, you need:
 
 ---
 
-## Step 1: Supabase Production Project Setup
+## Step 1: Link to Existing Supabase Project
 
-### 1.1 Create Supabase Project
+⚠️ **IMPORTANT**: We are using an **EXISTING** Supabase project called `design-factory-admin`. DO NOT create a new project!
 
-```bash
-# Go to https://supabase.com/dashboard
-# Click "New Project"
-# Fill in:
-#   - Name: design-first-factory-prod
-#   - Database Password: [Generate strong password - SAVE THIS]
-#   - Region: Choose closest to your users
-#   - Pricing Plan: Free (upgrade later if needed)
-
-# Wait 2-3 minutes for project to be ready
-```
-
-### 1.2 Note Your Project Credentials
+### 1.1 Locate Existing Project Credentials
 
 ```bash
-# From Supabase Dashboard → Settings → API
+# Go to: https://supabase.com/dashboard/project/design-factory-admin
+# Navigate to: Settings → API
+
 # Copy these values:
-
-SUPABASE_URL=https://[your-project-ref].supabase.co
-SUPABASE_ANON_KEY=[public-anon-key]
-SUPABASE_SERVICE_KEY=[secret-service-role-key]  # Keep this secret!
+# Project URL: https://design-factory-admin.supabase.co
+# Anon key: (public key - safe for frontend)
+# Service role key: (secret key - backend only!)
 ```
 
-### 1.3 Link Supabase CLI to Project
+### 1.2 Link Supabase CLI to Existing Project
 
 ```bash
 # In your local repository
 cd /home/user/agents
 
-# Login to Supabase
+# Login to Supabase (if not already logged in)
 supabase login
 
-# Link to your production project
-supabase link --project-ref [your-project-ref]
+# Link to the EXISTING production project
+supabase link --project-ref design-factory-admin
 
-# You'll be prompted for the database password you created
+# You'll be prompted for the database password
+# (Get password from project owner if you don't have it)
 ```
 
-### 1.4 Push Database Migrations
+### 1.3 Verify Existing Database Schema
+
+⚠️ **DO NOT run migrations** - the database schema already exists!
 
 ```bash
-# Check what migrations exist
-ls -la supabase/migrations/
+# Check in Supabase Dashboard → Table Editor
+# Should see existing tables:
+# - admin_users (roles: owner, manager, support)
+# - customers (tiers: starter, growth, enterprise)
+# - projects (status: intake, in_review, in_progress, awaiting_client, delivered, archived)
+# - project_notes (author types: admin, customer)
+# - invoices (status: draft, sent, partial, paid, void)
 
-# Push all migrations to production
-supabase db push
-
-# Expected output:
-# Applying migration 001_initial_schema.sql...
-# Applying migration 002_projects_table.sql...
-# Applying migration 003_security_improvements.sql...
-# ✓ All migrations applied successfully
+# Verify schema matches
+supabase db diff
+# Should show: "No schema changes detected"
 ```
 
-### 1.5 Verify Database Schema
+### 1.4 Verify Existing Storage Buckets
 
 ```bash
-# Connect to database
-supabase db reset --linked
-
-# Or check in Supabase Dashboard → Table Editor
-# Should see tables:
-# - customers
-# - projects
-# - project_notes
-# - workflows
-# - generated_apps
-# - audit_log
+# Check in Supabase Dashboard → Storage
+# Should see existing buckets:
+# - designs (private)
+# - deliverables (public)
+# - avatars (public)
 ```
 
-### 1.6 Configure Storage Buckets
+### 1.5 Deploy/Update Existing Edge Functions
 
-In Supabase Dashboard → Storage:
-
-```sql
--- Create buckets
-INSERT INTO storage.buckets (id, name, public)
-VALUES
-  ('designs', 'designs', false),
-  ('generated-apps', 'generated-apps', true),
-  ('assets', 'assets', true);
-
--- Storage policies
-CREATE POLICY "Authenticated users can upload designs"
-  ON storage.objects FOR INSERT
-  TO authenticated
-  WITH CHECK (
-    bucket_id = 'designs' AND
-    auth.uid()::text = (storage.foldername(name))[1]
-  );
-
-CREATE POLICY "Users can read their own designs"
-  ON storage.objects FOR SELECT
-  TO authenticated
-  USING (
-    bucket_id = 'designs' AND
-    auth.uid()::text = (storage.foldername(name))[1]
-  );
-
-CREATE POLICY "Anyone can read generated apps"
-  ON storage.objects FOR SELECT
-  TO public
-  USING (bucket_id = 'generated-apps');
-```
-
-### 1.7 Deploy Edge Functions
+⚠️ **Edge Functions already exist** - we're updating them, not creating from scratch.
 
 ```bash
+# Existing Edge Functions in design-factory-admin:
+# - admin-customers
+# - admin-projects
+# - upload-design
+# - stripe-webhook
+
+# Deploy/update each function
 cd supabase/functions
 
-# Deploy each Edge Function
-supabase functions deploy project-intake --no-verify-jwt
-supabase functions deploy workflow-status --no-verify-jwt
-supabase functions deploy design-upload --no-verify-jwt
+supabase functions deploy admin-customers --no-verify-jwt
+supabase functions deploy admin-projects --no-verify-jwt
+supabase functions deploy upload-design --no-verify-jwt
+supabase functions deploy stripe-webhook --no-verify-jwt
 
-# If functions don't exist yet, we'll create them in the next step
+# Expected output for each:
+# ✓ Deployed function admin-customers (version X)
+# Function URL: https://design-factory-admin.supabase.co/functions/v1/admin-customers
+```
+
+### 1.6 Update Environment Variables
+
+```bash
+# Copy .env.example to .env
+cp .env.example .env
+
+# Edit .env and fill in actual values from Supabase Dashboard:
+# - SUPABASE_URL (already set to design-factory-admin.supabase.co)
+# - SUPABASE_ANON_KEY (get from Settings → API)
+# - SUPABASE_SERVICE_ROLE_KEY (get from Settings → API)
 ```
 
 **Status**: ✅ Step 1 Complete
-**Time**: ~30 minutes
+**Time**: ~15 minutes (faster because infrastructure exists!)
 
 ---
 
