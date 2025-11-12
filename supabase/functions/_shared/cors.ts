@@ -5,11 +5,21 @@
 
 // Allowed origins - configure these for your production environment
 const ALLOWED_ORIGINS = [
+  // Mobile development
   'http://localhost:8081', // Expo dev server
   'exp://localhost:8081', // Expo development
-  // Add your production domains here:
+
+  // Web development
+  'http://localhost:19006', // Expo web default port
+  'http://localhost:3000', // Alternative local port
+  'http://127.0.0.1:19006',
+  'http://127.0.0.1:3000',
+
+  // Production domains (uncomment and configure for your deployment)
   // 'https://yourdomain.com',
   // 'https://admin.yourdomain.com',
+  // 'https://admin-console.vercel.app', // Vercel
+  // 'https://your-site.netlify.app', // Netlify
 ];
 
 /**

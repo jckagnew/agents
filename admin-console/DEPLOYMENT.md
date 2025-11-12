@@ -13,9 +13,10 @@
 3. [Build Configuration](#build-configuration)
 4. [iOS Deployment](#ios-deployment)
 5. [Android Deployment](#android-deployment)
-6. [Push Notifications](#push-notifications)
-7. [Monitoring & Analytics](#monitoring--analytics)
-8. [Troubleshooting](#troubleshooting)
+6. [Web Deployment](#web-deployment)
+7. [Push Notifications](#push-notifications)
+8. [Monitoring & Analytics](#monitoring--analytics)
+9. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -264,6 +265,127 @@ eas submit --platform android --latest
 - 10-inch tablet screenshots (minimum 1, recommended)
 - Feature graphic (required)
 - Promo video (optional but recommended)
+
+---
+
+## Web Deployment
+
+The Admin Console supports web deployment through **Expo Web** (React Native for Web). The same codebase runs on browsers without any code modifications.
+
+### Overview
+
+**Web Support**: ✅ Fully configured
+**Recommended Platform**: Vercel (zero-config deployment)
+**Alternative Platforms**: Netlify, AWS S3 + CloudFront
+**Build Time**: ~2-5 minutes
+**Bundle Size**: ~500KB-1MB (gzipped)
+
+For comprehensive web deployment documentation, see **[WEB_DEPLOYMENT.md](./WEB_DEPLOYMENT.md)** which covers:
+- Local web development setup
+- Production build process
+- Hosting options (Vercel, Netlify, AWS)
+- CORS configuration for web domains
+- Progressive Web App (PWA) features
+- Performance optimization
+- Environment variables for web
+
+### Quick Start: Deploy to Vercel
+
+**1. Install Vercel CLI**:
+```bash
+npm install -g vercel
+```
+
+**2. Build for Web**:
+```bash
+cd admin-console
+npx expo export:web
+```
+
+**3. Deploy**:
+```bash
+vercel --prod
+```
+
+**4. Configure Environment Variables**:
+```bash
+vercel env add EXPO_PUBLIC_SUPABASE_URL production
+vercel env add EXPO_PUBLIC_SUPABASE_ANON_KEY production
+```
+
+**5. Update CORS Configuration**:
+
+Add your Vercel domain to `supabase/functions/_shared/cors.ts`:
+```typescript
+const ALLOWED_ORIGINS = [
+  // ... existing origins
+  'https://admin-console.vercel.app',
+  'https://yourdomain.com',
+];
+```
+
+**6. Deploy Updated CORS**:
+```bash
+cd supabase/functions
+supabase functions deploy admin-customers
+supabase functions deploy admin-projects
+supabase functions deploy upload-design
+supabase functions deploy stripe-webhook
+```
+
+### Testing Web Deployment
+
+After deployment, verify:
+- ✅ App loads at production URL
+- ✅ Authentication works (sign in/out)
+- ✅ API calls succeed (check browser Network tab)
+- ✅ CORS errors resolved
+- ✅ Responsive design on mobile/tablet/desktop
+- ✅ PWA installable (Add to Home Screen)
+
+### Web vs Mobile Considerations
+
+**Web-Specific Features**:
+- Accessible via browser (no app store approval needed)
+- Instant updates (no app store review process)
+- SEO-friendly URLs with Expo Router
+- Progressive Web App (PWA) support
+
+**Limitations on Web**:
+- No native push notifications (use web push API)
+- No access to native device features (camera requires browser APIs)
+- File system access limited to browser storage
+
+### Continuous Deployment
+
+Set up automatic deployments from Git:
+
+**Vercel**:
+1. Connect GitHub repository in Vercel dashboard
+2. Configure environment variables
+3. Every push to `main` auto-deploys
+
+**Netlify**:
+1. Connect repository in Netlify dashboard
+2. Build command: `expo export:web`
+3. Publish directory: `web-build`
+
+### Web Deployment Checklist
+
+- ✅ Run `expo export:web` locally to verify build
+- ✅ Test locally at `http://localhost:19006`
+- ✅ Configure environment variables on hosting platform
+- ✅ Add production domain to CORS whitelist
+- ✅ Deploy Edge Functions with updated CORS
+- ✅ Test authentication flow on web
+- ✅ Verify API calls work (no CORS errors)
+- ✅ Test responsive design on multiple screen sizes
+- ✅ Run Lighthouse audit (aim for score >90)
+- ✅ Set up custom domain and SSL
+- ✅ Configure error tracking (Sentry)
+- ✅ Monitor Web Vitals in production
+
+**See [WEB_DEPLOYMENT.md](./WEB_DEPLOYMENT.md) for complete step-by-step instructions.**
 
 ---
 
