@@ -1,11 +1,25 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
-import { corsHeaders, handleCors } from '../_shared/cors.ts';
+import { getCorsHeaders, handleCors } from '../_shared/cors.ts';
 import { verifyAdmin } from '../_shared/auth.ts';
+import {
+  createCustomerSchema,
+  updateCustomerSchema,
+  validateInput,
+} from '../_shared/validation.ts';
+import {
+  checkRateLimit,
+  rateLimitExceededResponse,
+  getRateLimitHeaders,
+  RATE_LIMITS,
+} from '../_shared/rate-limit.ts';
 
 serve(async (req) => {
   // Handle CORS
   const corsResponse = handleCors(req);
   if (corsResponse) return corsResponse;
+
+  // Get CORS headers for this request
+  const corsHeaders = getCorsHeaders(req);
 
   try {
     // Verify admin authentication
@@ -17,7 +31,13 @@ serve(async (req) => {
       });
     }
 
-    const { supabase } = await verifyAdmin(authHeader);
+    const { user, supabase } = await verifyAdmin(authHeader);
+
+    // Rate limiting - use user ID as identifier
+    const rateLimitInfo = checkRateLimit(user.id, RATE_LIMITS.moderate);
+    if (!rateLimitInfo.allowed) {
+      return rateLimitExceededResponse(rateLimitInfo, RATE_LIMITS.moderate, corsHeaders);
+    }
 
     const url = new URL(req.url);
     const customerId = url.searchParams.get('id');
@@ -25,7 +45,7 @@ serve(async (req) => {
     switch (req.method) {
       case 'GET': {
         if (customerId) {
-          // Get single customer with stats
+          // Get single customer with stats (exclude soft-deleted)
           const { data: customer, error } = await supabase
             .from('customers')
             .select(`
@@ -39,6 +59,7 @@ serve(async (req) => {
               )
             `)
             .eq('id', customerId)
+            .is('deleted_at', null)
             .single();
 
           if (error) {
@@ -64,6 +85,7 @@ serve(async (req) => {
               *,
               projects:projects(count)
             `, { count: 'exact' })
+            .is('deleted_at', null) // Exclude soft-deleted
             .order('created_at', { ascending: false })
             .range((page - 1) * limit, page * limit - 1);
 
@@ -104,42 +126,37 @@ serve(async (req) => {
       case 'POST': {
         const body = await req.json();
 
-        // Validate required fields
-        if (!body.full_name || !body.email) {
+        // Validate input
+        const validation = validateInput(createCustomerSchema, body);
+        if (!validation.success) {
           return new Response(
-            JSON.stringify({ error: 'Missing required fields: full_name, email' }),
+            JSON.stringify({
+              error: 'Validation failed',
+              details: validation.errors,
+            }),
             {
               status: 400,
-              headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+              headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
             }
           );
         }
 
         const { data: customer, error } = await supabase
           .from('customers')
-          .insert({
-            full_name: body.full_name,
-            email: body.email,
-            phone: body.phone,
-            company_name: body.company_name,
-            subscription_status: body.subscription_status || 'none',
-            subscription_tier: body.subscription_tier,
-            source: body.source,
-            tags: body.tags || [],
-          })
+          .insert(validation.data)
           .select()
           .single();
 
         if (error) {
           return new Response(JSON.stringify({ error: error.message }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
         return new Response(JSON.stringify(customer), {
           status: 201,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
         });
       }
 
@@ -147,25 +164,30 @@ serve(async (req) => {
         if (!customerId) {
           return new Response(JSON.stringify({ error: 'Customer ID required' }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
         const body = await req.json();
 
+        // Validate input
+        const validation = validateInput(updateCustomerSchema, body);
+        if (!validation.success) {
+          return new Response(
+            JSON.stringify({
+              error: 'Validation failed',
+              details: validation.errors,
+            }),
+            {
+              status: 400,
+              headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
+            }
+          );
+        }
+
         const { data: customer, error } = await supabase
           .from('customers')
-          .update({
-            full_name: body.full_name,
-            email: body.email,
-            phone: body.phone,
-            company_name: body.company_name,
-            subscription_status: body.subscription_status,
-            subscription_tier: body.subscription_tier,
-            status: body.status,
-            tags: body.tags,
-            notes: body.notes,
-          })
+          .update(validation.data)
           .eq('id', customerId)
           .select()
           .single();
@@ -173,12 +195,12 @@ serve(async (req) => {
         if (error) {
           return new Response(JSON.stringify({ error: error.message }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
         return new Response(JSON.stringify(customer), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
         });
       }
 
@@ -186,21 +208,28 @@ serve(async (req) => {
         if (!customerId) {
           return new Response(JSON.stringify({ error: 'Customer ID required' }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
-        const { error } = await supabase.from('customers').delete().eq('id', customerId);
+        // Soft delete instead of hard delete
+        const { error } = await supabase
+          .from('customers')
+          .update({
+            deleted_at: new Date().toISOString(),
+            deleted_by: user.id,
+          })
+          .eq('id', customerId);
 
         if (error) {
           return new Response(JSON.stringify({ error: error.message }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
-        return new Response(JSON.stringify({ success: true }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        return new Response(JSON.stringify({ success: true, message: 'Customer archived successfully' }), {
+          headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
         });
       }
 
