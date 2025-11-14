@@ -73,10 +73,29 @@ export const QUOTA_TIERS: Record<SubscriptionTier, QuotaLimits> = {
  * Quota Service for tier enforcement
  */
 export class QuotaService {
+  private static instance: QuotaService;
   private client: SupabaseClient;
 
   constructor(supabaseUrl: string, supabaseKey: string) {
     this.client = createClient(supabaseUrl, supabaseKey);
+  }
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(supabaseUrl?: string, supabaseKey?: string): QuotaService {
+    if (!QuotaService.instance) {
+      if (!supabaseUrl || !supabaseKey) {
+        // Try to get from environment
+        supabaseUrl = process.env.SUPABASE_URL;
+        supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      }
+      if (!supabaseUrl || !supabaseKey) {
+        throw new Error('Supabase credentials required to initialize QuotaService');
+      }
+      QuotaService.instance = new QuotaService(supabaseUrl, supabaseKey);
+    }
+    return QuotaService.instance;
   }
 
   /**

@@ -2,7 +2,7 @@
 
 # ===================================================================
 # DEPLOYMENT READINESS CHECK
-# Validates all credentials and configuration for deployment
+# Validates all credentials, structure, and prerequisites for deployment
 # ===================================================================
 
 set -e
@@ -11,6 +11,7 @@ ENV_FILE="/Users/jackagnew/projects/jckagnew-agents/.env"
 PASSED=0
 FAILED=0
 WARNINGS=0
+READY=true
 
 echo "🔍 DEPLOYMENT READINESS CHECK"
 echo "=============================="
@@ -51,6 +52,7 @@ check_credential() {
             if [ "$required" == "true" ]; then
                 echo "❌ FAILED: $key is a placeholder"
                 FAILED=$((FAILED + 1))
+                READY=false
                 return 1
             else
                 echo "⚠️  WARNING: $key is a placeholder"
@@ -66,6 +68,7 @@ check_credential() {
         if [ "$required" == "true" ]; then
             echo "❌ FAILED: $key not found"
             FAILED=$((FAILED + 1))
+            READY=false
             return 1
         else
             echo "ℹ️  INFO: $key not found (optional)"
@@ -73,6 +76,45 @@ check_credential() {
         fi
     fi
 }
+
+echo ""
+echo "📁 Repository Structure"
+echo "======================="
+echo ""
+
+if [ -d "apps/factory/src" ]; then
+    echo "  ✅ apps/factory/src exists"
+    PASSED=$((PASSED + 1))
+else
+    echo "  ❌ apps/factory/src missing"
+    FAILED=$((FAILED + 1))
+    READY=false
+fi
+
+if [ -d "docs/deployment" ]; then
+    echo "  ✅ docs/deployment exists"
+    PASSED=$((PASSED + 1))
+else
+    echo "  ⚠️  docs/deployment missing"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+if [ -d "scripts" ]; then
+    echo "  ✅ scripts directory exists"
+    PASSED=$((PASSED + 1))
+else
+    echo "  ❌ scripts directory missing"
+    FAILED=$((FAILED + 1))
+    READY=false
+fi
+
+if [ -d "supabase" ]; then
+    echo "  ✅ supabase directory exists"
+    PASSED=$((PASSED + 1))
+else
+    echo "  ⚠️  supabase directory missing"
+    WARNINGS=$((WARNINGS + 1))
+fi
 
 echo ""
 echo "📋 Checking Required Credentials"
@@ -89,6 +131,7 @@ elif grep -q "^FACTORY_SUPABASE_ANON_KEY=" "$ENV_FILE"; then
 else
     echo "❌ FAILED: No Supabase ANON_KEY found"
     FAILED=$((FAILED + 1))
+    READY=false
 fi
 
 if grep -q "^EXPO_PUBLIC_SUPABASE_URL=" "$ENV_FILE"; then
@@ -100,6 +143,7 @@ elif grep -q "^FACTORY_SUPABASE_URL=" "$ENV_FILE"; then
 else
     echo "❌ FAILED: No Supabase URL found"
     FAILED=$((FAILED + 1))
+    READY=false
 fi
 
 check_credential "SUPABASE_SERVICE_ROLE_KEY" true
@@ -149,6 +193,33 @@ check_credential "STRIPE_SECRET_KEY" false
 check_credential "STRIPE_WEBHOOK_SECRET" false
 
 echo ""
+echo "📋 Git Status"
+echo "============="
+echo ""
+
+if git rev-parse --git-dir > /dev/null 2>&1; then
+    CURRENT_BRANCH=$(git branch --show-current)
+    echo "  Current branch: $CURRENT_BRANCH"
+    
+    if [ "$CURRENT_BRANCH" = "develop" ]; then
+        echo "  ✅ On develop branch"
+        PASSED=$((PASSED + 1))
+    else
+        echo "  ⚠️  Not on develop branch"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+    
+    # Check if .env is gitignored
+    if git check-ignore .env > /dev/null 2>&1; then
+        echo "  ✅ .env is gitignored (secure)"
+        PASSED=$((PASSED + 1))
+    else
+        echo "  ⚠️  .env is NOT gitignored (security risk!)"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+fi
+
+echo ""
 echo "📊 SUMMARY"
 echo "=========="
 echo "✅ Passed: $PASSED"
@@ -156,10 +227,23 @@ echo "⚠️  Warnings: $WARNINGS"
 echo "❌ Failed: $FAILED"
 echo ""
 
-if [ $FAILED -eq 0 ]; then
+if [ "$READY" = true ] && [ $FAILED -eq 0 ]; then
     echo "✅ ALL CHECKS PASSED!"
     echo ""
     echo "🚀 Ready for deployment!"
+    echo ""
+    echo "Next steps:"
+    echo "  1. supabase login"
+    echo "  2. supabase link --project-ref design-factory-admin"
+    echo "  3. Deploy backend to Railway"
+    echo "  4. Deploy frontend to Vercel"
+    echo ""
+    exit 0
+elif [ "$READY" = true ]; then
+    echo "⚠️  READY WITH WARNINGS ($WARNINGS warnings)"
+    echo ""
+    echo "You can proceed with deployment, but some optional features may not work."
+    echo ""
     exit 0
 else
     echo "❌ SOME CHECKS FAILED"
@@ -167,4 +251,3 @@ else
     echo "Please fix the failed checks before deploying."
     exit 1
 fi
-

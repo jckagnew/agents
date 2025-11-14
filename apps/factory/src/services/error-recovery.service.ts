@@ -38,12 +38,23 @@ export enum CircuitState {
  * Error Recovery Service
  */
 export class ErrorRecoveryService {
+  private static instance: ErrorRecoveryService;
   private circuitBreakers: Map<string, {
     state: CircuitState;
     failures: number;
     lastFailure: number;
     config: CircuitBreakerConfig;
   }> = new Map();
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(): ErrorRecoveryService {
+    if (!ErrorRecoveryService.instance) {
+      ErrorRecoveryService.instance = new ErrorRecoveryService();
+    }
+    return ErrorRecoveryService.instance;
+  }
 
   /**
    * Retry a function with exponential backoff
