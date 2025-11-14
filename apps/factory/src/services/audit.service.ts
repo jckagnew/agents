@@ -49,10 +49,29 @@ export interface AuditFilters {
  * Audit Service for compliance logging
  */
 export class AuditService {
+  private static instance: AuditService;
   private client: SupabaseClient;
 
   constructor(supabaseUrl: string, supabaseKey: string) {
     this.client = createClient(supabaseUrl, supabaseKey);
+  }
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(supabaseUrl?: string, supabaseKey?: string): AuditService {
+    if (!AuditService.instance) {
+      if (!supabaseUrl || !supabaseKey) {
+        // Try to get from environment
+        supabaseUrl = process.env.SUPABASE_URL;
+        supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      }
+      if (!supabaseUrl || !supabaseKey) {
+        throw new Error('Supabase credentials required to initialize AuditService');
+      }
+      AuditService.instance = new AuditService(supabaseUrl, supabaseKey);
+    }
+    return AuditService.instance;
   }
 
   /**

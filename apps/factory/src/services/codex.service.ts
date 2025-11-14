@@ -228,7 +228,7 @@ Return ONLY the code, no explanations or markdown.`,
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
-    const result = await response.json();
+    const result = await response.json() as any;
     return this.extractCodeFromResponse(result.choices[0].message.content);
   }
 
@@ -295,7 +295,7 @@ Return the complete, improved component code. Preserve all functionality but adj
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
-    const result = await response.json();
+    const result = await response.json() as any;
     return this.extractCodeFromResponse(result.choices[0].message.content);
   }
 
@@ -410,7 +410,7 @@ Be specific and actionable in your feedback. If the score is below 0.85, provide
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
-    const result = await response.json();
+    const result = await response.json() as any;
     const content = result.choices[0].message.content;
 
     // Parse JSON response

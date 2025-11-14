@@ -13,13 +13,13 @@
 
 import { ProjectIntake, InspirationWebsite } from '../types/project';
 
-interface ConversationMessage {
+export interface ConversationMessage {
   role: 'user' | 'assistant';
   content: string;
   timestamp?: string;
 }
 
-interface PRD {
+export interface PRD {
   project_name: string;
   executive_summary: string;
   problem_statement: string;

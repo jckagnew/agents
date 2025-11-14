@@ -32,9 +32,11 @@ export interface IterationRecord {
 
 export interface IterationCheckResult {
   within_limit: boolean;
+  allowed: boolean; // Alias for within_limit for backwards compatibility
   current_iteration: number;
   max_iterations: number;
   remaining_iterations: number;
+  reason?: string; // Optional reason if limit exceeded
 }
 
 /**
@@ -53,10 +55,29 @@ export const DEFAULT_MAX_ITERATIONS: Record<WorkflowPhase, number> = {
  * Iteration Service
  */
 export class IterationService {
+  private static instance: IterationService;
   private client: SupabaseClient;
 
   constructor(supabaseUrl: string, supabaseKey: string) {
     this.client = createClient(supabaseUrl, supabaseKey);
+  }
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(supabaseUrl?: string, supabaseKey?: string): IterationService {
+    if (!IterationService.instance) {
+      if (!supabaseUrl || !supabaseKey) {
+        // Try to get from environment
+        supabaseUrl = process.env.SUPABASE_URL;
+        supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      }
+      if (!supabaseUrl || !supabaseKey) {
+        throw new Error('Supabase credentials required to initialize IterationService');
+      }
+      IterationService.instance = new IterationService(supabaseUrl, supabaseKey);
+    }
+    return IterationService.instance;
   }
 
   /**
@@ -105,6 +126,7 @@ export class IterationService {
       // No record yet, first iteration
       return {
         within_limit: true,
+        allowed: true,
         current_iteration: 0,
         max_iterations: DEFAULT_MAX_ITERATIONS[phase],
         remaining_iterations: DEFAULT_MAX_ITERATIONS[phase],
@@ -112,12 +134,15 @@ export class IterationService {
     }
 
     const remaining = data.max_iterations - data.iteration_count;
+    const withinLimit = data.iteration_count < data.max_iterations;
 
     return {
-      within_limit: data.iteration_count < data.max_iterations,
+      within_limit: withinLimit,
+      allowed: withinLimit,
       current_iteration: data.iteration_count,
       max_iterations: data.max_iterations,
       remaining_iterations: Math.max(0, remaining),
+      reason: withinLimit ? undefined : 'iteration_limit_exceeded',
     };
   }
 
@@ -278,12 +303,15 @@ export class IterationService {
         .eq('phase', phase);
 
       const remaining = existing.max_iterations - newCount;
+      const withinLimit = newCount < existing.max_iterations;
 
       return {
-        within_limit: newCount < existing.max_iterations,
+        within_limit: withinLimit,
+        allowed: withinLimit,
         current_iteration: newCount,
         max_iterations: existing.max_iterations,
         remaining_iterations: Math.max(0, remaining),
+        reason: withinLimit ? undefined : 'iteration_limit_exceeded',
       };
     } else {
       // Create new record
@@ -299,6 +327,7 @@ export class IterationService {
 
       return {
         within_limit: true,
+        allowed: true,
         current_iteration: 1,
         max_iterations: maxIterations,
         remaining_iterations: maxIterations - 1,

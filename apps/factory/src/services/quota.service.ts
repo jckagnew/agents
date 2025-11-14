@@ -196,10 +196,19 @@ export class QuotaService {
 
     if (error) {
       // If function doesn't exist, do manual update
+      const { data: current } = await this.client
+        .from('usage_quotas')
+        .select(field)
+        .eq('user_id', userId)
+        .single();
+
+      const currentValue = current ? (current as any)[field] : 0;
+      const newValue = currentValue + amount;
+
       const { error: updateError } = await this.client
         .from('usage_quotas')
         .update({
-          [field]: this.client.sql`${field} + ${amount}`,
+          [field]: newValue,
         })
         .eq('user_id', userId);
 
@@ -222,10 +231,20 @@ export class QuotaService {
           ? 'current_ai_tokens'
           : 'current_storage_gb';
 
+    // Get current value first
+    const { data: current } = await this.client
+      .from('usage_quotas')
+      .select(field)
+      .eq('user_id', userId)
+      .single();
+
+    const currentValue = current ? (current as any)[field] : 0;
+    const newValue = Math.max(0, currentValue - amount);
+
     const { error } = await this.client
       .from('usage_quotas')
       .update({
-        [field]: this.client.sql`GREATEST(0, ${field} - ${amount})`,
+        [field]: newValue,
       })
       .eq('user_id', userId);
 

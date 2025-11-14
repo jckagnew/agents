@@ -281,11 +281,13 @@ export class ExpressTierService {
     } catch (error) {
       console.error('\n❌ EXPRESS TIER WORKFLOW FAILED:', error);
 
+      const errorMessage = error instanceof Error ? error.message : String(error);
+
       if (projectId) {
         const supabase = getSupabaseService(this.supabaseConfig);
         await supabase.updateProject(projectId, {
           status: 'failed',
-          metadata: { error: error.message },
+          metadata: { error: errorMessage },
         });
       }
 
@@ -302,7 +304,7 @@ export class ExpressTierService {
           codex_cost: 0,
           total_cost: 0,
         },
-        error: error.message,
+        error: errorMessage,
       };
     }
   }
