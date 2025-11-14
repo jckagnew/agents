@@ -92,6 +92,12 @@ export interface CodeQualityGate {
     critical_security_issues: number;
     blocking_issues: number;
   };
+  // Flat accessors for backwards compatibility
+  eslint_result?: LintResult;
+  typescript_result?: TypeCheckResult;
+  semgrep_result?: SecurityResult;
+  npm_audit_result?: AuditResult;
+  recommendations?: string[];
 }
 
 /**
