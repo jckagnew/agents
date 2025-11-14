@@ -188,6 +188,8 @@ export class QuotaService {
           ? 'current_ai_tokens'
           : 'current_storage_gb';
 
+    // Use atomic RPC function to prevent race conditions
+    // This ensures concurrent requests don't overwrite each other's updates
     const { error } = await this.client.rpc('increment_quota_usage', {
       p_user_id: userId,
       p_field: field,
@@ -195,24 +197,7 @@ export class QuotaService {
     });
 
     if (error) {
-      // If function doesn't exist, do manual update
-      const { data: current } = await this.client
-        .from('usage_quotas')
-        .select(field)
-        .eq('user_id', userId)
-        .single();
-
-      const currentValue = current ? (current as any)[field] : 0;
-      const newValue = currentValue + amount;
-
-      const { error: updateError } = await this.client
-        .from('usage_quotas')
-        .update({
-          [field]: newValue,
-        })
-        .eq('user_id', userId);
-
-      if (updateError) throw updateError;
+      throw new Error(`Failed to increment quota: ${error.message}. Ensure migration 008_atomic_quota_updates.sql has been run.`);
     }
   }
 
@@ -231,24 +216,17 @@ export class QuotaService {
           ? 'current_ai_tokens'
           : 'current_storage_gb';
 
-    // Get current value first
-    const { data: current } = await this.client
-      .from('usage_quotas')
-      .select(field)
-      .eq('user_id', userId)
-      .single();
+    // Use atomic RPC function to prevent race conditions
+    // This ensures value never goes below zero and concurrent updates don't conflict
+    const { error } = await this.client.rpc('decrement_quota_usage', {
+      p_user_id: userId,
+      p_field: field,
+      p_amount: amount,
+    });
 
-    const currentValue = current ? (current as any)[field] : 0;
-    const newValue = Math.max(0, currentValue - amount);
-
-    const { error } = await this.client
-      .from('usage_quotas')
-      .update({
-        [field]: newValue,
-      })
-      .eq('user_id', userId);
-
-    if (error) throw error;
+    if (error) {
+      throw new Error(`Failed to decrement quota: ${error.message}. Ensure migration 008_atomic_quota_updates.sql has been run.`);
+    }
   }
 
   /**

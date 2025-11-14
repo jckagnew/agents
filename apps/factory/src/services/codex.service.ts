@@ -11,6 +11,7 @@
  */
 
 import { ProjectIntake, DesignSystem, ScreenMapping, InspirationWebsite } from '../types/project';
+import { safeJSONParse, retryWithBackoff } from '../utils/retry';
 
 interface CodexConfig {
   apiKey: string;
@@ -210,26 +211,29 @@ Return ONLY the code, no explanations or markdown.`,
       },
     ];
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.apiKey}`,
-      },
-      body: JSON.stringify({
-        model: this.model,
-        messages,
-        max_tokens: 16000,
-        temperature: 0.3,
-      }),
+    // Wrap API call with retry logic for transient failures
+    return await retryWithBackoff(async () => {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.apiKey}`,
+        },
+        body: JSON.stringify({
+          model: this.model,
+          messages,
+          max_tokens: 16000,
+          temperature: 0.3,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`OpenAI API error: ${response.status}`);
+      }
+
+      const result = await safeJSONParse<any>(response);
+      return this.extractCodeFromResponse(result.choices[0].message.content);
     });
-
-    if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
-    }
-
-    const result = await response.json() as any;
-    return this.extractCodeFromResponse(result.choices[0].message.content);
   }
 
   /**
@@ -295,7 +299,7 @@ Return the complete, improved component code. Preserve all functionality but adj
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
-    const result = await response.json() as any;
+    const result = await safeJSONParse<any>(response);
     return this.extractCodeFromResponse(result.choices[0].message.content);
   }
 
@@ -410,7 +414,7 @@ Be specific and actionable in your feedback. If the score is below 0.85, provide
       throw new Error(`OpenAI API error: ${response.status}`);
     }
 
-    const result = await response.json() as any;
+    const result = await safeJSONParse<any>(response);
     const content = result.choices[0].message.content;
 
     // Parse JSON response
