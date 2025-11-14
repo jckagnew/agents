@@ -88,8 +88,9 @@ export class PlaywrightService {
         errors,
       };
     } catch (error) {
-      errors.push(error.message);
-      throw new Error(`Failed to render component: ${error.message}`);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      errors.push(errorMessage);
+      throw new Error(`Failed to render component: ${errorMessage}`);
     }
   }
 
@@ -372,6 +373,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     options: ScreenshotOptions
   ): Promise<string> {
     // Import Playwright dynamically
+    // @ts-expect-error - playwright is a runtime dependency that may not be available at compile time
     const playwright = await import('playwright');
 
     const browser = await playwright.chromium.launch({

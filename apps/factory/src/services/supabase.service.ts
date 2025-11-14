@@ -421,10 +421,20 @@ export class SupabaseService {
           ? 'current_ai_tokens'
           : 'current_storage_gb';
 
+    // Get current value first
+    const { data: current } = await this.client
+      .from('usage_quotas')
+      .select(field)
+      .eq('user_id', userId)
+      .single();
+
+    const currentValue = current ? (current as any)[field] : 0;
+    const newValue = currentValue + 1;
+
     const { error } = await this.client
       .from('usage_quotas')
       .update({
-        [field]: this.client.raw(`${field} + 1`),
+        [field]: newValue,
       })
       .eq('user_id', userId);
 

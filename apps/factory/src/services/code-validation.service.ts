@@ -33,6 +33,7 @@ export interface LintResult {
 export interface TypeCheckResult {
   passed: boolean;
   errors: number;
+  warnings?: number;
   issues: Array<{
     file: string;
     line: number;

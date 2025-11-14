@@ -517,26 +517,26 @@ export class WorkflowOrchestratorService {
     const qualityReport: QualityReport = {
       overallStatus: qualityGate.overall_status,
       eslintResults: {
-        errors: qualityGate.eslint_result.errors,
-        warnings: qualityGate.eslint_result.warnings,
+        errors: qualityGate.eslint_result?.errors || 0,
+        warnings: qualityGate.eslint_result?.warnings || 0,
       },
       typescriptResults: {
-        errors: qualityGate.typescript_result.errors,
-        warnings: qualityGate.typescript_result.warnings,
+        errors: qualityGate.typescript_result?.errors || 0,
+        warnings: qualityGate.typescript_result?.warnings || 0,
       },
       semgrepResults: {
-        critical: qualityGate.semgrep_result.critical,
-        high: qualityGate.semgrep_result.high,
-        medium: qualityGate.semgrep_result.medium,
-        low: qualityGate.semgrep_result.low,
+        critical: qualityGate.semgrep_result?.critical || 0,
+        high: qualityGate.semgrep_result?.high || 0,
+        medium: qualityGate.semgrep_result?.medium || 0,
+        low: qualityGate.semgrep_result?.low || 0,
       },
       npmAuditResults: {
-        critical: qualityGate.npm_audit_result.vulnerabilities.critical,
-        high: qualityGate.npm_audit_result.vulnerabilities.high,
-        moderate: qualityGate.npm_audit_result.vulnerabilities.moderate,
-        low: qualityGate.npm_audit_result.vulnerabilities.low,
+        critical: qualityGate.npm_audit_result?.vulnerabilities.critical || 0,
+        high: qualityGate.npm_audit_result?.vulnerabilities.high || 0,
+        moderate: qualityGate.npm_audit_result?.vulnerabilities.moderate || 0,
+        low: qualityGate.npm_audit_result?.vulnerabilities.low || 0,
       },
-      recommendations: qualityGate.recommendations,
+      recommendations: qualityGate.recommendations || [],
     };
 
     await this.workflowStateMachine.completePhase(projectId, { result: qualityReport });

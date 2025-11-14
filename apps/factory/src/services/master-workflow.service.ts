@@ -356,7 +356,7 @@ export class MasterWorkflowService {
           renderedScreenshot.screenshot,
           design.screenshot, // The approved design is the benchmark
           problemDeconstruction.design_system,
-          screenMappings.find((s: any) => s.screen_name === design.screen_name)!
+          screenMappings.find((s: any) => s.screen_name === design.screen_name)! as ScreenMapping
         );
 
         console.log(`   Score: ${comparison.score.toFixed(3)}`);
@@ -374,7 +374,7 @@ export class MasterWorkflowService {
 
           // Refine code to better match approved design
           currentCode = await codex['refineDesign'](
-            screenMappings.find((s: any) => s.screen_name === design.screen_name)!,
+            screenMappings.find((s: any) => s.screen_name === design.screen_name)! as ScreenMapping,
             problemDeconstruction.design_system,
             currentCode,
             comparison.feedback,
@@ -393,7 +393,7 @@ export class MasterWorkflowService {
             newScreenshot.screenshot,
             design.screenshot,
             problemDeconstruction.design_system,
-            screenMappings.find((s: any) => s.screen_name === design.screen_name)!
+            screenMappings.find((s: any) => s.screen_name === design.screen_name)! as ScreenMapping
           );
 
           currentScore = newComparison.score;
@@ -513,9 +513,10 @@ export class MasterWorkflowService {
 
       if (projectId) {
         const supabase = getSupabaseService(this.supabaseConfig);
+        const errorMessage = error instanceof Error ? error.message : String(error);
         await supabase.updateProject(projectId, {
           status: 'failed',
-          metadata: { error: error.message },
+          metadata: { error: errorMessage },
         });
       }
 

@@ -303,12 +303,15 @@ export class IterationService {
         .eq('phase', phase);
 
       const remaining = existing.max_iterations - newCount;
+      const withinLimit = newCount < existing.max_iterations;
 
       return {
-        within_limit: newCount < existing.max_iterations,
+        within_limit: withinLimit,
+        allowed: withinLimit,
         current_iteration: newCount,
         max_iterations: existing.max_iterations,
         remaining_iterations: Math.max(0, remaining),
+        reason: withinLimit ? undefined : 'iteration_limit_exceeded',
       };
     } else {
       // Create new record
@@ -324,6 +327,7 @@ export class IterationService {
 
       return {
         within_limit: true,
+        allowed: true,
         current_iteration: 1,
         max_iterations: maxIterations,
         remaining_iterations: maxIterations - 1,
