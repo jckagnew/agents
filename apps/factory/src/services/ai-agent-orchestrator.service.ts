@@ -192,7 +192,7 @@ const DEFAULT_MODEL_PER_TASK: Record<AITaskType, AIModel> = {
 export class AIAgentOrchestratorService {
   private static instance: AIAgentOrchestratorService;
   private openaiClient: OpenAI;
-  private anthropicClient: Anthropic;
+  private anthropicClient: any; // Using any due to type definition issues with SDK
   private googleClient: GoogleGenerativeAI;
   private supabaseClient: SupabaseClient;
   private errorRecovery: ErrorRecoveryService;

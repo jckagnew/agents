@@ -92,12 +92,30 @@ export interface CodeQualityGate {
     critical_security_issues: number;
     blocking_issues: number;
   };
+  // Flat accessors for backwards compatibility
+  eslint_result?: LintResult;
+  typescript_result?: TypeCheckResult;
+  semgrep_result?: SecurityResult;
+  npm_audit_result?: AuditResult;
+  recommendations?: string[];
 }
 
 /**
  * Code Validation Service
  */
 export class CodeValidationService {
+  private static instance: CodeValidationService;
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(): CodeValidationService {
+    if (!CodeValidationService.instance) {
+      CodeValidationService.instance = new CodeValidationService();
+    }
+    return CodeValidationService.instance;
+  }
+
   /**
    * Validate generated code (full quality gate)
    */

@@ -46,6 +46,7 @@ export interface JobResult {
  * Job Queue Service using BullMQ
  */
 export class JobQueueService {
+  private static instance: JobQueueService;
   private queue: Queue<CodeGenerationJobData>;
   private worker?: Worker<CodeGenerationJobData, JobResult>;
   private queueEvents?: QueueEvents;
@@ -88,6 +89,28 @@ export class JobQueueService {
 
     // Initialize queue events
     this.queueEvents = new QueueEvents('code-generation', { connection });
+  }
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(
+    supabaseUrl?: string,
+    supabaseKey?: string,
+    redisConnection?: { host: string; port: number; password?: string }
+  ): JobQueueService {
+    if (!JobQueueService.instance) {
+      if (!supabaseUrl || !supabaseKey) {
+        // Try to get from environment
+        supabaseUrl = process.env.SUPABASE_URL;
+        supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+      }
+      if (!supabaseUrl || !supabaseKey) {
+        throw new Error('Supabase credentials required to initialize JobQueueService');
+      }
+      JobQueueService.instance = new JobQueueService(supabaseUrl, supabaseKey, redisConnection);
+    }
+    return JobQueueService.instance;
   }
 
   /**
