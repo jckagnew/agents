@@ -1,11 +1,25 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
-import { corsHeaders, handleCors } from '../_shared/cors.ts';
+import { getCorsHeaders, handleCors } from '../_shared/cors.ts';
 import { verifyAdmin } from '../_shared/auth.ts';
+import {
+  createProjectSchema,
+  updateProjectSchema,
+  validateInput,
+} from '../_shared/validation.ts';
+import {
+  checkRateLimit,
+  rateLimitExceededResponse,
+  getRateLimitHeaders,
+  RATE_LIMITS,
+} from '../_shared/rate-limit.ts';
 
 serve(async (req) => {
   // Handle CORS
   const corsResponse = handleCors(req);
   if (corsResponse) return corsResponse;
+
+  // Get CORS headers for this request
+  const corsHeaders = getCorsHeaders(req);
 
   try {
     // Verify admin authentication
@@ -17,7 +31,13 @@ serve(async (req) => {
       });
     }
 
-    const { supabase } = await verifyAdmin(authHeader);
+    const { user, supabase } = await verifyAdmin(authHeader);
+
+    // Rate limiting - use user ID as identifier
+    const rateLimitInfo = checkRateLimit(user.id, RATE_LIMITS.moderate);
+    if (!rateLimitInfo.allowed) {
+      return rateLimitExceededResponse(rateLimitInfo, RATE_LIMITS.moderate, corsHeaders);
+    }
 
     const url = new URL(req.url);
     const projectId = url.searchParams.get('id');
@@ -25,7 +45,7 @@ serve(async (req) => {
     switch (req.method) {
       case 'GET': {
         if (projectId) {
-          // Get single project with full details
+          // Get single project with full details (exclude soft-deleted)
           const { data: project, error } = await supabase
             .from('projects')
             .select(`
@@ -38,6 +58,7 @@ serve(async (req) => {
               invoices:invoices(*)
             `)
             .eq('id', projectId)
+            .is('deleted_at', null)
             .single();
 
           if (error) {
@@ -64,6 +85,7 @@ serve(async (req) => {
               *,
               customer:customers(id, full_name, email, company_name)
             `, { count: 'exact' })
+            .is('deleted_at', null) // Exclude soft-deleted
             .order('created_at', { ascending: false })
             .range((page - 1) * limit, page * limit - 1);
 
@@ -108,29 +130,24 @@ serve(async (req) => {
       case 'POST': {
         const body = await req.json();
 
-        // Validate required fields
-        if (!body.name || !body.customer_id) {
+        // Validate input
+        const validation = validateInput(createProjectSchema, body);
+        if (!validation.success) {
           return new Response(
-            JSON.stringify({ error: 'Missing required fields: name, customer_id' }),
+            JSON.stringify({
+              error: 'Validation failed',
+              details: validation.errors,
+            }),
             {
               status: 400,
-              headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+              headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
             }
           );
         }
 
         const { data: project, error } = await supabase
           .from('projects')
-          .insert({
-            name: body.name,
-            description: body.description,
-            customer_id: body.customer_id,
-            product_type: body.product_type || 'express',
-            pricing_tier: body.pricing_tier,
-            status: body.status || 'INTAKE',
-            estimated_delivery_date: body.estimated_delivery_date,
-            design_upload_url: body.design_upload_url,
-          })
+          .insert(validation.data)
           .select(`
             *,
             customer:customers(*)
@@ -140,13 +157,13 @@ serve(async (req) => {
         if (error) {
           return new Response(JSON.stringify({ error: error.message }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
         return new Response(JSON.stringify(project), {
           status: 201,
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
         });
       }
 
@@ -154,26 +171,30 @@ serve(async (req) => {
         if (!projectId) {
           return new Response(JSON.stringify({ error: 'Project ID required' }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
         const body = await req.json();
 
+        // Validate input
+        const validation = validateInput(updateProjectSchema, body);
+        if (!validation.success) {
+          return new Response(
+            JSON.stringify({
+              error: 'Validation failed',
+              details: validation.errors,
+            }),
+            {
+              status: 400,
+              headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
+            }
+          );
+        }
+
         const { data: project, error } = await supabase
           .from('projects')
-          .update({
-            name: body.name,
-            description: body.description,
-            status: body.status,
-            product_type: body.product_type,
-            pricing_tier: body.pricing_tier,
-            estimated_delivery_date: body.estimated_delivery_date,
-            actual_delivery_date: body.actual_delivery_date,
-            design_upload_url: body.design_upload_url,
-            final_code_url: body.final_code_url,
-            visual_qa_score: body.visual_qa_score,
-          })
+          .update(validation.data)
           .eq('id', projectId)
           .select(`
             *,
@@ -184,12 +205,12 @@ serve(async (req) => {
         if (error) {
           return new Response(JSON.stringify({ error: error.message }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
         return new Response(JSON.stringify(project), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+          headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
         });
       }
 
@@ -197,21 +218,28 @@ serve(async (req) => {
         if (!projectId) {
           return new Response(JSON.stringify({ error: 'Project ID required' }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
-        const { error } = await supabase.from('projects').delete().eq('id', projectId);
+        // Soft delete instead of hard delete
+        const { error } = await supabase
+          .from('projects')
+          .update({
+            deleted_at: new Date().toISOString(),
+            deleted_by: user.id,
+          })
+          .eq('id', projectId);
 
         if (error) {
           return new Response(JSON.stringify({ error: error.message }), {
             status: 400,
-            headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+            headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
           });
         }
 
-        return new Response(JSON.stringify({ success: true }), {
-          headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        return new Response(JSON.stringify({ success: true, message: 'Project archived successfully' }), {
+          headers: { ...corsHeaders, ...getRateLimitHeaders(rateLimitInfo, RATE_LIMITS.moderate), 'Content-Type': 'application/json' },
         });
       }
 

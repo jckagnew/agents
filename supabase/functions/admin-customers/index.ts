@@ -94,7 +94,10 @@ serve(async (req) => {
           }
 
           if (search) {
-            query = query.or(`full_name.ilike.%${search}%,email.ilike.%${search}%,company_name.ilike.%${search}%`);
+            // Sanitize search input to prevent SQL injection
+            // Escape special LIKE characters: % and _
+            const sanitizedSearch = search.replace(/[%_]/g, '\\$&');
+            query = query.or(`full_name.ilike.%${sanitizedSearch}%,email.ilike.%${sanitizedSearch}%,company_name.ilike.%${sanitizedSearch}%`);
           }
 
           const { data: customers, error, count } = await query;
