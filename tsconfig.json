@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "lib": ["ES2020"],
+    "outDir": "./dist",
+    "rootDir": "./apps/factory/src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "types": ["node"]
+  },
+  "include": [
+    "apps/factory/src/api/**/*",
+    "apps/factory/src/services/**/*",
+    "apps/factory/src/types/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "apps/factory/src/screens/**/*",
+    "apps/factory/src/components/**/*",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
+}
