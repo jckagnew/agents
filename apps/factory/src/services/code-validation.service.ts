@@ -98,6 +98,18 @@ export interface CodeQualityGate {
  * Code Validation Service
  */
 export class CodeValidationService {
+  private static instance: CodeValidationService;
+
+  /**
+   * Get singleton instance
+   */
+  static getInstance(): CodeValidationService {
+    if (!CodeValidationService.instance) {
+      CodeValidationService.instance = new CodeValidationService();
+    }
+    return CodeValidationService.instance;
+  }
+
   /**
    * Validate generated code (full quality gate)
    */

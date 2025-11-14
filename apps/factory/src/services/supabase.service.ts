@@ -445,6 +445,103 @@ export class SupabaseService {
       // Don't throw - job will be picked up by worker
     }
   }
+
+  /**
+   * Create a new project (simplified version for Express tier)
+   */
+  async createProject(projectData: {
+    name: string;
+    app_concept: string;
+    service_tier: string;
+    status: string;
+    metadata?: any;
+  }): Promise<Project> {
+    const user = await this.getCurrentUser();
+    if (!user) throw new Error('User not authenticated');
+
+    const { data, error } = await this.client
+      .from('projects')
+      .insert({
+        user_id: user.id,
+        ...projectData,
+      })
+      .select()
+      .single();
+
+    if (error) throw error;
+    if (!data) throw new Error('Failed to create project');
+
+    return data as Project;
+  }
+
+  /**
+   * Update an existing project
+   */
+  async updateProject(
+    projectId: string,
+    updates: Partial<Project>
+  ): Promise<Project> {
+    const { data, error } = await this.client
+      .from('projects')
+      .update(updates)
+      .eq('id', projectId)
+      .select()
+      .single();
+
+    if (error) throw error;
+    if (!data) throw new Error('Failed to update project');
+
+    return data as Project;
+  }
+
+  /**
+   * Save a code artifact (screen, component, config file, etc.)
+   */
+  async saveCodeArtifact(artifact: {
+    project_id: string;
+    artifact_type: string;
+    file_path: string;
+    content: string;
+    conversion_confidence?: number;
+    metadata?: any;
+  }): Promise<any> {
+    const { data, error } = await this.client
+      .from('code_artifacts')
+      .insert(artifact)
+      .select()
+      .single();
+
+    if (error) throw error;
+    return data;
+  }
+
+  /**
+   * Package all project artifacts into a downloadable ZIP file
+   */
+  async packageProjectAsZip(projectId: string): Promise<string> {
+    // Get all code artifacts for the project
+    const { data: artifacts, error: artifactsError } = await this.client
+      .from('code_artifacts')
+      .select('*')
+      .eq('project_id', projectId);
+
+    if (artifactsError) throw artifactsError;
+    if (!artifacts || artifacts.length === 0) {
+      throw new Error('No code artifacts found for project');
+    }
+
+    // Call Edge Function to create ZIP
+    const { data, error } = await this.client.functions.invoke('package-project-zip', {
+      body: { project_id: projectId },
+    });
+
+    if (error) throw error;
+    if (!data || !data.zip_url) {
+      throw new Error('Failed to create project ZIP');
+    }
+
+    return data.zip_url;
+  }
 }
 
 /**
