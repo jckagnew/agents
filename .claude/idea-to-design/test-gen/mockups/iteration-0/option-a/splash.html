@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HydroTrack - Welcome</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #2196F3 0%, #54C9FF 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px; padding: 48px 24px;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        button {
+            background: white;
+            color: #2196F3;
+            border: none;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 28px; padding: 16px 48px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px) ;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            p { font-size: 18px; }
+            .icon { font-size: 64px; }
+        }
+
+        @media (max-width: 375px) {
+            h1 { font-size: 28px; }
+            p { font-size: 16px; }
+            button { padding: 14px 36px; font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">💪</div>
+        <h1>HydroTrack</h1>
+        <p>Track your daily water intake and stay healthy</p>
+        <button>Get Started</button>
+    </div>
+</body>
+</html>

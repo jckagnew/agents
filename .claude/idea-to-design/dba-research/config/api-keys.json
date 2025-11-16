@@ -1,0 +1,123 @@
+{
+  "nameVettingServices": {
+    "domainr": {
+      "name": "Domainr API",
+      "description": "Domain availability and registration data",
+      "baseUrl": "https://domainr.com/api/v2",
+      "documentation": "https://domainr.com/docs",
+      "pricing": "Free tier: 100 requests/month, Paid: $10/month for 10,000 requests",
+      "rateLimit": "100 requests/month (free), 10,000 requests/month (paid)",
+      "apiKeyRequired": true,
+      "apiKeyName": "DOMAINR_API_KEY",
+      "features": [
+        "Domain availability check",
+        "Domain registration status",
+        "Domain suggestions",
+        "TLD information"
+      ],
+      "priority": 1,
+      "status": "active"
+    },
+    "godaddy": {
+      "name": "GoDaddy API",
+      "description": "Domain availability and registration (fallback)",
+      "baseUrl": "https://api.godaddy.com/v1",
+      "documentation": "https://developer.godaddy.com/doc",
+      "pricing": "Free tier: 1,000 requests/month, Paid: $0.01 per request",
+      "rateLimit": "1,000 requests/month (free), unlimited (paid)",
+      "apiKeyRequired": true,
+      "apiKeyName": "GODADDY_API_KEY",
+      "secretKeyRequired": true,
+      "secretKeyName": "GODADDY_SECRET_KEY",
+      "features": [
+        "Domain availability check",
+        "Domain registration",
+        "Domain pricing",
+        "Domain suggestions"
+      ],
+      "priority": 2,
+      "status": "fallback"
+    },
+    "uspto": {
+      "name": "USPTO TSDR API",
+      "description": "Trademark search and status data",
+      "baseUrl": "https://tsdrapi.uspto.gov/ts/cd/casestatus",
+      "documentation": "https://www.uspto.gov/trademarks-application-process/search-trademark-database",
+      "pricing": "Free",
+      "rateLimit": "No official limit, but recommended 1 request/second",
+      "apiKeyRequired": false,
+      "features": [
+        "Trademark search",
+        "Trademark status",
+        "Trademark owner information",
+        "Trademark class information"
+      ],
+      "priority": 1,
+      "status": "active"
+    },
+    "googleSearch": {
+      "name": "Google Custom Search API",
+      "description": "Web search for brand conflicts and mentions",
+      "baseUrl": "https://www.googleapis.com/customsearch/v1",
+      "documentation": "https://developers.google.com/custom-search/v1/introduction",
+      "pricing": "Free tier: 100 requests/day, Paid: $5 per 1,000 requests",
+      "rateLimit": "100 requests/day (free), 10,000 requests/day (paid)",
+      "apiKeyRequired": true,
+      "apiKeyName": "GOOGLE_SEARCH_API_KEY",
+      "searchEngineIdRequired": true,
+      "searchEngineIdName": "GOOGLE_SEARCH_ENGINE_ID",
+      "features": [
+        "Web search for brand mentions",
+        "Competitor analysis",
+        "Brand conflict detection",
+        "Social media mentions"
+      ],
+      "priority": 1,
+      "status": "active"
+    }
+  },
+  "setupInstructions": {
+    "domainr": [
+      "1. Visit https://domainr.com/",
+      "2. Sign up for a free account",
+      "3. Navigate to API section in dashboard",
+      "4. Generate API key",
+      "5. Add to environment variables as DOMAINR_API_KEY"
+    ],
+    "godaddy": [
+      "1. Visit https://developer.godaddy.com/",
+      "2. Sign up for developer account",
+      "3. Create new application",
+      "4. Generate API key and secret",
+      "5. Add to environment variables as GODADDY_API_KEY and GODADDY_SECRET_KEY"
+    ],
+    "uspto": [
+      "1. No API key required for USPTO TSDR",
+      "2. Use direct API calls to tsdrapi.uspto.gov",
+      "3. Implement rate limiting (1 request/second recommended)",
+      "4. Handle response parsing for trademark data"
+    ],
+    "googleSearch": [
+      "1. Visit https://console.developers.google.com/",
+      "2. Create new project or select existing",
+      "3. Enable Custom Search API",
+      "4. Create credentials (API key)",
+      "5. Create Custom Search Engine at https://cse.google.com/",
+      "6. Get Search Engine ID",
+      "7. Add to environment variables as GOOGLE_SEARCH_API_KEY and GOOGLE_SEARCH_ENGINE_ID"
+    ]
+  },
+  "environmentVariables": {
+    "required": [
+      "DOMAINR_API_KEY",
+      "GOOGLE_SEARCH_API_KEY",
+      "GOOGLE_SEARCH_ENGINE_ID"
+    ],
+    "optional": [
+      "GODADDY_API_KEY",
+      "GODADDY_SECRET_KEY"
+    ]
+  },
+  "lastUpdated": "2025-10-25T19:15:00Z",
+  "version": "1.0"
+}

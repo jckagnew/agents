@@ -1,0 +1,234 @@
+# Semgrep Configuration for Software Factory
+# This configuration file defines security scanning rules for the Software Factory pipeline
+
+rules:
+  # OWASP Top 10 Security Rules
+  - id: owasp-top10
+    patterns:
+      - pattern-either:
+          - id: sql-injection
+            message: "Potential SQL injection vulnerability. Use parameterized queries."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: ERROR
+            patterns:
+              - pattern: |
+                  $QUERY = "SELECT * FROM $TABLE WHERE $FIELD = '" + $INPUT + "'"
+              - pattern: |
+                  $QUERY = `SELECT * FROM $TABLE WHERE $FIELD = '${$INPUT}'`
+              - pattern: |
+                  $QUERY = f"SELECT * FROM $TABLE WHERE $FIELD = '{input}'"
+          
+          - id: xss-vulnerability
+            message: "Potential XSS vulnerability. Sanitize user input before rendering."
+            languages: [javascript, typescript, html]
+            severity: ERROR
+            patterns:
+              - pattern: |
+                  $ELEMENT.innerHTML = $USER_INPUT
+              - pattern: |
+                  $ELEMENT.textContent = $USER_INPUT
+              - pattern: |
+                  dangerouslySetInnerHTML={{__html: $USER_INPUT}}
+          
+          - id: command-injection
+            message: "Potential command injection vulnerability. Avoid executing user input as commands."
+            languages: [python, javascript, typescript, bash]
+            severity: ERROR
+            patterns:
+              - pattern: |
+                  os.system($USER_INPUT)
+              - pattern: |
+                  exec($USER_INPUT)
+              - pattern: |
+                  eval($USER_INPUT)
+              - pattern: |
+                  child_process.exec($USER_INPUT)
+
+  # Authentication and Authorization
+  - id: auth-security
+    patterns:
+      - pattern-either:
+          - id: hardcoded-secrets
+            message: "Hardcoded secret detected. Use environment variables or secure secret management."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: ERROR
+            patterns:
+              - pattern: |
+                  $SECRET = "sk-..."
+              - pattern: |
+                  $SECRET = "ghp_..."
+              - pattern: |
+                  $SECRET = "AIza..."
+              - pattern: |
+                  $SECRET = "ya29..."
+          
+          - id: weak-crypto
+            message: "Weak cryptographic algorithm detected. Use strong, modern algorithms."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: WARNING
+            patterns:
+              - pattern: |
+                  crypto.createHash("md5")
+              - pattern: |
+                  crypto.createHash("sha1")
+              - pattern: |
+                  hashlib.md5($INPUT)
+              - pattern: |
+                  hashlib.sha1($INPUT)
+          
+          - id: missing-auth
+            message: "API endpoint missing authentication. Ensure proper authentication is implemented."
+            languages: [javascript, typescript, python]
+            severity: WARNING
+            patterns:
+              - pattern: |
+                  app.get("/api/$ENDPOINT", ($REQ, $RES) => {
+                      ...
+                  })
+              - pattern: |
+                  @app.route("/api/$ENDPOINT", methods=["GET"])
+                  def $FUNC($REQ):
+                      ...
+
+  # Data Validation and Sanitization
+  - id: data-validation
+    patterns:
+      - pattern-either:
+          - id: missing-validation
+            message: "User input not validated. Implement proper input validation."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: WARNING
+            patterns:
+              - pattern: |
+                  $FUNC($USER_INPUT)
+              - pattern: |
+                  $DB.query($USER_INPUT)
+              - pattern: |
+                  $FILE.write($USER_INPUT)
+          
+          - id: path-traversal
+            message: "Potential path traversal vulnerability. Validate and sanitize file paths."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: ERROR
+            patterns:
+              - pattern: |
+                  fs.readFile($USER_INPUT)
+              - pattern: |
+                  open($USER_INPUT)
+              - pattern: |
+                  new File($USER_INPUT)
+
+  # Error Handling and Logging
+  - id: error-handling
+    patterns:
+      - pattern-either:
+          - id: sensitive-data-logging
+            message: "Sensitive data in logs. Avoid logging passwords, tokens, or personal information."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: WARNING
+            patterns:
+              - pattern: |
+                  console.log("password:", $PASSWORD)
+              - pattern: |
+                  logger.info("token:", $TOKEN)
+              - pattern: |
+                  print(f"user data: {user_data}")
+          
+          - id: error-exposure
+            message: "Detailed error information exposed to client. Sanitize error messages."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: WARNING
+            patterns:
+              - pattern: |
+                  res.status(500).send($ERROR.message)
+              - pattern: |
+                  return {"error": str($EXCEPTION)}
+
+  # Dependency and Supply Chain
+  - id: dependency-security
+    patterns:
+      - pattern-either:
+          - id: outdated-dependency
+            message: "Outdated dependency detected. Update to latest secure version."
+            languages: [javascript, typescript, python, java, csharp]
+            severity: INFO
+            patterns:
+              - pattern: |
+                  "version": "$OLD_VERSION"
+              - pattern: |
+                  version = "$OLD_VERSION"
+
+  # Next.js and React Specific
+  - id: nextjs-security
+    patterns:
+      - pattern-either:
+          - id: nextjs-ssr-xss
+            message: "Potential SSR XSS vulnerability. Sanitize data before server-side rendering."
+            languages: [javascript, typescript]
+            severity: WARNING
+            patterns:
+              - pattern: |
+                  getServerSideProps = async ($CTX) => {
+                      return {
+                          props: {
+                              data: $USER_DATA
+                          }
+                      }
+                  }
+          
+          - id: nextjs-api-security
+            message: "API route missing security headers. Add security headers to API responses."
+            languages: [javascript, typescript]
+            severity: INFO
+            patterns:
+              - pattern: |
+                  export default function handler($REQ, $RES) {
+                      $RES.status(200).json($DATA)
+                  }
+
+  # Supabase Security
+  - id: supabase-security
+    patterns:
+      - pattern-either:
+          - id: supabase-rls-bypass
+            message: "Potential RLS bypass. Ensure Row Level Security is properly configured."
+            languages: [javascript, typescript, sql]
+            severity: WARNING
+            patterns:
+              - pattern: |
+                  .from($TABLE).select("*")
+              - pattern: |
+                  .from($TABLE).insert($DATA)
+          
+          - id: supabase-service-role
+            message: "Service role key usage detected. Ensure proper access controls."
+            languages: [javascript, typescript]
+            severity: INFO
+            patterns:
+              - pattern: |
+                  createClient($URL, $SERVICE_ROLE_KEY)
+
+# Exclude patterns (files to skip)
+exclude:
+  - "node_modules/**"
+  - "dist/**"
+  - "build/**"
+  - ".next/**"
+  - "coverage/**"
+  - "*.min.js"
+  - "*.bundle.js"
+  - "vendor/**"
+  - "*.d.ts"
+  - "*.test.js"
+  - "*.spec.js"
+  - "*.test.ts"
+  - "*.spec.ts"
+
+# Output configuration
+output:
+  format: json
+  output: "reports/semgrep-report.json"
+
+# Performance settings
+max_target_bytes: 1000000
+timeout: 30

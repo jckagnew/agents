@@ -1,0 +1,42 @@
+{
+  "projectType": "productivity",
+  "theme": "efficiency",
+  "colorScheme": "purple-to-pink",
+  "animationType": "fade",
+  "searchQueries": [
+    "productivity cartoon character",
+    "efficiency improvement animation",
+    "task management success",
+    "workflow optimization",
+    "productivity boost cartoon",
+    "work efficiency character",
+    "task completion animation",
+    "productivity journey"
+  ],
+  "content": {
+    "title": "Boost Your Productivity",
+    "subtitle": "Organize. Execute. Succeed.",
+    "description": "Achieve more with less effort.",
+    "ctaPrimary": "Start Free",
+    "ctaSecondary": "View Demo",
+    "stats": [
+      {
+        "label": "Tasks Completed",
+        "value": "247"
+      },
+      {
+        "label": "Efficiency Gain",
+        "value": "+35%"
+      }
+    ]
+  },
+  "evaluationCriteria": {
+    "commercial_appeal": 0.3,
+    "animation_potential": 0.4,
+    "design_quality": 0.3
+  },
+  "imageCount": 100,
+  "commercialWeight": 0.3,
+  "appName": "Splendid BDR",
+  "outputPath": "/Users/jackagnew/projects/agents/software-factory/generated-apps/splendid-bdr"
+}

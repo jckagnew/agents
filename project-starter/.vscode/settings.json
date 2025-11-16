@@ -1,0 +1,263 @@
+{
+  // =============================================================================
+  // VS CODE / CURSOR SETTINGS
+  // =============================================================================
+  // Comprehensive IDE settings for optimal development experience
+  // =============================================================================
+
+  // =============================================================================
+  // GENERAL SETTINGS
+  // =============================================================================
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.organizeImports": true
+  },
+  "editor.rulers": [80, 88],
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+  "editor.trimAutoWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  // =============================================================================
+  // PYTHON SETTINGS
+  // =============================================================================
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.banditEnabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.lintOnSave": true,
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.stubPath": "./typings",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+
+  // =============================================================================
+  // JAVASCRIPT/TYPESCRIPT SETTINGS
+  // =============================================================================
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "typescript.preferences.includePackageJsonAutoImports": "auto",
+  "javascript.preferences.includePackageJsonAutoImports": "auto",
+
+  // =============================================================================
+  // ESLINT SETTINGS
+  // =============================================================================
+  "eslint.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.workingDirectories": [
+    "."
+  ],
+  "eslint.format.enable": true,
+  "eslint.codeActionsOnSave.mode": "all",
+
+  // =============================================================================
+  // PRETTIER SETTINGS
+  // =============================================================================
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+
+  // =============================================================================
+  // FILE ASSOCIATIONS
+  // =============================================================================
+  "files.associations": {
+    "*.env*": "dotenv",
+    "*.yaml": "yaml",
+    "*.yml": "yaml",
+    "Dockerfile*": "dockerfile",
+    "docker-compose*.yml": "dockercompose",
+    "*.md": "markdown",
+    "*.json": "jsonc"
+  },
+
+  // =============================================================================
+  // LANGUAGE SPECIFIC SETTINGS
+  // =============================================================================
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.rulers": [88]
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true
+    },
+    "editor.rulers": [80]
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true
+    },
+    "editor.rulers": [80]
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.rulers": [100]
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+
+  // =============================================================================
+  // SEARCH SETTINGS
+  // =============================================================================
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.nyc_output": true,
+    "**/venv": true,
+    "**/env": true,
+    "**/.venv": true,
+    "**/.env": true,
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.coverage": true,
+    "**/bandit-report.json": true,
+    "**/.secrets.baseline": true
+  },
+
+  // =============================================================================
+  // FILES EXCLUDE
+  // =============================================================================
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true,
+    "**/.mypy_cache": true,
+    "**/.coverage": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/coverage": true,
+    "**/.nyc_output": true
+  },
+
+  // =============================================================================
+  // TERMINAL SETTINGS
+  // =============================================================================
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "bash",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "terminal.integrated.cwd": "${workspaceFolder}",
+
+  // =============================================================================
+  // GIT SETTINGS
+  // =============================================================================
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "git.autoStash": true,
+
+  // =============================================================================
+  // WORKBENCH SETTINGS
+  // =============================================================================
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.startupEditor": "newUntitledFile",
+
+  // =============================================================================
+  // EXTENSIONS SETTINGS
+  // =============================================================================
+  "extensions.autoUpdate": true,
+  "extensions.autoCheckUpdates": true,
+
+  // =============================================================================
+  // SECURITY SETTINGS
+  // =============================================================================
+  "security.workspace.trust.untrustedFiles": "prompt",
+  "security.workspace.trust.enabled": true,
+
+  // =============================================================================
+  // DEBUGGING SETTINGS
+  // =============================================================================
+  "debug.console.fontSize": 14,
+  "debug.console.lineHeight": 20,
+  "debug.console.fontFamily": "Monaco, 'Courier New', monospace",
+
+  // =============================================================================
+  // INTELLISENSE SETTINGS
+  // =============================================================================
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.tabCompletion": "on",
+  "editor.wordBasedSuggestions": "off",
+  "editor.parameterHints.enabled": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
+
+  // =============================================================================
+  // PERFORMANCE SETTINGS
+  // =============================================================================
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/dist/**": true,
+    "**/build/**": true,
+    "**/coverage/**": true,
+    "**/.nyc_output/**": true,
+    "**/venv/**": true,
+    "**/env/**": true,
+    "**/.venv/**": true,
+    "**/.env/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.mypy_cache/**": true,
+    "**/.coverage/**": true
+  },
+  "search.followSymlinks": false,
+  "typescript.disableAutomaticTypeAcquisition": false,
+  "javascript.disableAutomaticTypeAcquisition": false
+}

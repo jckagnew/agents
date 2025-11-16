@@ -1,0 +1,242 @@
+{
+  "version": "1.0",
+  "lastUpdated": "2025-10-25T14:00:00Z",
+  "description": "Manual backlog queue for immediate/near-term Software Factory tasks",
+  "items": [
+    {
+      "id": "domain-routing",
+      "title": "Configure domain routing for partner DBAs",
+      "description": "Set up Vercel path-based routing (or separate projects) so each future DBA/app can live under www.clevelsalesguy.com (e.g., /d2c, /bespoke, /enterprise).",
+      "priority": "P1",
+      "labels": ["domain", "infrastructure"],
+      "status": "pending",
+      "createdBy": "cursor",
+      "dbaNames": {
+        "consumer": "Pixelspark",
+        "bespoke": "Apex Partner Solutions", 
+        "enterprise": "Apex Strategy Group"
+      },
+      "urlPatterns": {
+        "consumer": "clevelsalesguy.com/d2c/*",
+        "bespoke": "clevelsalesguy.com/bespoke/*",
+        "enterprise": "clevelsalesguy.com/enterprise/*"
+      }
+    },
+    {
+      "id": "analytics-provisioning",
+      "title": "Provision analytics properties per DBA",
+      "description": "Create GA4 (or Segment) properties for each DBA category and document the env vars needed for per-app tracking.",
+      "priority": "P1",
+      "labels": ["analytics"],
+      "status": "pending",
+      "createdBy": "cursor",
+      "dbaProperties": {
+        "consumer": "Pixelspark Analytics",
+        "bespoke": "Apex Partners Analytics",
+        "enterprise": "Apex Strategy Analytics"
+      },
+      "trackingIds": {
+        "consumer": "GA4-XXXXX-1",
+        "bespoke": "GA4-XXXXX-2", 
+        "enterprise": "GA4-XXXXX-3"
+      }
+    },
+    {
+      "id": "dba-metrics-view",
+      "title": "Design DBA metrics view for Software Factory admin",
+      "description": "Create UI designs and component specifications for the DBA dashboard metrics view. Include KPI cards, charts, filtering, and drill-down views for financial, hosting, and analytics data.",
+      "priority": "P2",
+      "status": "backlog",
+      "labels": ["admin", "dashboard", "ui-design"],
+      "linkedSpec": ".claude/idea-to-design/software-factory-admin/dba-dashboard-spec.md",
+      "estimatedEffort": "2-3 weeks",
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Dashboard mockups for overview and detail views",
+        "Component specifications for KPI cards and charts",
+        "Responsive design for desktop and tablet",
+        "Accessibility compliance (WCAG AA)",
+        "Interactive prototype for stakeholder review"
+      ],
+      "createdAt": "2025-10-25T14:00:00Z",
+      "createdBy": "claude"
+    },
+    {
+      "id": "dba-analytics-api",
+      "title": "Implement API endpoints to serve per-DBA analytics",
+      "description": "Build Next.js API routes to aggregate and serve financial (Stripe), hosting (Vercel), and analytics (GA4) data for each DBA. Include caching, error handling, and role-based access control.",
+      "priority": "P2",
+      "status": "backlog",
+      "labels": ["api", "analytics", "backend"],
+      "linkedSpec": ".claude/idea-to-design/software-factory-admin/dba-dashboard-spec.md#64-api-endpoints",
+      "estimatedEffort": "3-4 weeks",
+      "dependencies": ["dba-metrics-view"],
+      "acceptanceCriteria": [
+        "GET /api/admin/dbas - List all DBAs with summary metrics",
+        "GET /api/admin/metrics/:dbaId - Fetch aggregated metrics for specific DBA",
+        "GET /api/admin/financials/:dbaId - Stripe data integration",
+        "GET /api/admin/hosting/:dbaId - Vercel metrics integration",
+        "GET /api/admin/analytics/:dbaId - GA4 data integration",
+        "API response caching (Redis) for performance",
+        "Error handling and retry logic for external APIs",
+        "Role-based access control middleware",
+        "API documentation with examples",
+        "Unit and integration tests (80% coverage)"
+      ],
+      "technicalNotes": {
+        "integrations": ["Stripe API", "Vercel API", "Google Analytics 4 API"],
+        "caching": "Redis with 1-hour TTL",
+        "auth": "JWT-based with role checks",
+        "database": "PostgreSQL for metric aggregation"
+      },
+      "createdAt": "2025-10-25T14:00:00Z",
+      "createdBy": "claude"
+    },
+    {
+      "id": "dba-domain-validation",
+      "title": "Validate domain availability for selected DBA names",
+      "description": "Check .com domain availability and trademark conflicts for the three selected DBA names: Pixelspark, Apex Partner Solutions, and Apex Strategy Group.",
+      "priority": "P1",
+      "status": "pending",
+      "labels": ["domain", "legal", "validation"],
+      "dbaNames": {
+        "consumer": "Pixelspark",
+        "bespoke": "Apex Partner Solutions",
+        "enterprise": "Apex Strategy Group"
+      },
+      "validationTasks": [
+        "Check .com domain availability for each DBA name",
+        "Search USPTO database for trademark conflicts",
+        "Verify social media handle availability",
+        "Document any conflicts or alternatives needed"
+      ],
+      "acceptanceCriteria": [
+        "All three DBA names have available .com domains",
+        "No trademark conflicts found in USPTO database",
+        "Social media handles available across major platforms",
+        "Alternative names identified if conflicts exist"
+      ],
+      "createdAt": "2025-10-25T17:45:00Z",
+      "createdBy": "claude"
+    },
+    {
+      "id": "name-vetting-automation",
+      "title": "Implement name vetting automation (domain + trademark API)",
+      "description": "Complete the name-vetting.js script by implementing domain availability checks (Domainr/GoDaddy), trademark screening (USPTO/PatentsView), social handle availability, and uniqueness scoring. Enable automated vetting for all future DBA and product names.",
+      "priority": "P1",
+      "status": "backlog",
+      "labels": ["naming", "automation", "api-integration"],
+      "linkedScript": "scripts/name-vetting.js",
+      "estimatedEffort": "2-3 weeks",
+      "dependencies": [],
+      "acceptanceCriteria": [
+        "Domain availability check via Domainr or GoDaddy API",
+        "Trademark conflict screening via USPTO TSDR API",
+        "Social handle availability for Twitter, Instagram, LinkedIn",
+        "Uniqueness scoring via Google Custom Search API",
+        "Automated scoring (0-100) with risk assessment",
+        "JSON report generation with recommendations",
+        "CLI support for single and batch name vetting",
+        "Error handling and API rate limit management",
+        "Documentation for API key setup",
+        "Integration tests with mock API responses"
+      ],
+      "technicalNotes": {
+        "apis": [
+          "Domainr API (domain availability)",
+          "GoDaddy API (fallback domain check)",
+          "USPTO TSDR API (trademark screening)",
+          "PatentsView API (alternative trademark source)",
+          "Google Custom Search API (uniqueness check)"
+        ],
+        "envVars": [
+          "DOMAINR_API_KEY",
+          "GODADDY_API_KEY",
+          "GODADDY_API_SECRET",
+          "USPTO_API_KEY",
+          "GOOGLE_SEARCH_API_KEY"
+        ],
+        "scoring": {
+          "domain": 40,
+          "trademark": 30,
+          "social": 20,
+          "uniqueness": 10
+        }
+      },
+      "createdAt": "2025-10-25T18:00:00Z",
+      "createdBy": "claude"
+    },
+    {
+      "id": "social-handle-monitor",
+      "title": "Build social handle availability monitor",
+      "description": "Create automated monitoring system to check social media handle availability across Twitter/X, Instagram, and LinkedIn. Integrate with name-vetting.js and provide real-time availability tracking.",
+      "priority": "P2",
+      "status": "backlog",
+      "labels": ["naming", "social", "monitoring"],
+      "linkedScript": "scripts/name-vetting.js",
+      "estimatedEffort": "1-2 weeks",
+      "dependencies": ["name-vetting-automation"],
+      "acceptanceCriteria": [
+        "Twitter/X handle availability check (API or HTTP)",
+        "Instagram handle availability check (web scraping or API)",
+        "LinkedIn company page availability check",
+        "Handle normalization for platform-specific rules",
+        "Alternative handle suggestions when unavailable",
+        "Rate limit handling for social platform APIs",
+        "Cached results to minimize API calls",
+        "Integration with name vetting scoring system"
+      ],
+      "technicalNotes": {
+        "platforms": {
+          "twitter": "Twitter API v2 or direct HTTP check",
+          "instagram": "Web scraping (API requires Facebook OAuth)",
+          "linkedin": "LinkedIn Pages API or web scraping"
+        },
+        "handleRules": {
+          "twitter": "15 chars max, alphanumeric + underscore",
+          "instagram": "30 chars max, alphanumeric + period + underscore",
+          "linkedin": "No strict limit, recommend < 25 chars"
+        },
+        "alternatives": [
+          "Add underscore suffix",
+          "Add 'official' suffix",
+          "Add 'the' prefix",
+          "Use abbreviated form"
+        ]
+      },
+      "createdAt": "2025-10-25T18:00:00Z",
+      "createdBy": "claude"
+    }
+  ],
+  "metadata": {
+    "totalItems": 7,
+    "byPriority": {
+      "P1": 4,
+      "P2": 3,
+      "P3": 0
+    },
+    "byStatus": {
+      "pending": 3,
+      "backlog": 4,
+      "in-progress": 0,
+      "completed": 0
+    },
+    "byLabel": {
+      "domain": 2,
+      "infrastructure": 1,
+      "analytics": 2,
+      "admin": 1,
+      "dashboard": 1,
+      "ui-design": 1,
+      "api": 1,
+      "backend": 1,
+      "legal": 1,
+      "validation": 1,
+      "naming": 2,
+      "automation": 2,
+      "api-integration": 1,
+      "social": 1,
+      "monitoring": 1
+    }
+  }
+}

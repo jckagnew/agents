@@ -1,0 +1,143 @@
+{
+  "backlog_items": [
+    {
+      "id": "BL-001",
+      "title": "Implement user authentication system",
+      "description": "Add secure user authentication with email/password and social login options. Include password reset functionality and session management.",
+      "priority": "high",
+      "source": "prd-requirements",
+      "status": "pending",
+      "category": "feature",
+      "effort_estimate": "8",
+      "acceptance_criteria": [
+        "Users can register with email and password",
+        "Users can login with social providers (Google, GitHub)",
+        "Password reset functionality works via email",
+        "Sessions are properly managed and secured",
+        "All authentication flows are tested"
+      ],
+      "dependencies": [],
+      "tags": ["authentication", "security", "user-management"],
+      "created_date": "2025-01-23",
+      "due_date": "2025-02-15",
+      "assignee": null,
+      "labels": ["software-factory", "priority-high", "feature"]
+    },
+    {
+      "id": "BL-002", 
+      "title": "Create responsive dashboard layout",
+      "description": "Design and implement a responsive dashboard that works across mobile, tablet, and desktop viewports. Include data visualization components and navigation.",
+      "priority": "medium",
+      "source": "ux-wireframes",
+      "status": "in_progress",
+      "category": "ui",
+      "effort_estimate": "5",
+      "acceptance_criteria": [
+        "Dashboard is fully responsive across all breakpoints",
+        "Data visualization components are interactive",
+        "Navigation is intuitive and accessible",
+        "Performance meets <2s load time requirement",
+        "Design follows established design system"
+      ],
+      "dependencies": ["BL-001"],
+      "tags": ["dashboard", "responsive", "ui", "data-viz"],
+      "created_date": "2025-01-23",
+      "due_date": "2025-02-10",
+      "assignee": "designer",
+      "labels": ["software-factory", "priority-medium", "ui"]
+    },
+    {
+      "id": "BL-003",
+      "title": "Set up automated testing pipeline",
+      "description": "Implement comprehensive testing pipeline including unit tests, integration tests, and visual regression testing. Integrate with CI/CD workflow.",
+      "priority": "high",
+      "source": "architecture-requirements",
+      "status": "pending",
+      "category": "infrastructure",
+      "effort_estimate": "6",
+      "acceptance_criteria": [
+        "Unit test coverage >80% for all components",
+        "Integration tests cover all API endpoints",
+        "Visual regression tests catch UI changes",
+        "Tests run automatically on PR creation",
+        "Test results are reported in PR comments"
+      ],
+      "dependencies": [],
+      "tags": ["testing", "ci-cd", "automation", "quality"],
+      "created_date": "2025-01-23",
+      "due_date": "2025-02-05",
+      "assignee": "devops",
+      "labels": ["software-factory", "priority-high", "infrastructure"]
+    },
+    {
+      "id": "BL-004",
+      "title": "Implement data persistence layer",
+      "description": "Set up database schema and data access layer for storing user data, tracking entries, and application state. Include migration scripts and backup strategy.",
+      "priority": "high",
+      "source": "architecture-data-model",
+      "status": "pending",
+      "category": "backend",
+      "effort_estimate": "7",
+      "acceptance_criteria": [
+        "Database schema matches architecture data model",
+        "Data access layer provides CRUD operations",
+        "Migration scripts handle schema changes safely",
+        "Backup and recovery procedures are documented",
+        "Data validation and constraints are enforced"
+      ],
+      "dependencies": ["BL-001"],
+      "tags": ["database", "persistence", "backend", "data-model"],
+      "created_date": "2025-01-23",
+      "due_date": "2025-02-12",
+      "assignee": "backend-developer",
+      "labels": ["software-factory", "priority-high", "backend"]
+    },
+    {
+      "id": "BL-005",
+      "title": "Add accessibility compliance features",
+      "description": "Implement WCAG 2.1 AA compliance features including screen reader support, keyboard navigation, and high contrast mode support.",
+      "priority": "medium",
+      "source": "accessibility-guidelines",
+      "status": "pending",
+      "category": "accessibility",
+      "effort_estimate": "4",
+      "acceptance_criteria": [
+        "All interactive elements are keyboard accessible",
+        "Screen reader support is comprehensive",
+        "Color contrast meets WCAG 2.1 AA standards",
+        "Focus indicators are clearly visible",
+        "Accessibility testing is automated"
+      ],
+      "dependencies": ["BL-002"],
+      "tags": ["accessibility", "wcag", "a11y", "compliance"],
+      "created_date": "2025-01-23",
+      "due_date": "2025-02-20",
+      "assignee": "frontend-developer",
+      "labels": ["software-factory", "priority-medium", "accessibility"]
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "created_date": "2025-01-23",
+    "last_updated": "2025-01-23",
+    "total_items": 5,
+    "status_counts": {
+      "pending": 3,
+      "in_progress": 1,
+      "completed": 0,
+      "cancelled": 0
+    },
+    "priority_counts": {
+      "high": 3,
+      "medium": 2,
+      "low": 0
+    },
+    "category_counts": {
+      "feature": 1,
+      "ui": 1,
+      "infrastructure": 1,
+      "backend": 1,
+      "accessibility": 1
+    }
+  }
+}

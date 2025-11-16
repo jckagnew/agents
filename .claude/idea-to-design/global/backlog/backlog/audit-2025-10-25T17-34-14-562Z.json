@@ -1,0 +1,26 @@
+{
+  "timestamp": "2025-10-25T17:34:14.563Z",
+  "backlogFile": ".claude/idea-to-design/global/backlog/backlog/backlog-2025-10-25T17-34-14-141Z.json",
+  "totalItems": 4,
+  "syncedItems": 0,
+  "failedItems": 4,
+  "synced": [],
+  "failed": [
+    {
+      "title": "Configure domain routing for partner DBAs",
+      "error": "Command failed: gh issue create --repo jckagnew/agents --title \"Configure domain routing for partner DBAs\" --body \"Set up Vercel path-based routing (or separate projects) so each future DBA/app can live under www.clevelsalesguy.com (e.g., /d2c, /bespoke, /enterprise).\n\n---\n**Source**: undefined\n**Priority**: P1\" --label \"domain,infrastructure\"\nerror connecting to api.github.com\ncheck your internet connection or https://githubstatus.com\n"
+    },
+    {
+      "title": "Provision analytics properties per DBA",
+      "error": "Command failed: gh issue create --repo jckagnew/agents --title \"Provision analytics properties per DBA\" --body \"Create GA4 (or Segment) properties for each DBA category and document the env vars needed for per-app tracking.\n\n---\n**Source**: undefined\n**Priority**: P1\" --label \"analytics\"\nerror connecting to api.github.com\ncheck your internet connection or https://githubstatus.com\n"
+    },
+    {
+      "title": "Design DBA metrics view for Software Factory admin",
+      "error": "Command failed: gh issue create --repo jckagnew/agents --title \"Design DBA metrics view for Software Factory admin\" --body \"Create UI designs and component specifications for the DBA dashboard metrics view. Include KPI cards, charts, filtering, and drill-down views for financial, hosting, and analytics data.\n\n---\n**Source**: undefined\n**Priority**: P2\" --label \"admin,dashboard,ui-design\"\nerror connecting to api.github.com\ncheck your internet connection or https://githubstatus.com\n"
+    },
+    {
+      "title": "Implement API endpoints to serve per-DBA analytics",
+      "error": "Command failed: gh issue create --repo jckagnew/agents --title \"Implement API endpoints to serve per-DBA analytics\" --body \"Build Next.js API routes to aggregate and serve financial (Stripe), hosting (Vercel), and analytics (GA4) data for each DBA. Include caching, error handling, and role-based access control.\n\n---\n**Source**: undefined\n**Priority**: P2\" --label \"api,analytics,backend\"\nerror connecting to api.github.com\ncheck your internet connection or https://githubstatus.com\n"
+    }
+  ]
+}

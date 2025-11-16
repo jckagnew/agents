@@ -1,0 +1,147 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-25T13:59:01.165Z",
+  "totalIdeas": 4,
+  "ideas": [
+    {
+      "id": "ai-1761400732345-aa2aqpsc4",
+      "title": "Interactive Partner Filtering",
+      "description": "Build filters to view case studies by partner type, industry, company size, and use case category\n\n**Findings**: Post-launch enhancement. Useful when case study library grows beyond 5-10 partners. Early analytics needed to validate user behavior - do visitors browse all cases or seek specific types? Similar features on competitor sites show moderate engagement (15-30% of visitors use filters).",
+      "drivers": [
+        "Improves user experience with large case study libraries",
+        "Enables self-service partner discovery",
+        "Reduces bounce rate when visitor seeks specific industries"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 5,
+      "confidence": 0.5,
+      "dependencies": [
+        "Minimum 8-10 case studies to justify filtering",
+        "Taxonomy for partner types and industries",
+        "Analytics showing user search/browse patterns"
+      ],
+      "targetPhase": "mvp",
+      "theme": "user-experience",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T13:58:52.345Z",
+      "updatedAt": "2025-10-25T13:58:52.346Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Monitor analytics post-launch to validate need. Survey 10-15 early visitors about discovery preferences. Prototype filter UI if >30% users view 3+ case studies.",
+          "originalTags": [
+            "user-experience",
+            "post-mvp"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761400732346-h33w1hcd2",
+      "title": "Downloadable PDF One-Pager",
+      "description": "Generate export-ready PDF overview for offline sharing at conferences, sales meetings, and partnership discussions\n\n**Findings**: Nice-to-have for enterprise sales cycles. Partners often request leave-behind materials. Implementation relatively straightforward using browser print CSS or server-side PDF generation. Value uncertain until we measure download rates.",
+      "drivers": [
+        "Offline sharing at conferences and events",
+        "Email attachment for partnership outreach",
+        "Leave-behind material for sales meetings",
+        "Brand reinforcement with professional design"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 3,
+      "confidence": 0.4,
+      "dependencies": [
+        "Print-optimized CSS design",
+        "PDF generation library (e.g., Puppeteer, jsPDF)",
+        "Tracking mechanism for download conversion"
+      ],
+      "targetPhase": "mvp",
+      "theme": "business",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T13:58:52.346Z",
+      "updatedAt": "2025-10-25T13:58:52.346Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Gather feedback from partnerships team on collateral needs. Estimate download demand based on similar assets. Prototype print CSS and test across browsers.",
+          "originalTags": [
+            "business",
+            "marketing",
+            "nice-to-have"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761400732346-s21czs7hz",
+      "title": "Embedded Video/Testimonial",
+      "description": "Add partner testimonial video or animation explaining the Software Factory pipeline and AI Studio capabilities\n\n**Findings**: Exploratory. Video increases engagement but adds production cost and page load time. Competitor analysis shows mixed results - some partner pages have video (40-60s view time average), others purely static. Need to weigh engagement gain vs. production effort and performance impact.",
+      "drivers": [
+        "Increases engagement and time on page",
+        "Humanizes the brand with partner voice",
+        "Explains complex pipeline visually",
+        "Differentiates from text-heavy competitor pages"
+      ],
+      "estimatedValue": 6,
+      "estimatedEffort": 8,
+      "confidence": 0.3,
+      "dependencies": [
+        "Partner willing to provide video testimonial",
+        "Video production resources (filming, editing)",
+        "Video hosting solution (YouTube, Vimeo, self-hosted)",
+        "Lazy loading implementation to preserve page speed"
+      ],
+      "targetPhase": "exploratory",
+      "theme": "user-experience",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T13:58:52.346Z",
+      "updatedAt": "2025-10-25T13:58:52.346Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Survey partners about testimonial willingness. Estimate video production cost (internal vs. agency). A/B test static vs. video on similar page to measure impact. Prototype lazy-load video player.",
+          "originalTags": [
+            "user-experience",
+            "marketing",
+            "exploratory"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761400732346-d629j1oa1",
+      "title": "Post-Launch A/B Testing",
+      "description": "Plan experiments for hero headline copy, CTA button text, and workflow timeline visualization to optimize conversion rates\n\n**Findings**: Standard post-launch optimization. Typical A/B tests show 10-30% conversion lift with headline/CTA optimization. Requires minimum traffic volume (1000+ visitors/month) for statistical significance. Should prioritize based on analytics - test high-traffic, low-conversion areas first.",
+      "drivers": [
+        "Optimize conversion rate for contact form and calendar bookings",
+        "Validate messaging effectiveness with real data",
+        "Continuous improvement based on user behavior",
+        "Maximize ROI from marketing traffic"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 3,
+      "confidence": 0.5,
+      "dependencies": [
+        "A/B testing platform (Optimizely, VWO, or custom)",
+        "Sufficient traffic volume for statistical significance",
+        "Conversion tracking infrastructure (GA4 goals)",
+        "Variant ideas based on initial analytics"
+      ],
+      "targetPhase": "mvp",
+      "theme": "analytics",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T13:58:52.346Z",
+      "updatedAt": "2025-10-25T13:58:52.346Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Set up A/B testing framework at launch. Monitor initial conversion rates for 2-4 weeks. Identify high-impact test opportunities (hero, CTA, proof section). Run first test when traffic >1000/month.",
+          "originalTags": [
+            "analytics",
+            "growth",
+            "optimization"
+          ]
+        }
+      }
+    }
+  ]
+}

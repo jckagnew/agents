@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Dark Mode Theme",
+    "description": "Add dark mode theme option for better viewing in low-light environments",
+    "drivers": ["User requests", "Modern UI trend", "Reduce eye strain"],
+    "estimatedValue": 7,
+    "estimatedEffort": 3,
+    "confidence": 0.85,
+    "dependencies": [],
+    "targetPhase": "post-mvp",
+    "theme": "user-experience",
+    "source": "customer-feedback"
+  },
+  {
+    "title": "Real-time Collaboration",
+    "description": "Allow multiple users to edit documents simultaneously with live cursor tracking",
+    "drivers": ["Team workflow improvement", "Competitor parity"],
+    "estimatedValue": 9,
+    "estimatedEffort": 9,
+    "confidence": 0.3,
+    "dependencies": ["WebSocket infrastructure", "Operational transformation algorithm"],
+    "targetPhase": "exploratory",
+    "theme": "user-experience",
+    "source": "competitive-analysis"
+  },
+  {
+    "title": "Advanced Analytics Dashboard",
+    "description": "Provide detailed usage analytics with custom reports and cohort analysis",
+    "drivers": ["Enterprise customers need reporting", "Product insights", "Upsell opportunity"],
+    "estimatedValue": 7,
+    "estimatedEffort": 6,
+    "confidence": 0.8,
+    "dependencies": ["Analytics data pipeline"],
+    "targetPhase": "post-mvp",
+    "theme": "analytics",
+    "source": "team-brainstorm"
+  }
+]

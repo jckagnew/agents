@@ -1,0 +1,119 @@
+{
+  "timestamp": "2025-10-17T15:03:15.366540",
+  "project_config": {
+    "projectType": "productivity",
+    "theme": "efficiency",
+    "colorScheme": "purple-to-pink",
+    "animationType": "fade",
+    "searchQueries": [
+      "productivity cartoon character",
+      "efficiency improvement animation",
+      "task management success",
+      "workflow optimization",
+      "productivity boost cartoon",
+      "work efficiency character",
+      "task completion animation",
+      "productivity journey"
+    ],
+    "content": {
+      "title": "Boost Your Productivity",
+      "subtitle": "Organize. Execute. Succeed.",
+      "description": "Achieve more with less effort.",
+      "ctaPrimary": "Start Free",
+      "ctaSecondary": "View Demo",
+      "stats": [
+        {
+          "label": "Tasks Completed",
+          "value": "247"
+        },
+        {
+          "label": "Efficiency Gain",
+          "value": "+35%"
+        }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.3,
+      "animation_potential": 0.4,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.3,
+    "appName": "Splendid BDR",
+    "outputPath": "/Users/jackagnew/projects/agents/software-factory/generated-apps/splendid-bdr"
+  },
+  "phases": {
+    "Image Sourcing": {
+      "status": "success",
+      "stdout": "\u26a0\ufe0f MCP framework not found, using fallback image sourcing\n\u26a0\ufe0f Open source image client not found, using basic image sourcing\n\ud83d\ude80 Generic Image Sourcing Agent\n==================================================\nProject Type: productivity\nSearch Queries: 8\nTarget Pairs: 100\n\ud83c\udfaf Starting image sourcing for productivity project...\n\ud83d\udcca Target: 100 image pairs\n\ud83d\udd0d Search queries: 8\n\ud83c\udf1f PRIMARY: Searching open source repositories...\n\u26a0\ufe0f Open source aggregator not available, skipping direct repository search\n   Found 0 pairs from open source repositories\n\ud83d\udd0d SECONDARY: Searching with MCP servers (open source focus)...\n\u26a0\ufe0f Brave Search MCP server not available, skipping\n   Brave Query 1: Found 0 potential pairs for 'productivity cartoon character'\n\u26a0\ufe0f Brave Search MCP server not available, skipping\n   Brave Query 2: Found 0 potential pairs for 'efficiency improvement animation'\n\u26a0\ufe0f Brave Search MCP server not available, skipping\n   Brave Query 3: Found 0 potential pairs for 'task management success'\n\u26a0\ufe0f Perplexity MCP server not available, skipping\n   Perplexity Query 4: Found 0 potential pairs for 'workflow optimization'\n\u26a0\ufe0f Perplexity MCP server not available, skipping\n   Perplexity Query 5: Found 0 potential pairs for 'productivity boost cartoon'\n\u26a0\ufe0f Perplexity MCP server not available, skipping\n   Perplexity Query 6: Found 0 potential pairs for 'work efficiency character'\n\ud83d\udcca Total unique image pairs found: 0\n\ud83d\udd0d Validating image accessibility and open source licensing...\n\u274c No valid image pairs found. Check your MCP server configurations.\n",
+      "stderr": ""
+    },
+    "Design Curation": {
+      "status": "success",
+      "stdout": "\u2705 Selected 3 top image pairs.\n",
+      "stderr": ""
+    },
+    "Animation Generation": {
+      "status": "success",
+      "stdout": "\u2705 Animation generation complete!\n\ud83d\udcc1 Components saved to /Users/jackagnew/projects/agents/software-factory/generated-apps/splendid-bdr/src/components/splash-prototypes\n\ud83d\udcc4 Comparison page saved to /Users/jackagnew/projects/agents/software-factory/generated-apps/splendid-bdr/src/app/splash-comparison/page.tsx\n",
+      "stderr": ""
+    }
+  },
+  "success": true,
+  "generated_components": [
+    {
+      "before_url": "https://pixabay.com/get/g1db0f811b0e916951450c5a84eec2b516bcf7bc9b77f27a383e882628228c2c489084730c09143a87130da3738d0b3e77bc148286e37578bed5d49e608b48908_640.jpg",
+      "after_url": "https://pixabay.com/get/g1f9f139ab7c2ab518d2a6b960eccda46156f65988f6aa7ebf5864968960b7c1363139347ebe0d03c486341a9ba3235a24a6566a5cb63c84464dd32a577716857_640.jpg",
+      "before_description": "movement, sport, health, gym, relaxation, fitness center, woman, sportive, drawing, background, body, fitness, monstera, mirror, health, health, health, gym, gym, gym, gym, gym, fitness - movement, sport, health, gym, relaxation, fitness center, woman, sportive, drawing, background, body, fitness, monstera, mirror, health, health, health, gym, gym, gym, gym, gym, fitness",
+      "after_description": "pokemon, go, background, cartoon, play, augmented, touch, breeding, transformation, application, illustrative, render, blue cartoon, pokemon, pokemon, pokemon, pokemon, pokemon - pokemon, go, background, cartoon, play, augmented, touch, breeding, transformation, application, illustrative, render, blue cartoon, pokemon, pokemon, pokemon, pokemon, pokemon",
+      "source": "pixabay,pixabay",
+      "project_type": "fitness",
+      "quality_score": 0.7999999999999999,
+      "commercial_appeal": 0.9000000000000001,
+      "animation_potential": 0.9,
+      "overall_score": 0.8700000000000001,
+      "scores": {
+        "commercial_appeal": 0.9000000000000001,
+        "animation_potential": 0.9,
+        "design_quality": 0.7999999999999999,
+        "overall": 0.8700000000000001
+      }
+    },
+    {
+      "before_url": "https://images.pexels.com/photos/6670943/pexels-photo-6670943.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "after_url": "https://images.pexels.com/photos/5622199/pexels-photo-5622199.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "before_description": "Photo by Moe Magners - Person holding 'weight loss' sign for fitness motivation and health goals.",
+      "after_description": "Photo by Gustavo Fring - Close-up image of a woman measuring her waist with a tape measure, promoting fitness and health goals.",
+      "source": "pexels,pexels",
+      "project_type": "fitness",
+      "quality_score": 0.8999999999999999,
+      "commercial_appeal": 1.0,
+      "animation_potential": 0.75,
+      "overall_score": 0.8700000000000001,
+      "scores": {
+        "commercial_appeal": 1.0,
+        "animation_potential": 0.75,
+        "design_quality": 0.8999999999999999,
+        "overall": 0.8700000000000001
+      }
+    },
+    {
+      "before_url": "https://images.pexels.com/photos/6670943/pexels-photo-6670943.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "after_url": "https://images.pexels.com/photos/6672086/pexels-photo-6672086.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
+      "before_description": "Photo by Moe Magners - Person holding 'weight loss' sign for fitness motivation and health goals.",
+      "after_description": "Photo by Moe Magners - Confident woman showing weight loss message painted on her stomach, symbolizing motivation and lifestyle change.",
+      "source": "pexels,pexels",
+      "project_type": "fitness",
+      "quality_score": 0.8999999999999999,
+      "commercial_appeal": 1.0,
+      "animation_potential": 0.75,
+      "overall_score": 0.8700000000000001,
+      "scores": {
+        "commercial_appeal": 1.0,
+        "animation_potential": 0.75,
+        "design_quality": 0.8999999999999999,
+        "overall": 0.8700000000000001
+      }
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-24T18:34:14.355Z",
+  "source": "ai-studio",
+  "totalIdeas": 4,
+  "ideas": [
+    {
+      "id": "ai-1761330854349-yjxwjohpu",
+      "title": "Voice-Activated Task Creation",
+      "description": "Allow users to create tasks using voice commands for hands-free productivity\n\n**Findings**: Market research shows 68% of mobile users prefer voice input for quick actions. Voice-activated productivity is growing 45% YoY. Main competitor (Todoist) lacks robust voice features.",
+      "drivers": [
+        "Mobile-first user base growing",
+        "Voice AI becoming mainstream",
+        "Competitor gap identified"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 5,
+      "confidence": 0.8,
+      "dependencies": [
+        "Speech recognition API integration",
+        "Natural language processing for task parsing"
+      ],
+      "targetPhase": "post-mvp",
+      "theme": "user-experience",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-24T18:34:14.349Z",
+      "updatedAt": "2025-10-24T18:34:14.354Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Prototype voice UI, test with 50 beta users, validate task accuracy >90%",
+          "originalTags": [
+            "user-experience",
+            "mobile",
+            "voice"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761330854354-19lxjtxjr",
+      "title": "AI-Powered Priority Suggestions",
+      "description": "Use machine learning to automatically suggest task priorities based on user behavior, deadlines, and context\n\n**Findings**: Exploratory concept. Requires significant ML infrastructure and training data. Uncertain ROI. Similar features in competitors show mixed adoption (15-40%).",
+      "drivers": [
+        "Differentiation from competitors",
+        "Reduce decision fatigue",
+        "Personalization trend"
+      ],
+      "estimatedValue": 6,
+      "estimatedEffort": 10,
+      "confidence": 0.3,
+      "dependencies": [
+        "ML infrastructure (training, inference)",
+        "User behavioral data collection (6+ months)",
+        "A/B testing framework",
+        "Data science team"
+      ],
+      "targetPhase": "exploratory",
+      "theme": "ai",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-24T18:34:14.354Z",
+      "updatedAt": "2025-10-24T18:34:14.354Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Run feasibility spike, estimate infrastructure costs, interview 20 users about priority pain points",
+          "originalTags": [
+            "ai",
+            "analytics",
+            "exploratory"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761330854354-0mnjpi86i",
+      "title": "Collaborative Team Workspaces",
+      "description": "Enable teams to share task lists, assign work, and track progress collaboratively\n\n**Findings**: Strong customer demand from enterprise segment. 82% of trial users requested team features. Competitive requirement for enterprise deals. Clear monetization path (team plans).",
+      "drivers": [
+        "Enterprise customer requests (15+ companies)",
+        "Upsell opportunity (+$50/mo per team)",
+        "Competitive requirement for market positioning",
+        "Viral growth potential (team invites)"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 8,
+      "confidence": 0.9,
+      "dependencies": [
+        "Multi-tenancy architecture",
+        "Real-time sync infrastructure",
+        "Permission system",
+        "Team billing integration"
+      ],
+      "targetPhase": "mvp",
+      "theme": "user-experience",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-24T18:34:14.354Z",
+      "updatedAt": "2025-10-24T18:34:14.354Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Finalize architecture design, scope MVP team features, estimate 8-10 week timeline",
+          "originalTags": [
+            "user-experience",
+            "business",
+            "enterprise"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761330854354-12x8wjoff",
+      "title": "Offline Mode Support",
+      "description": "Allow users to access and modify tasks without internet connection, with automatic sync when online\n\n**Findings**: Moderate demand (32% of users report connectivity issues). Critical for mobile users and travelers. Implementation complexity high due to conflict resolution.",
+      "drivers": [
+        "Mobile user experience improvement",
+        "International market expansion",
+        "Reliability and trust perception"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 8,
+      "confidence": 0.6,
+      "dependencies": [
+        "Client-side storage architecture",
+        "Conflict resolution algorithm",
+        "Background sync service"
+      ],
+      "targetPhase": "v2",
+      "theme": "user-experience",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-24T18:34:14.354Z",
+      "updatedAt": "2025-10-24T18:34:14.354Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Research offline-first frameworks (e.g., PouchDB, WatermelonDB), prototype conflict resolution",
+          "originalTags": [
+            "user-experience",
+            "infrastructure",
+            "mobile"
+          ]
+        }
+      }
+    }
+  ]
+}

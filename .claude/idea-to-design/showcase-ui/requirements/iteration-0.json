@@ -1,0 +1,65 @@
+{
+  "app_name": "Partner Showcase",
+  "app_type": "marketing_experience",
+  "description": "A partner-facing UI that explains our agentic Software Factory and AI Research pipeline, demonstrates trust-building automation, and gives prospective partners clear calls-to-action.",
+  "user_personas": [
+    {
+      "name": "Strategic Partner Lead",
+      "goals": [
+        "Understand our automation capabilities quickly",
+        "See evidence of successful deployments",
+        "Identify integration points and partnership value"
+      ],
+      "frustrations": [
+        "High-level pitches with no concrete workflow details",
+        "Unclear ROI or next steps",
+        "Lack of technical depth for due diligence"
+      ]
+    },
+    {
+      "name": "Technical Due-Diligence Lead",
+      "goals": [
+        "Validate robustness of our pipeline",
+        "Compare tooling/components with their stack",
+        "Assess risk and security considerations"
+      ],
+      "frustrations": [
+        "Marketing fluff without architecture detail",
+        "Unclear compliance/security posture",
+        "No visibility into roadmap and support"
+      ]
+    }
+  ],
+  "must_have_features": [
+    "Clear explanation of discovery → production workflow using the Software Factory",
+    "Dynamic timeline/flow visualization with key automation highlights",
+    "Section showcasing AI Studio research outcomes and ROI",
+    "Case-study highlights with metrics",
+    "Prominent call-to-action for partnership discussions"
+  ],
+  "nice_to_have_features": [
+    "Interactive filtering (e.g., by partner type or industry)",
+    "Downloadable PDF one-pager",
+    "Embedded video or animation explaining the pipeline"
+  ],
+  "design_preferences": {
+    "style": "polished, modern, partner-facing",
+    "colors": ["#0F172A", "#3B82F6", "#FACC15", "#FFFFFF"],
+    "inspiration_sites": [
+      "https://www.notion.so",
+      "https://segment.com",
+      "https://linear.app/partners"
+    ],
+    "tone": "Confident, transparent, data-driven"
+  },
+  "constraints": [
+    "Responsive across desktop, tablet, mobile",
+    "Load in under 2 seconds",
+    "Maintain accessibility (WCAG AA)"
+  ],
+  "success_criteria": [
+    "Partners understand our value proposition within 60 seconds",
+    "Demo highlights key automation phases with proof points",
+    "Conversation requests increase by 25% within 30 days"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025-10-24T17:13:01.151Z",
+  "backlogFile": ".claude/idea-to-design/test-gen/backlog/backlog-2025-10-24T17-13-00-980Z.json",
+  "totalItems": 4,
+  "syncedItems": 4,
+  "failedItems": 0,
+  "synced": [
+    {
+      "title": "[Architecture] Migration to Production Infrastructure",
+      "issueNumber": "DRY_RUN",
+      "source": "Architecture (architecture-tech-stack.md)",
+      "priority": "P3"
+    },
+    {
+      "title": "[Architecture] Backend API Implementation",
+      "issueNumber": "DRY_RUN",
+      "source": "Architecture (architecture-api.md)",
+      "priority": "P2"
+    },
+    {
+      "title": "[UX] Implement Command Palette",
+      "issueNumber": "DRY_RUN",
+      "source": "UX (ux-interactions.md)",
+      "priority": "P2"
+    },
+    {
+      "title": "[UX] Implement Command Palette",
+      "issueNumber": "DRY_RUN",
+      "source": "UX (ux-screen-map.md)",
+      "priority": "P2"
+    }
+  ],
+  "failed": []
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "title": "Name Audit Service for Clients",
+    "summary": "Productize the name vetting automation as a standalone service offering for external clients seeking business name validation",
+    "findings": "The name-vetting.js automation provides significant value beyond internal DBA naming. Many startups, entrepreneurs, and agencies need comprehensive name validation but lack access to multiple APIs and scoring expertise. Packaging this as a service could generate recurring revenue and position Software Factory as a naming authority.",
+    "feasibility": "High",
+    "cost": "Medium",
+    "confidence": 0.4,
+    "opportunity_driver": [
+      "New revenue stream from existing automation",
+      "Low marginal cost per client audit",
+      "Differentiates Software Factory with unique offering",
+      "Builds authority in business naming space",
+      "Cross-sell opportunity for full app development"
+    ],
+    "dependencies": [
+      "Complete API integrations in name-vetting.js",
+      "Build client-facing reporting UI",
+      "Pricing model for different audit tiers",
+      "Marketing landing page and case studies",
+      "Terms of service and legal disclaimers",
+      "API key cost management and billing",
+      "Customer support workflow for audit questions"
+    ],
+    "timeframe": "Exploratory",
+    "next_steps": "Validate market demand through customer interviews, estimate API costs at scale, prototype client-facing report format, research competitor pricing (LegalZoom, Trademark Engine)",
+    "tags": ["productization", "revenue", "naming"]
+  }
+]

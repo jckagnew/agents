@@ -1,0 +1,194 @@
+{
+  "version": "1.0",
+  "timestamp": "2025-10-25T18:58:59.519Z",
+  "source": "ai-studio",
+  "totalIdeas": 5,
+  "ideas": [
+    {
+      "id": "ai-1761409992712-w8z1wbrd7",
+      "title": "Automated Partner Billing Exports",
+      "description": "Generate recurring financial reports per DBA with automated delivery to partners\n\n**Findings**: Partners currently request manual billing breakdowns. Automation would reduce admin overhead and improve partner satisfaction. Similar features in competitor platforms show 40% reduction in support tickets.",
+      "drivers": [
+        "Reduce manual admin work",
+        "Improve partner transparency",
+        "Self-service financial reporting"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 5,
+      "confidence": 0.5,
+      "dependencies": [
+        "Stripe API integration for billing data",
+        "Email delivery system",
+        "PDF generation library",
+        "Per-DBA financial data aggregation"
+      ],
+      "targetPhase": "v2",
+      "theme": "admin",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T16:33:12.712Z",
+      "updatedAt": "2025-10-25T16:33:12.718Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Survey partners on preferred report formats, estimate Stripe API usage costs, prototype PDF templates",
+          "originalTags": [
+            "admin",
+            "automation",
+            "financial"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761409992718-l97wribvx",
+      "title": "White-Label Provisioning Wizard",
+      "description": "Script-based wizard to spin up new DBA projects with zero-code setup\n\n**Findings**: Current DBA setup requires manual configuration across Vercel, DNS, analytics, and environment variables. Automation would enable faster partnership launches and reduce setup errors. Estimated 80% time savings (4 hours → 45 minutes).",
+      "drivers": [
+        "Faster DBA launch timeline",
+        "Reduce configuration errors",
+        "Enable non-technical team members to provision DBAs",
+        "Scalability for multiple simultaneous launches"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 8,
+      "confidence": 0.4,
+      "dependencies": [
+        "Vercel API for project creation",
+        "DNS API integration (Cloudflare/Route53)",
+        "GA4 API for property creation",
+        "Template repository structure",
+        "Environment variable management system",
+        "Rollback mechanism for failed provisions"
+      ],
+      "targetPhase": "exploratory",
+      "theme": "infrastructure",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T16:33:12.718Z",
+      "updatedAt": "2025-10-25T16:33:12.718Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Spike on Vercel/DNS API capabilities, design wizard UI flow, estimate API rate limits and costs, create rollback strategy",
+          "originalTags": [
+            "infrastructure",
+            "automation",
+            "devops"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761409992712-w8z1wbrd7",
+      "title": "Automated Partner Billing Exports",
+      "description": "Generate recurring financial reports per DBA with automated delivery to partners\n\n**Findings**: Partners currently request manual billing breakdowns. Automation would reduce admin overhead and improve partner satisfaction. Similar features in competitor platforms show 40% reduction in support tickets.",
+      "drivers": [
+        "Reduce manual admin work",
+        "Improve partner transparency",
+        "Self-service financial reporting"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 5,
+      "confidence": 0.5,
+      "dependencies": [
+        "Stripe API integration for billing data",
+        "Email delivery system",
+        "PDF generation library",
+        "Per-DBA financial data aggregation"
+      ],
+      "targetPhase": "v2",
+      "theme": "admin",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T16:33:12.712Z",
+      "updatedAt": "2025-10-25T16:33:12.718Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Survey partners on preferred report formats, estimate Stripe API usage costs, prototype PDF templates",
+          "originalTags": [
+            "admin",
+            "automation",
+            "financial"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761409992718-l97wribvx",
+      "title": "White-Label Provisioning Wizard",
+      "description": "Script-based wizard to spin up new DBA projects with zero-code setup\n\n**Findings**: Current DBA setup requires manual configuration across Vercel, DNS, analytics, and environment variables. Automation would enable faster partnership launches and reduce setup errors. Estimated 80% time savings (4 hours → 45 minutes).",
+      "drivers": [
+        "Faster DBA launch timeline",
+        "Reduce configuration errors",
+        "Enable non-technical team members to provision DBAs",
+        "Scalability for multiple simultaneous launches"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 8,
+      "confidence": 0.4,
+      "dependencies": [
+        "Vercel API for project creation",
+        "DNS API integration (Cloudflare/Route53)",
+        "GA4 API for property creation",
+        "Template repository structure",
+        "Environment variable management system",
+        "Rollback mechanism for failed provisions"
+      ],
+      "targetPhase": "exploratory",
+      "theme": "infrastructure",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T16:33:12.718Z",
+      "updatedAt": "2025-10-25T16:33:12.718Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Spike on Vercel/DNS API capabilities, design wizard UI flow, estimate API rate limits and costs, create rollback strategy",
+          "originalTags": [
+            "infrastructure",
+            "automation",
+            "devops"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ai-1761418739512-dyibox9hf",
+      "title": "Name Audit Service for Clients",
+      "description": "Productize the name vetting automation as a standalone service offering for external clients seeking business name validation\n\n**Findings**: The name-vetting.js automation provides significant value beyond internal DBA naming. Many startups, entrepreneurs, and agencies need comprehensive name validation but lack access to multiple APIs and scoring expertise. Packaging this as a service could generate recurring revenue and position Software Factory as a naming authority.",
+      "drivers": [
+        "New revenue stream from existing automation",
+        "Low marginal cost per client audit",
+        "Differentiates Software Factory with unique offering",
+        "Builds authority in business naming space",
+        "Cross-sell opportunity for full app development"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 5,
+      "confidence": 0.4,
+      "dependencies": [
+        "Complete API integrations in name-vetting.js",
+        "Build client-facing reporting UI",
+        "Pricing model for different audit tiers",
+        "Marketing landing page and case studies",
+        "Terms of service and legal disclaimers",
+        "API key cost management and billing",
+        "Customer support workflow for audit questions"
+      ],
+      "targetPhase": "exploratory",
+      "theme": "productization",
+      "source": "ai-studio",
+      "status": "parked",
+      "createdAt": "2025-10-25T18:58:59.512Z",
+      "updatedAt": "2025-10-25T18:58:59.517Z",
+      "metadata": {
+        "aiStudio": {
+          "nextSteps": "Validate market demand through customer interviews, estimate API costs at scale, prototype client-facing report format, research competitor pricing (LegalZoom, Trademark Engine)",
+          "originalTags": [
+            "productization",
+            "revenue",
+            "naming"
+          ]
+        }
+      }
+    }
+  ]
+}

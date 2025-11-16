@@ -1,0 +1,178 @@
+{
+  // =============================================================================
+  // RECOMMENDED EXTENSIONS
+  // =============================================================================
+  // Essential extensions for optimal development experience
+  // =============================================================================
+
+  "recommendations": [
+    // =============================================================================
+    // PYTHON DEVELOPMENT
+    // =============================================================================
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.mypy-type-checker",
+    "ms-python.flake8",
+    "ms-python.bandit",
+    "ms-python.pylint",
+
+    // =============================================================================
+    // JAVASCRIPT/TYPESCRIPT DEVELOPMENT
+    // =============================================================================
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-json",
+
+    // =============================================================================
+    // WEB DEVELOPMENT
+    // =============================================================================
+    "ms-vscode.vscode-html",
+    "ms-vscode.vscode-css",
+    "ms-vscode.vscode-scss",
+    "ms-vscode.vscode-less",
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.vscode-yaml",
+
+    // =============================================================================
+    // DATABASE & API
+    // =============================================================================
+    "ms-vscode.vscode-restclient",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-xml",
+    "ms-vscode.vscode-sqlite",
+
+    // =============================================================================
+    // DOCKER & DEVOPS
+    // =============================================================================
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-vscode.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+
+    // =============================================================================
+    // GIT & VERSION CONTROL
+    // =============================================================================
+    "eamodio.gitlens",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+    "ms-vscode.vscode-github-pullrequest",
+
+    // =============================================================================
+    // PRODUCTIVITY & UTILITIES
+    // =============================================================================
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-xml",
+    "ms-vscode.vscode-sqlite",
+
+    // =============================================================================
+    // TESTING
+    // =============================================================================
+    "ms-python.pytest",
+    "ms-python.unittest",
+    "ms-vscode.test-adapter-converter",
+    "hbenl.vscode-test-explorer",
+
+    // =============================================================================
+    // SECURITY
+    // =============================================================================
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-xml",
+    "ms-vscode.vscode-sqlite",
+
+    // =============================================================================
+    // DOCUMENTATION
+    // =============================================================================
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-xml",
+    "ms-vscode.vscode-sqlite",
+
+    // =============================================================================
+    // MOBILE DEVELOPMENT
+    // =============================================================================
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-xml",
+    "ms-vscode.vscode-sqlite",
+
+    // =============================================================================
+    // AI & MACHINE LEARNING
+    // =============================================================================
+    "ms-python.python",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-python.mypy-type-checker",
+    "ms-python.flake8",
+    "ms-python.bandit",
+    "ms-python.pylint",
+
+    // =============================================================================
+    // CLOUD & INFRASTRUCTURE
+    // =============================================================================
+    "ms-azuretools.vscode-docker",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-vscode.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+
+    // =============================================================================
+    // MONITORING & OBSERVABILITY
+    // =============================================================================
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-xml",
+    "ms-vscode.vscode-sqlite",
+
+    // =============================================================================
+    // QUALITY & TESTING
+    // =============================================================================
+    "ms-python.pytest",
+    "ms-python.unittest",
+    "ms-vscode.test-adapter-converter",
+    "hbenl.vscode-test-explorer",
+
+    // =============================================================================
+    // COLLABORATION
+    // =============================================================================
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-xml",
+    "ms-vscode.vscode-sqlite"
+  ],
+
+  // =============================================================================
+  // UNWANTED EXTENSIONS
+  // =============================================================================
+  "unwantedRecommendations": [
+    "ms-python.pylint",
+    "ms-python.bandit",
+    "ms-python.flake8",
+    "ms-python.isort",
+    "ms-python.black-formatter",
+    "ms-python.mypy-type-checker",
+    "ms-python.pytest",
+    "ms-python.unittest",
+    "ms-python.bandit",
+    "ms-python.flake8",
+    "ms-python.isort",
+    "ms-python.black-formatter",
+    "ms-python.mypy-type-checker",
+    "ms-python.pytest",
+    "ms-python.unittest"
+  ]
+}

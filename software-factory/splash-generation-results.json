@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-10-17T13:41:38.113500",
+  "project_config": {
+    "projectType": "fitness",
+    "theme": "transformation",
+    "colorScheme": "red-to-green",
+    "animationType": "morphing",
+    "searchQueries": [
+      "fitness transformation before after",
+      "weight loss journey cartoon",
+      "fitness motivation character",
+      "health transformation animation",
+      "workout progress cartoon",
+      "body transformation story",
+      "fitness success journey",
+      "health improvement animation"
+    ],
+    "content": {
+      "title": "Transform Your Life",
+      "subtitle": "Track. Transform. Triumph.",
+      "description": "Your journey starts here.",
+      "ctaPrimary": "Create Profile",
+      "ctaSecondary": "Log In",
+      "stats": [
+        {
+          "label": "Complete",
+          "value": "67%"
+        },
+        {
+          "label": "Days to Goal",
+          "value": "3"
+        }
+      ]
+    },
+    "evaluationCriteria": {
+      "commercial_appeal": 0.4,
+      "animation_potential": 0.3,
+      "design_quality": 0.3
+    },
+    "imageCount": 100,
+    "commercialWeight": 0.4,
+    "appName": "Weight Tracker Pro"
+  },
+  "phases": {
+    "Image Sourcing": {
+      "status": "failed",
+      "stdout": "\u26a0\ufe0f MCP framework not found, using fallback image sourcing\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/jackagnew/projects/agents/software-factory/agentic-image-selector/agents/image-sourcing-agent.py\", line 35, in <module>\n    from open_source_image_client import OpenSourceImageAggregator\nModuleNotFoundError: No module named 'open_source_image_client'\n",
+      "returncode": 1
+    }
+  },
+  "success": false,
+  "generated_components": []
+}

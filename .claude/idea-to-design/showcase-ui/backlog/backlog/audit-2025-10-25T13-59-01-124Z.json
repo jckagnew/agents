@@ -1,0 +1,52 @@
+{
+  "timestamp": "2025-10-25T13:59:01.124Z",
+  "backlogFile": ".claude/idea-to-design/showcase-ui/backlog/backlog/backlog-2025-10-25T13-59-00-869Z.json",
+  "totalItems": 7,
+  "syncedItems": 7,
+  "failedItems": 0,
+  "synced": [
+    {
+      "title": "Finalize Partner Showcase content & metrics",
+      "issueNumber": "DRY_RUN",
+      "source": "partner-showcase-pack",
+      "priority": "P1"
+    },
+    {
+      "title": "Confirm Partner Showcase CTA destinations",
+      "issueNumber": "DRY_RUN",
+      "source": "partner-showcase-pack",
+      "priority": "P1"
+    },
+    {
+      "title": "Complete Visual QA rerun with system Chrome",
+      "issueNumber": "DRY_RUN",
+      "source": "visual-qa",
+      "priority": "P1"
+    },
+    {
+      "title": "Configure GA4 tracking and conversion goals",
+      "issueNumber": "DRY_RUN",
+      "source": "partner-showcase-pack",
+      "priority": "P1"
+    },
+    {
+      "title": "Deploy Partner Showcase to staging",
+      "issueNumber": "DRY_RUN",
+      "source": "deployment-summary",
+      "priority": "P1"
+    },
+    {
+      "title": "Conduct stakeholder review",
+      "issueNumber": "DRY_RUN",
+      "source": "partner-showcase-pack",
+      "priority": "P2"
+    },
+    {
+      "title": "Launch Partner Showcase to production",
+      "issueNumber": "DRY_RUN",
+      "source": "deployment-summary",
+      "priority": "P1"
+    }
+  ],
+  "failed": []
+}

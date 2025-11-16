@@ -1,0 +1,199 @@
+name: Design Integration Check
+
+# TODO: Wire this into required checks for merge protection
+# This workflow validates design version artifacts before allowing QA or deployment
+
+on:
+  push:
+    branches: [ main, weight-tracker-redesign ]
+    paths:
+      - 'software-factory/generated-apps/weight-tracker-nextjs/**'
+      - 'docs/design/**'
+      - 'scripts/check-design-version.js'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'software-factory/generated-apps/weight-tracker-nextjs/**'
+      - 'docs/design/**'
+      - 'scripts/check-design-version.js'
+
+jobs:
+  validate-design-version:
+    name: Validate Design Artifacts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Validate Design Version Manifest
+        id: design-check
+        run: |
+          echo "::group::Design Version Validation"
+          node scripts/check-design-version.js
+          echo "::endgroup::"
+
+      - name: Comment on PR (if failed)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## ⛔ Design Integration Check Failed
+
+              The design version validation failed. This PR cannot be merged until design artifacts are valid.
+
+              **Common Issues:**
+              - \`design_version.json\` has placeholder values (\`<TBD>\`)
+              - Design spec file missing or hash mismatch
+              - Baseline screenshots missing or hash mismatch
+              - Implementation status is \`pending_implementation\`
+
+              **Fix:**
+              1. Review the workflow logs above for specific errors
+              2. Follow the [Design Integration Gate](../blob/main/docs/SOFTWARE_FACTORY_PLAYBOOK.md#-design-integration-gate) process
+              3. Update design artifacts and push changes
+
+              **Validation Script:**
+              \`\`\`bash
+              node scripts/check-design-version.js
+              \`\`\`
+              `
+            })
+
+  # TODO: Add visual regression testing job
+  # This will run after validate-design-version passes
+  visual-regression:
+    name: Visual Regression Tests
+    runs-on: ubuntu-latest
+    needs: validate-design-version
+    # Currently disabled - enable when visual diff is implemented
+    if: false
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        working-directory: software-factory/generated-apps/weight-tracker-nextjs
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: software-factory/generated-apps/weight-tracker-nextjs
+        run: npx playwright install --with-deps chromium
+
+      - name: Start development server
+        working-directory: software-factory/generated-apps/weight-tracker-nextjs
+        run: npm run dev &
+
+      - name: Wait for server
+        run: |
+          timeout 60 bash -c 'until curl -s http://localhost:3000 > /dev/null; do sleep 1; done'
+
+      - name: Run visual regression tests
+        working-directory: software-factory/generated-apps/weight-tracker-nextjs
+        run: npm run test:visual
+
+      - name: Compare against baselines
+        id: visual-diff
+        working-directory: software-factory/generated-apps/weight-tracker-nextjs
+        run: |
+          # TODO: Implement visual diff comparison
+          # - Load test screenshots from screenshots/test-results/
+          # - Load baseline screenshots from screenshots/baseline/v2/
+          # - Use pixelmatch or similar to compute differences
+          # - Generate diff images in screenshots/diffs/
+          # - Exit 1 if any screenshots differ beyond threshold
+          echo "::warning::Visual diff comparison not yet implemented"
+
+      - name: Upload diff images (if failed)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-diffs
+          path: software-factory/generated-apps/weight-tracker-nextjs/screenshots/diffs/
+          retention-days: 30
+
+      - name: Comment on PR with diffs (if failed)
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `## ⚠️ Visual Regression Detected
+
+              Screenshots differ from baselines. Review the diff images to determine if changes are intentional.
+
+              **Artifacts:**
+              - Download diff images from the [workflow artifacts](#)
+
+              **If changes are intentional:**
+              1. Review diff images to confirm correctness
+              2. Update baselines: \`mv screenshots/test-results/*.png screenshots/baseline/v2/\`
+              3. Recompute baseline hash: \`node scripts/check-design-version.js --compute-baseline\`
+              4. Update \`design_version.json\` with new hash
+              5. Commit and push changes
+
+              **If changes are unintentional:**
+              1. Review the code changes that caused visual differences
+              2. Fix the UI to match the baseline
+              3. Re-run tests to verify fix
+              `
+            })
+
+  # TODO: Add QA scoring job
+  # This will analyze screenshots and generate quality report
+  qa-scoring:
+    name: QA Quality Score
+    runs-on: ubuntu-latest
+    needs: visual-regression
+    if: false  # Disabled until visual-regression is enabled
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Run QA scoring
+        working-directory: software-factory/generated-apps/weight-tracker-nextjs
+        run: |
+          # TODO: Implement QA scoring based on screenshots
+          # - Brand compliance check
+          # - Accessibility check (contrast ratios, ARIA)
+          # - Responsive design check (all viewports passed)
+          # - Visual polish check (interactive elements present)
+          # - Generate quality report JSON
+          echo "::warning::QA scoring not yet implemented"
+
+      - name: Post QA report to PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            // TODO: Post QA report as PR comment
+            console.log('QA report posting not yet implemented');

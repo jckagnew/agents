@@ -1,0 +1,83 @@
+# Software Factory - Claude Integration Rules
+
+## Project Context
+- **Project:** AI-powered software application generator
+- **Framework:** Python with FastAPI
+- **Frontend:** Next.js applications
+- **AI Integration:** Multiple AI services
+- **Purpose:** Generate complete web applications
+
+## Code Standards
+- **Python:** Type hints, proper error handling
+- **FastAPI:** Async/await, proper response models
+- **Next.js:** App router, server components
+- **AI Integration:** HuggingFace, OpenAI, Anthropic
+- **Testing:** Comprehensive test coverage
+
+## Business Rules
+- **Security First:** All API keys in environment variables
+- **AI Safety:** Implement proper AI usage guidelines
+- **Performance:** Optimize for production use
+- **Scalability:** Design for multiple concurrent users
+- **Quality:** Generate production-ready code
+
+## AI Integration
+- **HuggingFace:** Primary AI model provider
+- **OpenAI:** Content generation and code completion
+- **Anthropic:** Claude integration and reasoning
+- **Context:** Always consider business context
+
+## File Structure
+- **Generated Apps:** `/generated-apps/` - AI-generated applications
+- **Templates:** `/templates/` - Application templates
+- **Scripts:** `/scripts/` - Generation and utility scripts
+- **Tests:** `/tests/` - Test files
+- **Config:** `/config/` - Configuration files
+
+## Development Workflow
+1. **Plan:** Use Claude for architecture decisions
+2. **Code:** Implement with Python best practices
+3. **Test:** Write comprehensive tests
+4. **Generate:** Create applications with AI
+5. **Deploy:** Use proper deployment practices
+
+## Business Context
+- **Entity:** C-Level Sales Guy LLC
+- **Services:** AI-powered software development
+- **Target Market:** Businesses needing custom software
+- **Value Prop:** Rapid application development with AI
+
+## Security Requirements
+- **Environment Variables:** All secrets in .env files
+- **AI Safety:** Implement proper AI usage guidelines
+- **Input Validation:** Sanitize all user inputs
+- **API Keys:** Never commit to version control
+- **Generated Code:** Review for security vulnerabilities
+
+## Development Priorities
+1. **AI Integration:** Leverage multiple AI services
+2. **Code Quality:** Generate production-ready code
+3. **User Experience:** Intuitive generation process
+4. **Performance:** Fast application generation
+5. **Scalability:** Handle multiple concurrent users
+
+## Code Quality Standards
+- **Python:** Type hints, proper error handling
+- **Error Handling:** Comprehensive try-catch blocks
+- **Logging:** Structured logging for debugging
+- **Comments:** Explain complex AI logic
+- **Testing:** Unit tests for critical functions
+
+## Business Goals
+- **Revenue Generation:** AI-powered software development
+- **Market Position:** Leading AI application generator
+- **Technology:** Cutting-edge AI integration
+- **Growth:** Scalable business model
+- **Innovation:** Push boundaries of AI development
+
+## AI Guidelines
+- **Model Selection:** Choose appropriate models for tasks
+- **Prompt Engineering:** Optimize prompts for best results
+- **Error Handling:** Handle AI service failures gracefully
+- **Cost Management:** Monitor AI usage and costs
+- **Quality Assurance:** Review AI-generated code

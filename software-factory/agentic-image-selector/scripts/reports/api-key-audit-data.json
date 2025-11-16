@@ -1,0 +1,87 @@
+{
+  "timestamp": "1760724845.1014905",
+  "env_files_scanned": [
+    "/Users/jackagnew/projects/agents/utilities/env.master",
+    "/Users/jackagnew/projects/agents/.env",
+    "/Users/jackagnew/projects/agents/3_crew/financial_researcher/.env.bak",
+    "/Users/jackagnew/projects/agents/3_crew/financial_researcher/.env",
+    "/Users/jackagnew/projects/agents/3_crew/financial_researcher/ntfy-learning/.env",
+    "/Users/jackagnew/projects/agents/3_crew/debate/.env",
+    "/Users/jackagnew/projects/agents/test-projects/ai-business-name-generator/.env",
+    "/Users/jackagnew/projects/agents/test-projects/ai-business-name-generator/app/.env.local",
+    "/Users/jackagnew/projects/agents/test-projects/ai-business-name-generator/.mcp/.env.template",
+    "/Users/jackagnew/projects/agents/project-starter/templates/ai_agents/design_decision_team/.env.backup",
+    "/Users/jackagnew/projects/agents/project-starter/templates/ai_agents/design_decision_team/.env",
+    "/Users/jackagnew/projects/agents/job-search-assistant/.env",
+    "/Users/jackagnew/projects/agents/2_openai/community_contributions/customer_care_telegram/.env-example",
+    "/Users/jackagnew/projects/agents/2_openai/community_contributions/customer_care_agents/.env-example",
+    "/Users/jackagnew/projects/agents/2_openai/community_contributions/agent_manager_refactor/.env.exampe",
+    "/Users/jackagnew/projects/agents/2_openai/community_contributions/deep_research_with_pushover_report/.env.example.bak",
+    "/Users/jackagnew/projects/agents/1_foundations/community_contributions/gemini_based_chatbot/.env.example",
+    "/Users/jackagnew/projects/agents/clevel-sales-guy/.env",
+    "/Users/jackagnew/projects/agents/review_for_deletion/my_new_project/.env"
+  ],
+  "keys_found": 60,
+  "audit_results": {
+    "UNSPLASH_API_KEY": {
+      "name": "Unsplash",
+      "description": "High-quality free photos for commercial use",
+      "category": "Open Source Images",
+      "priority": "required",
+      "free_tier": "50 requests/hour",
+      "signup_url": "https://unsplash.com/developers",
+      "status": "configured",
+      "configured": true
+    },
+    "PIXABAY_API_KEY": {
+      "name": "Pixabay",
+      "description": "Free images, vectors, and videos",
+      "category": "Open Source Images",
+      "priority": "required",
+      "free_tier": "5,000 requests/hour",
+      "signup_url": "https://pixabay.com/api/docs/",
+      "status": "configured",
+      "configured": true
+    },
+    "PEXELS_API_KEY": {
+      "name": "Pexels",
+      "description": "Free stock photos and videos",
+      "category": "Open Source Images",
+      "priority": "recommended",
+      "free_tier": "200 requests/hour",
+      "signup_url": "https://www.pexels.com/api/",
+      "status": "configured",
+      "configured": true
+    },
+    "BRAVE_API_KEY": {
+      "name": "Brave Search",
+      "description": "Web search with open source image filtering",
+      "category": "MCP Servers",
+      "priority": "recommended",
+      "free_tier": "2,000 requests/month",
+      "signup_url": "https://brave.com/search/api/",
+      "status": "configured",
+      "configured": true
+    },
+    "PERPLEXITY_API_KEY": {
+      "name": "Perplexity",
+      "description": "AI-powered search with image discovery",
+      "category": "MCP Servers",
+      "priority": "recommended",
+      "free_tier": "5 requests/minute",
+      "signup_url": "https://www.perplexity.ai/settings/api",
+      "status": "missing",
+      "configured": false
+    },
+    "SERPER_API_KEY": {
+      "name": "Serper",
+      "description": "Google Search API (alternative to Brave)",
+      "category": "MCP Servers",
+      "priority": "optional",
+      "free_tier": "2,500 requests/month",
+      "signup_url": "https://serper.dev/",
+      "status": "configured",
+      "configured": true
+    }
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "title": "Opportunity Title",
+  "description": "Detailed description of the business opportunity",
+  "market": {
+    "size": "Total addressable market size and growth rate",
+    "segment": "Specific market segment or niche",
+    "geography": "Geographic focus (local, regional, national, global)",
+    "timing": "Market timing and readiness"
+  },
+  "valueProposition": {
+    "problem": "Customer problem or pain point being solved",
+    "solution": "Proposed solution or approach",
+    "benefits": ["Key benefit 1", "Key benefit 2", "Key benefit 3"],
+    "differentiation": "How this differs from existing solutions"
+  },
+  "businessModel": {
+    "revenueStreams": ["Primary revenue stream", "Secondary revenue stream"],
+    "pricingStrategy": "Pricing approach and rationale",
+    "customerSegments": ["Primary customer segment", "Secondary customer segment"],
+    "channels": ["Distribution channel 1", "Distribution channel 2"]
+  },
+  "financialProjections": {
+    "year1": {
+      "revenue": 0,
+      "costs": 0,
+      "profit": 0,
+      "customers": 0
+    },
+    "year2": {
+      "revenue": 0,
+      "costs": 0,
+      "profit": 0,
+      "customers": 0
+    },
+    "year3": {
+      "revenue": 0,
+      "costs": 0,
+      "profit": 0,
+      "customers": 0
+    },
+    "breakEven": "Months to break even",
+    "roi": "Expected return on investment"
+  },
+  "implementation": {
+    "timeline": "Implementation timeline in months",
+    "resources": {
+      "team": "Required team size and skills",
+      "technology": "Technology requirements and infrastructure",
+      "capital": "Required capital investment"
+    },
+    "milestones": [
+      {
+        "phase": "Phase 1",
+        "description": "Description of phase 1",
+        "timeline": "Timeline for phase 1",
+        "deliverables": ["Deliverable 1", "Deliverable 2"]
+      }
+    ]
+  },
+  "risks": {
+    "market": ["Market risk 1", "Market risk 2"],
+    "technology": ["Technology risk 1", "Technology risk 2"],
+    "execution": ["Execution risk 1", "Execution risk 2"],
+    "financial": ["Financial risk 1", "Financial risk 2"],
+    "mitigation": ["Mitigation strategy 1", "Mitigation strategy 2"]
+  },
+  "competitiveAnalysis": {
+    "directCompetitors": [
+      {
+        "name": "Competitor 1",
+        "strengths": ["Strength 1", "Strength 2"],
+        "weaknesses": ["Weakness 1", "Weakness 2"],
+        "marketShare": "Estimated market share"
+      }
+    ],
+    "indirectCompetitors": ["Indirect competitor 1", "Indirect competitor 2"],
+    "competitiveAdvantage": "Our competitive advantage",
+    "barriersToEntry": "Barriers that protect our position"
+  },
+  "successMetrics": {
+    "financial": ["Revenue growth", "Profit margin", "ROI"],
+    "operational": ["Customer acquisition cost", "Customer lifetime value", "Churn rate"],
+    "strategic": ["Market share", "Brand recognition", "Customer satisfaction"]
+  },
+  "nextSteps": [
+    "Immediate action item 1",
+    "Immediate action item 2",
+    "Immediate action item 3"
+  ],
+  "metadata": {
+    "createdDate": "2025-01-24",
+    "createdBy": "C-Level Executive",
+    "status": "under-review",
+    "priority": "high",
+    "category": "business-opportunity",
+    "tags": ["ai", "automation", "sales", "technology"],
+    "source": "market-research"
+  }
+}

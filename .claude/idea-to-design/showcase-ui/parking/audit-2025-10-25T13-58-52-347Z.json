@@ -1,0 +1,49 @@
+{
+  "timestamp": "2025-10-25T13:58:52.347Z",
+  "source": "ai-studio",
+  "sourceFile": "showcase-ui-future-features.json",
+  "totalIdeas": 4,
+  "duplicates": 0,
+  "promotionReady": 0,
+  "confidenceThreshold": 0.6,
+  "parkingFile": ".claude/idea-to-design/showcase-ui/parking/parking-lot-2025-10-25T13-58-52-346Z.json",
+  "summaryFile": ".claude/idea-to-design/showcase-ui/parking/ai-studio-summary-2025-10-25T13-58-52-347Z.md",
+  "ideas": [
+    {
+      "id": "ai-1761400732345-aa2aqpsc4",
+      "title": "Interactive Partner Filtering",
+      "value": 9,
+      "effort": 5,
+      "confidence": 0.5,
+      "roi": 0.9,
+      "promotionReady": false
+    },
+    {
+      "id": "ai-1761400732346-h33w1hcd2",
+      "title": "Downloadable PDF One-Pager",
+      "value": 9,
+      "effort": 3,
+      "confidence": 0.4,
+      "roi": 1.2000000000000002,
+      "promotionReady": false
+    },
+    {
+      "id": "ai-1761400732346-s21czs7hz",
+      "title": "Embedded Video/Testimonial",
+      "value": 6,
+      "effort": 8,
+      "confidence": 0.3,
+      "roi": 0.22499999999999998,
+      "promotionReady": false
+    },
+    {
+      "id": "ai-1761400732346-d629j1oa1",
+      "title": "Post-Launch A/B Testing",
+      "value": 9,
+      "effort": 3,
+      "confidence": 0.5,
+      "roi": 1.5,
+      "promotionReady": false
+    }
+  ]
+}

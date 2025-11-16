@@ -1,0 +1,30 @@
+{
+  "timestamp": "2025-10-25T17:33:59.058Z",
+  "backlogFile": ".claude/idea-to-design/global/backlog/backlog/backlog-2025-10-25T17-33-58-821Z.json",
+  "totalItems": 4,
+  "syncedItems": 4,
+  "failedItems": 0,
+  "synced": [
+    {
+      "title": "Configure domain routing for partner DBAs",
+      "issueNumber": "DRY_RUN",
+      "priority": "P1"
+    },
+    {
+      "title": "Provision analytics properties per DBA",
+      "issueNumber": "DRY_RUN",
+      "priority": "P1"
+    },
+    {
+      "title": "Design DBA metrics view for Software Factory admin",
+      "issueNumber": "DRY_RUN",
+      "priority": "P2"
+    },
+    {
+      "title": "Implement API endpoints to serve per-DBA analytics",
+      "issueNumber": "DRY_RUN",
+      "priority": "P2"
+    }
+  ],
+  "failed": []
+}

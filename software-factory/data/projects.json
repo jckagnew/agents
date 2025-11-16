@@ -1,0 +1,36 @@
+[
+  {
+    "id": "weight-tracker-nextjs",
+    "name": "Weight Tracker Pro",
+    "description": "AI-powered fitness tracking app with animated splash screens",
+    "designTokens": {
+      "palette": [
+        { "name": "Primary", "value": "#22c55e", "role": "primary" },
+        { "name": "Secondary", "value": "#64748b", "role": "secondary" }
+      ],
+      "typography": [
+        { "name": "Heading", "fontFamily": "Nunito", "weight": 700 },
+        { "name": "Body", "fontFamily": "Inter", "weight": 400 }
+      ],
+      "imageryStyle": "Health and fitness lifestyle photography",
+      "animationStyle": "Smooth morphing gradients"
+    }
+  },
+  {
+    "id": "splendid-bdr",
+    "name": "Splendid BDR",
+    "description": "Prospecting workflow toolkit for business development reps",
+    "designTokens": {
+      "palette": [
+        { "name": "Primary", "value": "#7c3aed", "role": "primary" },
+        { "name": "Accent", "value": "#22d3ee", "role": "accent" }
+      ],
+      "typography": [
+        { "name": "Heading", "fontFamily": "Poppins", "weight": 600 },
+        { "name": "Body", "fontFamily": "Inter", "weight": 400 }
+      ],
+      "imageryStyle": "High-energy go-to-market teams",
+      "animationStyle": "Slide-in panels with optimistic gradients"
+    }
+  }
+]

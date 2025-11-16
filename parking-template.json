@@ -1,0 +1,102 @@
+{
+  "title": "Example Future Feature",
+  "description": "Brief description of the feature idea and its purpose",
+  "drivers": [
+    "Business driver or user need 1",
+    "Business driver or user need 2"
+  ],
+  "estimatedValue": 7,
+  "estimatedEffort": 5,
+  "confidence": 0.6,
+  "dependencies": [
+    "Other feature or technical requirement",
+    "External dependency"
+  ],
+  "targetPhase": "post-mvp",
+  "theme": "user-experience",
+  "source": "manual",
+  "comments": [
+    {
+      "Use this template to manually submit ideas to the parking lot",
+      "Copy this file and fill in your idea details",
+      "Run: node scripts/parking-lot.js --session-dir SESSION_DIR --source your-idea.json"
+    }
+  ],
+  "_schema": {
+    "title": "string (required) - Clear, concise feature name",
+    "description": "string (required) - What the feature does and why it matters",
+    "drivers": "array<string> - Business drivers, user needs, market trends",
+    "estimatedValue": "number 1-10 (required) - Business value or impact",
+    "estimatedEffort": "number 1-10 (required) - Implementation complexity",
+    "confidence": "number 0.0-1.0 (required) - Certainty in estimates (0=very uncertain, 1=very confident)",
+    "dependencies": "array<string> - Other features, tech, or external factors required",
+    "targetPhase": "string - When to consider: 'mvp', 'post-mvp', 'v2', 'future', 'exploratory'",
+    "theme": "string - Category: 'user-experience', 'performance', 'security', 'analytics', 'infrastructure', 'business', 'uncategorized'",
+    "source": "string - Where idea came from: 'manual', 'customer-feedback', 'competitive-analysis', 'team-brainstorm', 'ai-studio'"
+  },
+  "_promotion_criteria": {
+    "confidence_threshold": 0.6,
+    "value_threshold": 7,
+    "note": "Ideas meeting BOTH criteria are automatically flagged as promotion-ready"
+  },
+  "_examples": [
+    {
+      "title": "Multi-language Support",
+      "description": "Add internationalization (i18n) to support multiple languages and locales, starting with Spanish and French",
+      "drivers": [
+        "Expanding to European markets",
+        "15% of users have non-English browser settings",
+        "Customer requests from enterprise clients"
+      ],
+      "estimatedValue": 8,
+      "estimatedEffort": 7,
+      "confidence": 0.7,
+      "dependencies": [
+        "Content translation service",
+        "Updated UI components for RTL languages"
+      ],
+      "targetPhase": "v2",
+      "theme": "user-experience",
+      "source": "customer-feedback"
+    },
+    {
+      "title": "Real-time Collaboration",
+      "description": "Allow multiple users to edit the same document simultaneously with live cursor tracking and conflict resolution",
+      "drivers": [
+        "Team collaboration workflow improvement",
+        "Competitor feature parity",
+        "Reduce async communication overhead"
+      ],
+      "estimatedValue": 9,
+      "estimatedEffort": 9,
+      "confidence": 0.4,
+      "dependencies": [
+        "WebSocket infrastructure",
+        "Operational transformation algorithm",
+        "User presence system"
+      ],
+      "targetPhase": "exploratory",
+      "theme": "user-experience",
+      "source": "competitive-analysis"
+    },
+    {
+      "title": "Advanced Analytics Dashboard",
+      "description": "Provide detailed usage analytics with custom reports, cohort analysis, and funnel visualization",
+      "drivers": [
+        "Enterprise customers need compliance reporting",
+        "Product team needs better user insights",
+        "Upsell opportunity for premium tier"
+      ],
+      "estimatedValue": 7,
+      "estimatedEffort": 6,
+      "confidence": 0.8,
+      "dependencies": [
+        "Analytics data pipeline",
+        "Visualization library"
+      ],
+      "targetPhase": "post-mvp",
+      "theme": "analytics",
+      "source": "team-brainstorm"
+    }
+  ]
+}
