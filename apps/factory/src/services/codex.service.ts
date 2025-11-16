@@ -281,26 +281,29 @@ Return the complete, improved component code. Preserve all functionality but adj
       },
     ];
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.apiKey}`,
-      },
-      body: JSON.stringify({
-        model: this.model,
-        messages,
-        max_tokens: 16000,
-        temperature: 0.2, // Lower temperature for refinement
-      }),
+    // Wrap API call with retry logic for transient failures
+    return await retryWithBackoff(async () => {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.apiKey}`,
+        },
+        body: JSON.stringify({
+          model: this.model,
+          messages,
+          max_tokens: 16000,
+          temperature: 0.2, // Lower temperature for refinement
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`OpenAI API error: ${response.status}`);
+      }
+
+      const result = await safeJSONParse<any>(response);
+      return this.extractCodeFromResponse(result.choices[0].message.content);
     });
-
-    if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
-    }
-
-    const result = await safeJSONParse<any>(response);
-    return this.extractCodeFromResponse(result.choices[0].message.content);
   }
 
   /**
@@ -396,41 +399,44 @@ Be specific and actionable in your feedback. If the score is below 0.85, provide
       },
     ];
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.apiKey}`,
-      },
-      body: JSON.stringify({
-        model: this.model,
-        messages,
-        max_tokens: 2000,
-        temperature: 0.1, // Very low temperature for consistent evaluation
-      }),
+    // Wrap API call with retry logic for transient failures
+    return await retryWithBackoff(async () => {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.apiKey}`,
+        },
+        body: JSON.stringify({
+          model: this.model,
+          messages,
+          max_tokens: 2000,
+          temperature: 0.1, // Very low temperature for consistent evaluation
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`OpenAI API error: ${response.status}`);
+      }
+
+      const result = await safeJSONParse<any>(response);
+      const content = result.choices[0].message.content;
+
+      // Parse JSON response
+      const jsonMatch = content.match(/\{[\s\S]*\}/);
+      if (!jsonMatch) {
+        throw new Error('Failed to parse comparison result');
+      }
+
+      const parsed = JSON.parse(jsonMatch[0]);
+
+      return {
+        score: parsed.score,
+        feedback: parsed.feedback,
+        improvements_needed: parsed.improvements_needed,
+        diff_url: undefined, // Could generate visual diff overlay
+      };
     });
-
-    if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status}`);
-    }
-
-    const result = await safeJSONParse<any>(response);
-    const content = result.choices[0].message.content;
-
-    // Parse JSON response
-    const jsonMatch = content.match(/\{[\s\S]*\}/);
-    if (!jsonMatch) {
-      throw new Error('Failed to parse comparison result');
-    }
-
-    const parsed = JSON.parse(jsonMatch[0]);
-
-    return {
-      score: parsed.score,
-      feedback: parsed.feedback,
-      improvements_needed: parsed.improvements_needed,
-      diff_url: undefined, // Could generate visual diff overlay
-    };
   }
 
   /**
