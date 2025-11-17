@@ -1,4 +1,12 @@
-# Design-First Software Factory
+# Agentic AI Engineering Course Materials
+
+**⚠️ NOTE**: This repository contains **Ed Donner's Agentic AI Engineering course materials** (OpenAI, CrewAI, LangGraph, AutoGen, MCP labs). 
+
+**Business systems** (PR reviews, market research, Supabase integration) have been moved to the separate business repository: `jckagnew/design-first-software-factory`
+
+---
+
+# Design-First Software Factory (Legacy - See Note Above)
 
 ## 🤖 FOR AI AGENTS (Claude, Cursor, Codex, Gemini)
 
