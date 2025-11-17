@@ -1,200 +1,133 @@
-# Deployment Status Report
+# 🚀 Deployment Status - GitHub Agent Coordinator & Market Research
 
-**Generated**: 2025-11-14
-**Branch**: develop
-**Status**: 🟡 READY EXCEPT FOR SUPABASE CREDENTIALS
+## ✅ What's Online (Committed & Pushed to GitHub)
 
----
+### 1. Multi-Agent PR Review Workflow
+- **Status**: ✅ Committed & Pushed
+- **File**: `.github/workflows/multi_agent_review.yml`
+- **Commit**: `a95fdcf`
+- **What it does**: Automatically reviews PRs with Claude, Gemini, and DeepSeek
+- **Ready to use**: ⚠️ **Needs GitHub Secrets** (see below)
 
-## ✅ What's Working
-
-### Repository Structure
-- ✅ Monorepo structure complete (apps/, docs/, scripts/, supabase/)
-- ✅ Factory code in apps/factory/src/
-- ✅ All deployment documentation in docs/deployment/
-- ✅ Helper scripts in scripts/
-- ✅ On develop branch
-- ✅ .env is gitignored (secure)
-
-### Credentials (Partial)
-- ✅ SUPABASE_URL configured: https://design-factory-admin.supabase.co
-- ✅ OPENAI_API_KEY configured (real value)
-- ✅ ANTHROPIC_API_KEY configured (real value)
-- ✅ REDIS_URL configured (real value)
-
-### Environment
-- ✅ Node.js v22.21.1 installed
-- ✅ npm 10.9.4 installed
-- ✅ Git repository initialized
+### 2. Market Research System
+- **Status**: ✅ Committed & Pushed
+- **Files**: 
+  - `.github/workflows/market_research.yml` (daily reports)
+  - `.github/workflows/market_research_interactive.yml` (config updates)
+  - `scripts/market_config.json` (6 market categories)
+  - `scripts/run_research.js` (research script)
+- **Ready to use**: ⚠️ **Needs GitHub Secrets + Database Setup** (see below)
 
 ---
 
-## ❌ Blocking Issues
+## ⏳ What Needs to Be Done
 
-### Critical: Supabase Credentials Missing
-The `.env` file still has **placeholder values** for:
-- `SUPABASE_ANON_KEY=your-anon-key-here`
-- `SUPABASE_SERVICE_ROLE_KEY=your-service-role-key-here`
+### 1. Add GitHub Secrets (REQUIRED)
 
-**These credentials exist in harvested files** but weren't copied to the current .env.
+**Go to**: https://github.com/jckagnew/agents/settings/secrets/actions
+
+**Add these secrets**:
+
+#### For Multi-Agent PR Review:
+- `ANTHROPIC_API_KEY` - Claude API key
+- `GOOGLE_AI_API_KEY` - Gemini API key  
+- `DEEPSEEK_API_KEY` - DeepSeek API key
+- `XAI_API_KEY` - Grok/X.AI API key (use GROK_API_KEY value)
+- `SERPER_API_KEY` - Serper API key
+
+#### For Market Research:
+- `SUPABASE_URL` - Your Supabase project URL
+- `SUPABASE_SERVICE_ROLE_KEY` - Service role key
+
+**Values are in**: `GITHUB_SECRETS_COPY_PASTE.txt` (local file, not committed)
 
 ---
 
-## 🔧 How to Fix (Choose ONE option)
+### 2. Deploy Database Migration (REQUIRED for Market Research)
 
-### Option 1: Run the Copy Script (Cursor on Mac)
-
-The credential harvesting found real Supabase credentials in:
-- `/Users/jackagnew/projects/c-level-sales-guy/website/.env`
-- `/Users/jackagnew/projects/design-first-software-factory/.env`
-
-**Run this on your Mac:**
 ```bash
 cd /Users/jackagnew/projects/jckagnew-agents
-bash scripts/copy-harvested-credentials.sh
+supabase db push
 ```
 
-This will:
-1. Extract Supabase credentials from harvested files
-2. Update the master .env with real values
-3. Backup existing .env first
+This creates:
+- `market_research_reports` table
+- `market_insights` table
+- RLS policies
+- Helper functions
 
 ---
 
-### Option 2: Manual Copy (Fastest)
-
-**On your Mac, run:**
-```bash
-# Check which harvested .env has the credentials
-cat /Users/jackagnew/projects/design-first-software-factory/.env | grep SUPABASE
-cat /Users/jackagnew/projects/c-level-sales-guy/website/.env | grep SUPABASE
-
-# Copy the values and manually update:
-code /Users/jackagnew/projects/jckagnew-agents/.env
-# Or
-vi /Users/jackagnew/projects/jckagnew-agents/.env
-```
-
-Update these two lines with real values:
-```bash
-SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...  # Real value from harvested file
-EXPO_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...  # Same value
-SUPABASE_SERVICE_ROLE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...  # Real value from harvested file
-```
-
----
-
-### Option 3: Get Fresh from Supabase Dashboard
-
-If the harvested credentials are for a different Supabase project:
-
-1. Go to: https://supabase.com/dashboard/project/design-factory-admin
-2. Navigate to: **Settings → API**
-3. Copy these values:
-   - **Project URL** → `SUPABASE_URL` (already have this)
-   - **anon public** → `SUPABASE_ANON_KEY` and `EXPO_PUBLIC_SUPABASE_ANON_KEY`
-   - **service_role** → `SUPABASE_SERVICE_ROLE_KEY`
-4. Update `.env` file manually
-
----
-
-## ⚠️ Optional Improvements
-
-These are NOT blocking deployment, but recommended:
+### 3. Deploy Edge Functions (REQUIRED for Market Research)
 
 ```bash
-# Install dependencies
-npm install
-
-# Install Supabase CLI (for database migrations)
-npm install -g supabase
-
-# Install Expo CLI (for mobile/web deployment)
-npm install -g expo-cli
+supabase functions deploy save-market-research
+supabase functions deploy get-market-research
 ```
 
 ---
 
-## 🚀 Once Credentials Are Fixed
+## 📊 Current Status Summary
 
-After updating `.env` with real Supabase credentials:
+| Component | Committed | Pushed | Secrets | Deployed | Status |
+|-----------|-----------|--------|---------|----------|--------|
+| Multi-Agent PR Review | ✅ | ✅ | ❌ | N/A | ⚠️ Needs Secrets |
+| Market Research Workflow | ✅ | ✅ | ❌ | ❌ | ⚠️ Needs Secrets + DB |
+| Market Research DB | ✅ | ✅ | N/A | ❌ | ⚠️ Needs Migration |
+| Market Research Functions | ✅ | ✅ | N/A | ❌ | ⚠️ Needs Deploy |
 
+---
+
+## 🎯 To Get Everything Online
+
+### Step 1: Add GitHub Secrets (5 minutes)
+1. Go to GitHub Settings > Secrets
+2. Add all 7 secrets listed above
+3. Use values from `GITHUB_SECRETS_COPY_PASTE.txt`
+
+### Step 2: Deploy Database (2 minutes)
 ```bash
-# Verify all credentials are valid
-npm run env:validate
-
-# Install dependencies
-npm install
-
-# Link to Supabase project
-supabase login
-supabase link --project-ref design-factory-admin
-
-# Test backend locally
-npm run api:dev
-
-# Deploy backend to Railway
-# (Follow docs/deployment/PHASE_1_DEPLOYMENT.md)
-
-# Deploy frontend to Vercel
-# (Follow docs/deployment/WEB_DEPLOYMENT.md)
+supabase db push
 ```
 
----
+### Step 3: Deploy Functions (2 minutes)
+```bash
+supabase functions deploy save-market-research
+supabase functions deploy get-market-research
+```
 
-## 📊 Deployment Readiness Score
-
-**Current**: 7/10
-
-| Component | Status | Notes |
-|-----------|--------|-------|
-| Repository Structure | ✅ | Complete monorepo |
-| Git Workflow | ✅ | Multi-agent on develop |
-| Supabase URL | ✅ | Points to design-factory-admin |
-| Supabase Keys | ❌ | **BLOCKER: Placeholder values** |
-| AI API Keys | ✅ | OpenAI, Anthropic configured |
-| Redis | ✅ | Configured |
-| Dependencies | ⚠️ | Need `npm install` |
-| CLI Tools | ⚠️ | Need Supabase/Expo CLI |
-
-**Once Supabase keys are fixed**: 9/10 (ready to deploy!)
+### Step 4: Test (5 minutes)
+1. Create a test PR → Multi-agent review should run
+2. Manually trigger market research workflow → Should create report and save to DB
 
 ---
 
-## 🎯 Who Can Do What
+## ✅ What Will Work After Setup
 
-### Cursor (on Mac)
-✅ Can run `scripts/copy-harvested-credentials.sh`
-✅ Can manually copy credentials from harvested files
-✅ Can access Supabase dashboard to get fresh credentials
-✅ Can update `.env` file
-✅ Can run `npm install`
-✅ Can commit changes to develop
+### Multi-Agent PR Review
+- ✅ Automatically runs on every PR
+- ✅ Claude reviews architecture/security
+- ✅ Gemini reviews cross-cutting impacts
+- ✅ DeepSeek reviews code quality
+- ✅ All post comments on PR
 
-### Claude (Linux environment)
-❌ Cannot access Mac filesystem
-❌ Cannot access harvested credential values
-✅ Can verify deployment readiness after credentials are updated
-✅ Can prepare deployment scripts
-✅ Can guide deployment process
-✅ Can test backend once credentials are in place
-
----
-
-## 📋 Next Immediate Steps
-
-**For Cursor:**
-1. Run Option 1 or Option 2 above to fix Supabase credentials
-2. Commit updated `.env` (wait, NO - .env is gitignored, keep it local!)
-3. Verify: `npm run env:validate`
-4. Report back: "Credentials updated"
-
-**For Claude:**
-1. Wait for Cursor to update credentials
-2. Once notified, verify deployment readiness
-3. Guide through Supabase CLI linking
-4. Begin Phase 1 deployment
+### Market Research
+- ✅ Runs daily at 12:00 UTC
+- ✅ Researches 6 market categories
+- ✅ Saves reports to database
+- ✅ Creates GitHub Issue notification
+- ✅ Can be updated interactively via Issue comments
+- ✅ Reports accessible via admin console API
 
 ---
 
-**TL;DR**: We have 116 credentials harvested, but the Supabase keys specifically still need to be copied from the harvested files to the master `.env`. Run Option 1 or 2 above to fix, then we're ready to deploy! 🚀
+## 📝 Notes
+
+- **Multi-Agent PR Review**: Will work immediately after adding GitHub Secrets
+- **Market Research**: Needs Secrets + Database + Functions deployed
+- **All code is on GitHub**: Ready to activate once secrets/deployment complete
+
+---
+
+**Last Updated**: 2025-11-17  
+**Status**: Code ready, needs configuration and deployment
