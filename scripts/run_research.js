@@ -41,9 +41,23 @@ async function fetchSerper(query) {
 }
 
 async function fetchGrok(snippets, query) {
-  if (!snippets || snippets.trim().length === 0) {
+  const { market, competitors } = snippets;
+
+  if ((!market || market.trim().length === 0) && (!competitors || competitors.trim().length === 0)) {
     return "No recent information found for this query.";
   }
+
+  const content = `
+Query: ${query}
+
+---
+MARKET TRENDS SNIPPETS:
+${market || "No market trend snippets found."}
+---
+COMPETITOR FEEDBACK SNIPPETS:
+${competitors || "No competitor feedback snippets found."}
+---
+`;
 
   const response = await fetch("https://api.x.ai/v1/chat/completions", {
     method: "POST",
@@ -57,11 +71,11 @@ async function fetchGrok(snippets, query) {
         {
           role: "system",
           content:
-            "You are a market analyst. I will give you a list of search snippets and a query. Summarize the real-time public sentiment based *only* on these snippets. Be concise and focus on trends, opportunities, and concerns.",
+            "You are a market analyst. I will give you search snippets separated into 'MARKET TRENDS' and 'COMPETITOR FEEDBACK'. Based *only* on these snippets, provide a summary. First, analyze 'MARKET TRENDS' for overall sentiment, new tech, and needs. Second, analyze 'COMPETITOR FEEDBACK' for complaints, popular features, and where competitors fail. Finally, combine these into a concise summary of trends, opportunities, and concerns.",
         },
         {
           role: "user",
-          content: `Query: ${query}\n\nSnippets:\n${snippets}`,
+          content: content,
         },
       ],
     }),
@@ -131,13 +145,9 @@ async function researchMarket(market) {
   const marketSnippets = await fetchSerper(marketQuery);
   const competitorSnippets = await fetchSerper(competitorQuery);
   
-  const combinedSnippets = [marketSnippets, competitorSnippets]
-    .filter(s => s && s.trim().length > 0)
-    .join('\n\n');
-
   const sentiment = await fetchGrok(
-    combinedSnippets,
-    `What are the latest trends, opportunities, and concerns in ${market.name}? Focus on: ${market.description}`
+    { market: marketSnippets, competitors: competitorSnippets },
+    `Analyze the market for ${market.name}, focusing on: ${market.description}`
   );
 
   return {

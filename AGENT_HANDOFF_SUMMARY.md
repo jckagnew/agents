@@ -570,3 +570,5 @@ supabase functions deploy get-market-research
 **Branch**: `develop`  
 **Status**: Ready for code review and deployment
 
+
+

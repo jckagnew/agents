@@ -49,21 +49,20 @@ serve(async (req) => {
       reports = data;
     } else {
       // Get reports by date range
-      const start = startDate || null;
-      const end = endDate || null;
-
-      const { data, error } = await supabase
+      let query = supabase
         .from('market_research_reports')
-        .select('*')
+        .select('*');
+
+      if (startDate) {
+        query = query.gte('report_date', startDate);
+      }
+      if (endDate) {
+        query = query.lte('report_date', endDate);
+      }
+
+      const { data, error } = await query
         .order('report_date', { ascending: false })
         .limit(limit);
-
-      if (start) {
-        data?.filter(r => r.report_date >= start);
-      }
-      if (end) {
-        data?.filter(r => r.report_date <= end);
-      }
 
       if (error) throw error;
       reports = data;
