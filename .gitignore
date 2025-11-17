@@ -158,3 +158,5 @@ build/
 temp/
 test-results/
 playwright-report/
+GITHUB_SECRETS_COPY_PASTE.txt
+GITHUB_SECRETS_COPY_PASTE.md

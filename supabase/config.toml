@@ -147,10 +147,10 @@ backend = "postgres"
 
 # Experimental features may be discontinued with little notice. They are not subject to any SLAs or deprecation policies.
 # You can opt-in to experimental features by setting the `enabled` flag to `true` and configuring the relevant options.
-[experimental]
+# [experimental]
 # Configures Postgres to use WAL level logical replication.
 # Caution: do not disable logical replication once your project is running, as data may be lost.
-enabled_logical_replication = true
+# enabled_logical_replication = true
 # Configures Postgrest to use prepared statements.
 # Caution: this setting is experimental and may cause performance issues.
 # postgrest_prepared_statements = false
