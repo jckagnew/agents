@@ -1,0 +1,69 @@
+name: 🤖 Multi-Agent PR Review
+
+on:
+  pull_request:
+
+# Permissions needed for agents to read code and comment on PRs
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  claude_architect:
+    name: 🧐 Claude (Architect)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Claude Code Review
+        # Official Claude Action
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          model: 'claude-3-opus-20240229'
+          prompt: |
+            You are the team's Principal Architect. Review this PR for
+            high-level logic flaws, security vulnerabilities, and adherence
+            to our system design. Does this change introduce tech debt?
+            Post your review as a PR comment.
+
+  gemini_agent:
+    name: 🧠 Gemini (Repo Analyst)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run Gemini Agent Review
+        # Official Google Gemini Action
+        uses: google-github-actions/run-gemini-cli@v1
+        with:
+          gemini_api_key: ${{ secrets.GOOGLE_AI_API_KEY }}
+          # This action is powerful. This command tells it to review the PR diff.
+          # You can also trigger it by commenting "@gemini-cli /review"
+          command: |
+            gemini review --prompt "You are a Staff Engineer with full repo context.
+            Review this PR for any potential cross-cutting impacts,
+            regressions, or unintended side effects in other parts of
+            the codebase. List any non-obvious problems.
+            Post your review as a PR comment."
+
+  deepseek_specialist:
+    name: 💻 DeepSeek (Coder)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Run DeepSeek Code Review
+        # Well-regarded community action for DeepSeek
+        uses: hustcer/deepseek-review@v1
+        with:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          prompt: |
+            You are the team's Specialist Coder. Review this PR
+            for code syntax, performance optimizations, and adherence
+            to best practices. Provide specific line-by-line
+            suggestions for improvement if any.
+
